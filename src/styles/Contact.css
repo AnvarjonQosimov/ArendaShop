@@ -1,0 +1,91 @@
+.Contact{
+    /* background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(../images/contact.jpg); */
+    background-color: rgb(235, 234, 230);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 80vh;
+    width: 100%;
+    color: black;
+    padding: 80px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 0 100px;
+    height: 100%;
+    line-height: 130px;
+    width: 38%;
+}
+
+.left h1{
+    font-size: 38px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.left h1 span{
+    color: red;
+    font-size: 50px;
+    padding: 0 15px;
+}
+
+.contact-line{
+    background-color: grey;
+    width: 1px;
+    height: 50%;
+    margin: auto 0;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 100px 0 0;
+    width: 18%;
+    text-align: center;
+}
+
+.aloqa-line{
+    height: 1px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: grey;
+}
+
+.right h1 {
+    font-size: 35px;
+    padding: 0 0 20px 0;
+}
+
+.right a {
+    padding: 20px 0 0 0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 74.5%;
+    transition: 0.5s;
+    color: rgb(37, 37, 241);
+}
+
+.right a span{
+    display: flex;
+    justify-content: start;
+    width: 15%;
+    text-align: start;
+}
+
+.right a:hover{
+    text-decoration: underline;
+}
+
+/* .right a:nth-of-type(2) span{ 
+    padding-right: 21px;
+} */

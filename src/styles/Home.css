@@ -1,0 +1,90 @@
+.Home{
+    height: 90vh;
+    /* background-color: rgb(91, 154, 190); */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(../images/ArSh.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home_left{
+    width: 63%;
+    display: flex;
+    align-items: center;
+}
+
+.home_left h1{
+    font-size: 43px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+    width: 90.5%;
+    color: rgb(179, 173, 173);
+}
+
+.home_left h1 span{
+    padding: 0 15px;
+}
+
+.home_right{
+    width: 37%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home_right img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: absolute;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.circleh{
+    position: absolute;
+    animation: circleh 1.5s alternate infinite;
+}
+
+.circleho{
+    position: relative;
+    animation: circleho 1.5s alternate infinite;
+}
+
+@keyframes circleh{
+    from{
+        height: 190px;
+        width: 190px;
+        border-radius: 50%;
+        box-shadow: 10px 10px 10px inset rgb(150, 150, 150);
+    }to{
+        height: 350px;
+        width: 350px;
+        border-radius: 50%;
+        box-shadow: 10px 5px 70px inset rgb(156, 156, 156);
+        
+    }
+}
+
+@keyframes circleho{
+    from{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        box-shadow: 10px 10px 10px inset rgb(160, 160, 160);
+    }to{
+        height: 350px;
+        width: 350px;
+        border-radius: 50%;
+        box-shadow: 10px 5px 70px inset rgb(160, 160, 160);
+        
+    }
+}

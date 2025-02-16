@@ -1,0 +1,94 @@
+.Lease {
+  width: 100%;
+  height: 70vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/OIP\ \(111\).jpg);
+  padding: 50px 0 120px 0;
+}
+
+.adminPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+  height: 80%;
+}
+
+.leasetext {
+  color: rgb(218, 218, 218);
+  font-size: 23px;
+  display: flex;
+  align-items: start;
+  padding: 100px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container {
+  position: relative;
+  margin: 20px;
+}
+
+.input-field {
+  width: 150%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #868686;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+  background-color: transparent;
+  color: rgb(209, 209, 209);
+}
+
+.input-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 16px;
+  color: rgb(224, 224, 224);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
+  top: -8px;
+  left: 10px;
+  font-size: 10.5px;
+  color: rgb(82, 51, 255);
+  padding: 0 5px;
+  /* background-image:linear-gradient(rgba(0,0,0,0.3.5), rgba(0,0,0,0.3.5)),  url(../images/OIP\ \(111\).jpg); */
+  color: transparent;
+}
+
+.input-field:nth-of-type(1):not(:placeholder-shown) + .input-label {
+  color: rgb(216, 216, 216);
+  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(../images/OIP\ \(111\).jpg);
+}
+
+.input-field:focus {
+  border: 1px solid #007bff;
+  outline: none;
+}
+
+form button {
+  width: 40%;
+  padding: 10px 25px;
+  background-color: transparent;
+  border: 1px solid #868686;
+  color: rgb(224, 224, 224);
+  margin-left: 200px;
+  margin-top: 25px;
+  cursor: pointer;
+}
+
+form {
+  margin-right: 150px;
+}
+
