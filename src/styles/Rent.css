@@ -1,10 +1,11 @@
 .Rent{
     background-color: rgb(165, 161, 161);
     width: 100%;
+    padding: 40px 0 20px  0;
 }
 
 .cards{
-    padding: 50px;
+    padding: 70px 50px 0 50px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -20,13 +21,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 10px 0;
+    padding:0 0 15px 0;
+    height: auto;
+    text-align: center;
 }
 
-.card img{
+.card iframe{
     border-radius: 20px;
-    width: 300px;
-    height: 200px;
+    width: 100%;
+    max-height: 300px;
+    border-radius: 20px 20px 0 0;
 }
 
 .Rent_text{
@@ -34,23 +38,44 @@
     display: flex;
     justify-content: center;
     font-weight: 600;
-    padding-top: 50px;
 }
 
 .lineee{
-    width: 80%;
+    width: 70%;
     height: 1px;
     background-color: grey;
-    margin: 20px 0 0 0;
+    margin: 20px 0;
 }
 
 .card h1{
     text-transform: capitalize;
     font-size: 30px;
-    padding: 20px 0;
     text-align: center;
 }
 
 .card p{
     text-align: center;
+}
+
+.rentcardline{
+    width: 100%;
+    background-color: grey;
+    height: 1px;
+    margin: 15px;
+}
+
+h3 span{
+    font-size: 17px;
+    color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card h3:nth-of-type(1){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
 }

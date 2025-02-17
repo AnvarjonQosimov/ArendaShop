@@ -2,7 +2,7 @@
     "welcomepl": "xush kelibsiz",
     "welcome": "ArendaShop'ga",
     "onSite1": "Ushbu saytda siz uylarni, uchastkalarni, idoralarni va boshqa narsalarni ijaraga berishingiz va ijaraga olishingiz mumkin",
-    "onSite2": "Ushbu saytda siz uylarni, uchastkalarni, idoralarni va boshqa narsalarni ijaraga olish uchun mijozlar izlashingizga hojat qolmaydi",
+    "onSite2": "Ushbu saytda siz uylarni, uchastkalarni, idoralarni va boshqa narsalarni ijaraga olish uchun sotuvchilar izlashingizga hojat qolmaydi",
     "onSite3": "Ushbu saytda siz uylarni, uchastkalarni, idoralarni va boshqa narsalarni ijaraga berish uchun mijozlar izlashingizga hojat qolmaydi",
     "ivideo": "Video yoki rasm o'rnating ",
     "ivideopl": "(uy, uchastka, idora va boshqa narsalar)",
@@ -23,5 +23,9 @@
     "about": "Sayt haqida",
     "contact": "aloqaga chiqish",
     "submitbtn": "Kirish",
-    "lang": "UZ"
+    "lang": "UZ",
+    "additionalinfincard": "Chiroyli, shinam va mustaxkam uy ijaraga berilmoqda",
+    "phonenumber": "Telefon raqami",
+    "logout": "Chiqish",
+    "oyiga": "(Oyiga)"
 }

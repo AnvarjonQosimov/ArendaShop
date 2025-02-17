@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 65px;
 }
 
 .home_left{
@@ -36,6 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
 
 .home_right img{

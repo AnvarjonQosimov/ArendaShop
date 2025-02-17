@@ -1,118 +1,383 @@
-import "../styles/Rent.css"
+import "../styles/Rent.css";
 // import ArendaShop from "../images/ArendaShop.png"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
 
 function Rent() {
-    const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
-    <div className='Rent'>
-      <div className='Rent'>
+    <div className="Rent">
       <div className="Rent">
-      <div className="Rent_text">
-        <h1>{t('rent')}</h1>
-      </div>
-        <div className="cards">
-
-                <div className="card">
-                <video autoPlay muted src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+        <div className="Rent">
+          <div className="Rent_text">
+            <h1>
+              {t("rent")}
+            </h1>
+          </div>
+          <div className="cards">
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
 
-
-                <div className="card">
-                <video src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
 
-
-                <div className="card">
-                <video src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
 
-
-                <div className="card">
-                <video src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
 
-
-                <div className="card">
-                <video src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
 
-
-                <div className="card">
-                <video src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
 
-
-                <div className="card">
-                <video src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
 
-
-                <div className="card">
-                <video src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
 
-
-                <div className="card">
-                <video src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
 
-
-                <div className="card">
-                <video src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
 
-
-                <div className="card">
-                <video src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
 
-
-                <div className="card">
-                <video src=""></video>
-                <div className="lineee"></div>
-                    <h1>{t('leasehouse')}</h1>
-                    <p></p>
+            <div className="card">
+              <iframe
+                autoplay
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/FJBp4gKEkMg"
+                title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+              <div className="lineee" />
+              <h1>
+                {t("leasehouse")}
+              </h1>
+              <div className="rentcardline" />
+              <h2>
+                {t("additionalinfincard")}
+              </h2>
+              <div className="rentcardline" />
+              <h3>
+                {t("price")}: 150$ <span>{t("oyiga")}</span>
+              </h3>
+              <div className="rentcardline" />
+              <h3>
+                {t("phonenumber")}: +998(93)575-51-02
+              </h3>
             </div>
-
+          </div>
         </div>
       </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default Rent
+export default Rent;

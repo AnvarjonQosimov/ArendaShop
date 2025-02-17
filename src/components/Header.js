@@ -1,117 +1,203 @@
-import * as React from 'react';
-import "../styles/Header.css"
-import ArendaShop from "../images/ArendaShop.png"
-import {Link} from "react-router-dom"
-import { useTranslation } from "react-i18next"
-import i18n from "../i18n.js"
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { signInWithPopup, getAuth, GoogleAuthProvider} from "firebase/auth"
-import Firebase from "../Firebase/Firebase.js"
-import {useState} from "react"
+import * as React from "react";
+import "../styles/Header.css";
+import ArendaShop from "../images/ArendaShop.png";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n.js";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { signInWithPopup, getAuth, GoogleAuthProvider } from "firebase/auth";
+import Firebase from "../Firebase/Firebase.js";
+import { useState } from "react";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-Firebase()
+Firebase();
+
+const ITEM_HEIGHT = 48;
 
 function Header() {
-  const [user, setUser] = useState({})
-  const [isUser, setIsUser] = useState(false)
-  const [IsLogOut, setIsLogOut] = useState(false)
+  const [user, setUser] = useState({});
+  const [isUser, setIsUser] = useState(false);
+  const [IsLogOut, setIsLogOut] = useState(false);
 
-  const { t, i18n } = useTranslation()
-  const changeLanguage = (lng) => {
-    return () =>{
-      i18n.changeLanguage(lng)
-    }
-  }
+  const { t, i18n } = useTranslation();
+  const changeLanguage = lng => {
+    return () => {
+      i18n.changeLanguage(lng);
+    };
+  };
 
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = React.useState("");
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     setAge(event.target.value);
   };
 
-  const auth = getAuth()
+  const auth = getAuth();
 
-  const Provider = new GoogleAuthProvider()
+  const Provider = new GoogleAuthProvider();
 
   const googleSignIn = () => {
-    signInWithPopup(auth, Provider).then((users) => {
-      setIsUser(true)
-      setUser(users.user)
-    })
-  }
+    signInWithPopup(auth, Provider).then(users => {
+      setIsUser(true);
+      setUser(users.user);
+    });
+  };
 
-  const logOut = () => {
-    setIsLogOut(true)
-  }
+  // const logOut = () => {
+  //   setIsLogOut(true)
+  // }
 
-  const logOutClose = () => {
-    setIsLogOut(false)
-  }
+  // const logOutClose = () => {
+  //   setIsLogOut(false)
+  // }
 
   const logOutClick = () => {
-    setIsUser(false)
-  }
-  console.log(user)
+    setIsUser(false);
+  };
+  console.log(user);
+
+  //For Log Out
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <div className='Header'>
+    <div className="Header">
       <div className="logo">
-        <Link to={""}><img src={ArendaShop} alt="ArendaShop" /></Link>
-        <Link to={""}><h2>ArendaShop</h2></Link>
+        <Link to={""}>
+          <img src={ArendaShop} alt="ArendaShop" />
+        </Link>
+        <Link to={""}>
+          <h2>ArendaShop</h2>
+        </Link>
       </div>
 
       <div className="menu">
-      <li>
-          <Link className="li" to={""}><li>{t('home')}</li></Link>
+            <li>
+          <Link className="li" to={"/"}>
+              {t("home")}
+          </Link>
+            </li>
+
+        <li>
+          <Link className="li" to={"/about"}>
+            {t("about")}
+          </Link>
         </li>
 
         <li>
-          <Link className="li" to={"about"}><li>{t('about')}</li></Link>
+          <Link className="li" to={"/lease"}>
+              {t("lease")}
+          </Link>
         </li>
 
         <li>
-          <Link className="li" to={"lease"}><li>{t('lease')}</li></Link>
-        </li>
-          
-        <li>
-          <Link className="li" to={"rent"}><li>{t('rent')}</li></Link>
+          <Link className="li" to={"/rent"}>
+              {t("rent")}
+          </Link>
         </li>
 
         <li>
-          <Link className="li" to={"contact"}><li>{t('contact')}</li></Link>
+          <Link className="li" to={"contact"}>
+              {t("contact")}
+          </Link>
         </li>
-
       </div>
 
       <div className="translate">
-<FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">{t('lang')}</InputLabel>
-      <Select
-        labelId="demo-select-small-label"
-        id="demo-select-small"
-        value={age}
-        label="Age"
-        onChange={handleChange}
-      >
-        <MenuItem onClick={changeLanguage('uz')} value={10}>UZ</MenuItem>
-        <MenuItem onClick={changeLanguage('en')} value={20}>EN</MenuItem>
-        <MenuItem onClick={changeLanguage('ru')} value={30}>РУ</MenuItem>
-      </Select>
-    </FormControl>
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="demo-select-small-label">
+            {t("lang")}
+          </InputLabel>
+          <Select
+            labelId="demo-select-small-label"
+            id="demo-select-small"
+            value={age}
+            label="Age"
+            onChange={handleChange}
+          >
+            <MenuItem onClick={changeLanguage("uz")} value={10}>
+              UZ
+            </MenuItem>
+            <MenuItem onClick={changeLanguage("en")} value={20}>
+              EN
+            </MenuItem>
+            <MenuItem onClick={changeLanguage("ru")} value={30}>
+              РУ
+            </MenuItem>
+          </Select>
+        </FormControl>
       </div>
 
       <div className="submit_btn">
-        {isUser ? (<div className="user">{IsLogOut ? (<div className='logouttrue'>
-        <div onClick={logOutClose} className='usertrue'><img src={user.photoURL} alt="" /></div>
-        <div className='logout'><butto onClick={logOutClick} className='logout_btn'>Log Out</butto></div> 
-        </div>) 
-        : (<img onClick={logOut} src={user.photoURL} alt="" />) }
-        </div>) : (<div><button className='login_btn' onClick={googleSignIn}>Log In</button></div>)}
+        {isUser
+          ? <div className="user">
+              {IsLogOut
+                ? <div>
+                    <div />
+                  </div>
+                : <div>
+                    <IconButton
+                      aria-label="more"
+                      id="long-button"
+                      aria-controls={open ? "long-menu" : undefined}
+                      aria-expanded={open ? "true" : undefined}
+                      aria-haspopup="true"
+                      onClick={handleClick}
+                    >
+                      <img className="user" src={user.photoURL} alt="" />
+                      {/* <MoreVertIcon /> */}
+                    </IconButton>
+                    <Menu
+                      id="long-menu"
+                      MenuListProps={{
+                        "aria-labelledby": "long-button"
+                      }}
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      slotProps={{
+                        paper: {
+                          style: {
+                            maxHeight: ITEM_HEIGHT * 4.5,
+                            width: "20ch"
+                          }
+                        }
+                      }}
+                    >
+                      <MenuItem onClick={handleClose}>
+                        {user.displayName}
+                      </MenuItem>
+
+                      <div className="menuItemLine" />
+
+                      <MenuItem onClick={handleClose}>
+                        <button className="logout" onClick={logOutClick}>
+                          {t('logout')}
+                        </button>
+                      </MenuItem>
+                    </Menu>
+                  </div>}
+            </div>
+          : <div>
+              <button className="login_btn" onClick={googleSignIn}>
+                {t('submitbtn')}
+              </button>
+            </div>}
       </div>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;
