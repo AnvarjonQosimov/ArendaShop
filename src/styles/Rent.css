@@ -76,6 +76,12 @@ h3 span{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 50%;
+    width: 65%;
     margin: 0 auto;
+}
+
+.priceline{
+    width: 1px;
+    height: 100%;
+    background-color: grey;
 }

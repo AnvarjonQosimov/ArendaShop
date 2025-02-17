@@ -36,7 +36,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
@@ -66,7 +66,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
@@ -96,7 +96,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
@@ -126,7 +126,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
@@ -156,7 +156,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
@@ -186,7 +186,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
@@ -216,7 +216,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
@@ -246,7 +246,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
@@ -276,7 +276,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
@@ -306,7 +306,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
@@ -336,7 +336,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
@@ -366,7 +366,7 @@ function Rent() {
               </h2>
               <div className="rentcardline" />
               <h3>
-                {t("price")}: 150$ <span>{t("oyiga")}</span>
+                {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
               <div className="rentcardline" />
               <h3>
