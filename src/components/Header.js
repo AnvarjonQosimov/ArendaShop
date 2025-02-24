@@ -45,6 +45,7 @@ function Header() {
     signInWithPopup(auth, Provider).then(users => {
       setIsUser(true);
       setUser(users.user);
+      setAdminEmail(true)
     });
   };
 
@@ -59,6 +60,7 @@ function Header() {
   const logOutClick = () => {
     setIsUser(false);
   };
+  
   console.log(user);
 
   //For Log Out
@@ -71,6 +73,8 @@ function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const[adminEmail, setAdminEmail] = useState(false)
 
   return (
     <div className="Header">
@@ -144,10 +148,57 @@ function Header() {
         {isUser
           ? <div className="user">
               {IsLogOut
-                ? <div>
-                    <div />
-                  </div>
+                ? null
                 : <div>
+                  {adminEmail ? <div>
+                    <div>
+                    <IconButton
+                      aria-label="more"
+                      id="long-button"
+                      aria-controls={open ? "long-menu" : undefined}
+                      aria-expanded={open ? "true" : undefined}
+                      aria-haspopup="true"
+                      onClick={handleClick}
+                    >
+                      <img className="user" src={user.photoURL} alt="" />
+                      {/* <MoreVertIcon /> */}
+                    </IconButton>
+                    <Menu
+                      id="long-menu"
+                      MenuListProps={{
+                        "aria-labelledby": "long-button"
+                      }}
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      slotProps={{
+                        paper: {
+                          style: {
+                            maxHeight: ITEM_HEIGHT * 4.5,
+                            width: "20ch"
+                          }
+                        }
+                      }}
+                    >
+
+                      <MenuItem className="userName" onClick={handleClose}>
+                        {user.displayName}
+                      </MenuItem>
+
+                      <MenuItem className="userAdmin" onClick={handleClose}>
+                        {t('admin')}
+                      </MenuItem>
+                      <div className="menuItemLine" />
+
+                      <MenuItem onClick={handleClose}>
+                        <button className="logout" onClick={logOutClick}>
+                          {t('logout')}
+                        </button>
+                      </MenuItem>
+                    </Menu>
+                  </div>
+                  </div> : <div>
+                  <div>
                     <IconButton
                       aria-label="more"
                       id="long-button"
@@ -188,6 +239,8 @@ function Header() {
                         </button>
                       </MenuItem>
                     </Menu>
+                  </div>
+                    </div>}
                   </div>}
             </div>
           : <div>
