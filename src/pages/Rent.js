@@ -5,8 +5,6 @@ import { useTranslation } from "react-i18next";
 function Rent() {
   const { t } = useTranslation();
   return (
-    <div className="Rent">
-      <div className="Rent">
         <div className="Rent">
           <div className="Rent_text">
             <h1>
@@ -375,8 +373,6 @@ function Rent() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
   );
 }
 

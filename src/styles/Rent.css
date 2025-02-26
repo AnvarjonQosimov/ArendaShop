@@ -1,7 +1,7 @@
 .Rent{
     background-color: rgb(165, 161, 161);
     width: 100%;
-    padding: 40px 0 20px  0;
+    padding: 130px 0 20px  0;
 }
 
 .cards{
@@ -51,10 +51,16 @@
     text-transform: capitalize;
     font-size: 30px;
     text-align: center;
+    width: 60%;
+    margin: 0 auto;
 }
 
 .card p{
     text-align: center;
+}
+
+.card h2{
+    font-size: 20px;
 }
 
 .rentcardline{
@@ -78,10 +84,15 @@ h3 span{
     justify-content: space-between;
     width: 65%;
     margin: 0 auto;
+    font-size: 17px;
 }
 
 .priceline{
     width: 1px;
     height: 100%;
     background-color: grey;
+}
+
+.card h3:nth-of-type(2){
+    font-size: 17px;
 }
