@@ -46,7 +46,7 @@ function Header() {
       await signInWithPopup(auth, Provider).then(users => {
         setIsUser(true);
         setUser(users.user);
-        setAdminEmail(true);
+        setAdminEmail(true)
       });
     } catch (error) {
       console.log(`Error firebase --- ${error}`);
@@ -149,121 +149,119 @@ function Header() {
                 ? null
                 : <div>
                     {adminEmail
-                      ? <div>
-                          <div>
-                            <IconButton
-                              aria-label="more"
-                              id="long-button"
-                              aria-controls={open ? "long-menu" : undefined}
-                              aria-expanded={open ? "true" : undefined}
-                              aria-haspopup="true"
-                              onClick={handleClick}
-                            >
-                              <img
-                                className="user"
-                                src={user.photoURL}
-                                alt=""
-                              />
-                              {/* <MoreVertIcon /> */}
-                            </IconButton>
-                            <Menu
-                              id="long-menu"
-                              MenuListProps={{
-                                "aria-labelledby": "long-button"
-                              }}
-                              anchorEl={anchorEl}
-                              open={open}
-                              onClose={handleClose}
-                              slotProps={{
-                                paper: {
-                                  style: {
-                                    maxHeight: ITEM_HEIGHT * 4.5,
-                                    width: "20ch"
-                                  }
-                                }
-                              }}
-                            >
-                              <MenuItem
-                                className="userName"
-                                onClick={handleClose}
-                              >
-                                {user.displayName}
-                              </MenuItem>
+                      ?<div>
+                        <IconButton
+                          aria-label="more"
+                          id="long-button"
+                          aria-controls={open ? "long-menu" : undefined}
+                          aria-expanded={open ? "true" : undefined}
+                          aria-haspopup="true"
+                          onClick={handleClick}
+                        >
+                          <img
+                            className="user"
+                            src={user.photoURL}
+                            alt=""
+                          />
+                          {/* <MoreVertIcon /> */}
+                        </IconButton>
+                        <Menu
+                          id="long-menu"
+                          MenuListProps={{
+                            "aria-labelledby": "long-button"
+                          }}
+                          anchorEl={anchorEl}
+                          open={open}
+                          onClose={handleClose}
+                          slotProps={{
+                            paper: {
+                              style: {
+                                maxHeight: ITEM_HEIGHT * 4.5,
+                                width: "20ch"
+                              }
+                            }
+                          }}
+                        >
+                          <MenuItem
+                            className="userName"
+                            onClick={handleClose}
+                          >
+                            {user.displayName}
+                          </MenuItem>
 
-                              <MenuItem
-                                className="userAdmin"
-                                onClick={handleClose}
-                              >
-                                <li className="admin">
-                                  <Link className="li" to={"/lease"}>
-                                    {t("admin")}
-                                  </Link>
-                                </li>
-                              </MenuItem>
-                              <div className="menuItemLine" />
+                          <MenuItem
+                            className="userAdmin"
+                            onClick={handleClose}
+                          >
+                            <li className="admin">
+                              <Link className="li" to={"/lease"}>
+                                {t("admin")}
+                              </Link>
+                            </li>
+                          </MenuItem>
+                          <div className="menuItemLine" />
 
-                              <MenuItem onClick={handleClose}>
-                                <button
-                                  className="logout"
-                                  onClick={logOutClick}
-                                >
-                                  {t("logout")}
-                                </button>
-                              </MenuItem>
-                            </Menu>
-                          </div>
-                        </div>
+                          <MenuItem onClick={handleClose}>
+                            <button
+                              className="logout"
+                              onClick={logOutClick}
+                            >
+                              {t("logout")}
+                            </button>
+                          </MenuItem>
+                        </Menu>
+                    </div>
                       : <div>
-                          <div>
-                            <IconButton
-                              aria-label="more"
-                              id="long-button"
-                              aria-controls={open ? "long-menu" : undefined}
-                              aria-expanded={open ? "true" : undefined}
-                              aria-haspopup="true"
-                              onClick={handleClick}
-                            >
-                              <img
-                                className="user"
-                                src={user.photoURL}
-                                alt=""
-                              />
-                              {/* <MoreVertIcon /> */}
-                            </IconButton>
-                            <Menu
-                              id="long-menu"
-                              MenuListProps={{
-                                "aria-labelledby": "long-button"
-                              }}
-                              anchorEl={anchorEl}
-                              open={open}
-                              onClose={handleClose}
-                              slotProps={{
-                                paper: {
-                                  style: {
-                                    maxHeight: ITEM_HEIGHT * 4.5,
-                                    width: "20ch"
-                                  }
-                                }
-                              }}
-                            >
-                              <MenuItem onClick={handleClose}>
-                                {user.displayName}
-                              </MenuItem>
+                      <div>
+                        <IconButton
+                          aria-label="more"
+                          id="long-button"
+                          aria-controls={open ? "long-menu" : undefined}
+                          aria-expanded={open ? "true" : undefined}
+                          aria-haspopup="true"
+                          onClick={handleClick}
+                        >
+                          <img
+                            className="user"
+                            src={user.photoURL}
+                            alt=""
+                          />
+                          {/* <MoreVertIcon /> */}
+                        </IconButton>
+                        <Menu
+                          id="long-menu"
+                          MenuListProps={{
+                            "aria-labelledby": "long-button"
+                          }}
+                          anchorEl={anchorEl}
+                          open={open}
+                          onClose={handleClose}
+                          slotProps={{
+                            paper: {
+                              style: {
+                                maxHeight: ITEM_HEIGHT * 4.5,
+                                width: "20ch"
+                              }
+                            }
+                          }}
+                        >
+                          <MenuItem onClick={handleClose}>
+                            {user.displayName}
+                          </MenuItem>
 
-                              <div className="menuItemLine" />
+                          <div className="menuItemLine" />
 
-                              <MenuItem onClick={handleClose}>
-                                <button
-                                  className="logout"
-                                  onClick={logOutClick}
-                                >
-                                  {t("logout")}
-                                </button>
-                              </MenuItem>
-                            </Menu>
-                          </div>
-                        </div>}
+                          <MenuItem onClick={handleClose}>
+                            <button
+                              className="logout"
+                              onClick={logOutClick}
+                            >
+                              {t("logout")}
+                            </button>
+                          </MenuItem>
+                        </Menu>
+                      </div>
+                    </div>}
                   </div>}
             </div>
           : <div>
