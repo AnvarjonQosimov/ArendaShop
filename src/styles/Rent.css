@@ -102,3 +102,45 @@ h3 span{
 .card h3:nth-of-type(2){
     font-size: 17px;
 }
+
+.rentcardicons{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+}
+
+.rentcardicons i{
+    font-size: 25px;
+    justify-content: center;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+.rentcardiconanimation{
+    animation: iconAnimation 3s alternate infinite;
+    width: 15% !important;
+    height: 100% !important;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+}
+
+@keyframes iconAnimation{
+    from{
+        width: 20px;
+        height: 20px;
+        box-shadow: 10px 10px 10px inset rgb(255, 57, 0, 1);
+        border-radius: 50%;
+    }to{
+        width: 50px;
+        height: 50px;
+        box-shadow: -50px -50px 15px inset rgb(255, 57, 0, 1);
+        border-radius: 50%;
+    }
+}

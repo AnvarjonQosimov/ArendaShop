@@ -154,11 +154,5 @@
     text-decoration: none;
     color: black;
     height: 100%;
-    padding: 0 0 0 10px;
-}
-
-@media (min-with: 1035px){
-    .submit_btn button{
-        width: 5%;
-    }
+    padding: 0 0 0 20px;
 }

@@ -1,6 +1,7 @@
 import "../styles/Rent.css";
-// import ArendaShop from "../images/ArendaShop.png"
 import { useTranslation } from "react-i18next";
+import { CiHeart } from "react-icons/ci";
+import { FaTrash } from "react-icons/fa";
 
 function Rent() {
   const { t } = useTranslation();
@@ -40,6 +41,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
 
             <div className="card">
@@ -70,6 +78,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
 
             <div className="card">
@@ -100,6 +115,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
 
             <div className="card">
@@ -130,6 +152,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
 
             <div className="card">
@@ -160,6 +189,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
 
             <div className="card">
@@ -190,6 +226,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
 
             <div className="card">
@@ -220,6 +263,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
 
             <div className="card">
@@ -250,6 +300,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
 
             <div className="card">
@@ -280,6 +337,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
 
             <div className="card">
@@ -310,6 +374,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
 
             <div className="card">
@@ -340,6 +411,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
 
             <div className="card">
@@ -370,6 +448,13 @@ function Rent() {
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
+              <div className="rentcardline"></div>
+              <div className="rentcardicons">
+                <div className="rentcardiconanimation">
+                  <i><CiHeart /></i>
+                </div>
+                {/* <i><FaTrash /></i> */}
+              </div>
             </div>
           </div>
         </div>

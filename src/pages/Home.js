@@ -12,9 +12,11 @@ function Home() {
         <h1><span>{t('welcome')} {t('welcomepl')}</span></h1>
       </div>
       <div className="home_right">
+        {/* <div className="home_right-animation"> */}
         <div className="circleh"></div>
         <div className="circleho"></div>
         <img src={ArendaShop} alt="ArendaShop" />
+        {/* </div> */}
       </div>
     </div>
   )

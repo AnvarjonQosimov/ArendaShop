@@ -71,7 +71,7 @@ function Lease() {
     </div>
 
             <div class="input-container">
-        <input type="number" class="input-field" placeholder=" " id="number" required/>
+        <input type="number" class="input-field" max="999999999" placeholder="" id="number" required/>
         <label htmlFor="number" class="input-label">{t('phonenum')}</label>
     </div>
 
