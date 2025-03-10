@@ -1,0 +1,22 @@
+.LikeOnclick{
+    background-color: white;
+    box-shadow: 10px 10px 30px gray;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+i{
+    width: 10px !important;
+    height: 10px !important;
+}
+
+img{
+    background: remove;
+    width: 30px;
+    height: 5px;
+}

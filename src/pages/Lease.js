@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next"
 import React, { useEffect, useState } from 'react';
 import { db } from '../Firebase/fire-config';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
+import PhoneInput from "react-phone-input-2"
+import "react-phone-input-2/lib/style.css"
 
 
 function Lease() {
@@ -38,6 +40,20 @@ function Lease() {
 
 
   const { t } = useTranslation()
+
+  const [phoneNumber, setPhoneNumber] = useState("")
+  const [valid, setValid] = useState(true)
+
+  const handleChange = (value) => {
+    setPhoneNumber(value)
+    setValid(validatePhoneNumber(value))
+  }
+
+
+  const validatePhoneNumber = () => {
+    const phoneNumberPattern = /"\d{10}$/
+    return phoneNumberPattern.test(phoneNumber)
+  }
   return (
     <div className='Lease'>
       <div className="Lease">
@@ -70,9 +86,19 @@ function Lease() {
         <label htmlFor="price" class="input-label">{t('price')}<span>{t('pricepl')}</span></label>
     </div>
 
-            <div class="input-container">
-        <input type="number" class="input-field" max="999999999" placeholder="" id="number" required/>
+            {/* <div class="input-container">
+        <input type="number" class="input-field" min="100000000" max="999999999" placeholder="" id="number" required/>
         <label htmlFor="number" class="input-label">{t('phonenum')}</label>
+    </div> */}
+
+      <div className="container">
+    <div className="phone-input-container">
+    <label className="label">
+      Enter your phone number
+    <PhoneInput country={'us'} value={phoneNumber} onChange={handleChange} inputProps={{required: true,}} />
+    </label>
+    {!valid && (<p className="error-message">Invalide phone number</p>)}
+    </div>
     </div>
 
             <button type="submit">{t('savebtn')}</button>

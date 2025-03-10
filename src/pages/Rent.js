@@ -37,7 +37,7 @@ function Rent() {
               <h3>
                 {t("price")}: 150$ <div className="priceline"></div> <span>{t("oyiga")}</span>
               </h3>
-              <div className="rentcardline" />
+              <div className="rentcardline"></div>
               <h3>
                 {t("phonenumber")}: +998(93)575-51-02
               </h3>
@@ -462,3 +462,24 @@ function Rent() {
 }
 
 export default Rent;
+
+// function:
+// const [click, setClick] = useState(false);
+
+  // const likeOnclick = () => {
+  //   setClick(true);
+  // };
+
+  //return:
+/* {!click
+                ? <div>
+                    <i onClick={likeOnclick}>
+                      <CiHeart />
+                    </i>
+                  </div>
+                : <div>
+                    <i>
+                      <LikeOnclick />
+                    </i>
+                  </div>}
+            </div> */

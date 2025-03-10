@@ -119,7 +119,6 @@ h3 span{
     align-items: center;
 }
 
-
 .rentcardiconanimation{
     animation: iconAnimation 1s alternate infinite;
     width: 15% !important;
@@ -136,7 +135,7 @@ h3 span{
         width: 20px;
         height: 20px;
         box-shadow: 10px 10px 10px inset  rgb(255, 149, 119);
-        border-radius: 10%;
+        border-radius: 50%;
     }to{
         width: 50px;
         height: 50px;
