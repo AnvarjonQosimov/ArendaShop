@@ -109,7 +109,7 @@ function Lease() {
     </div>
     </div>
 
-            {isSuccess ? (<div className="successJs"><Success /></div>) : (<button onClick={issuccessFunc} type="submit">{t('savebtn')}</button>)}
+            {isSuccess ? (<div><div className="successJs"><Success /></div> <div><button onClick={issuccessFunc}>{t('savebtn')}</button></div></div>) : (<div><div className="successJs"><Success /></div> <div><button onClick={issuccessFunc}>{t('savebtn')}</button></div></div>)}
         </form>
         </div>
     </div>
