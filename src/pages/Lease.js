@@ -5,6 +5,7 @@ import { db } from '../Firebase/fire-config';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import PhoneInput from "react-phone-input-2"
 import "react-phone-input-2/lib/style.css"
+import Success from "../components/Sucsess.js"
 
 
 function Lease() {
@@ -54,6 +55,13 @@ function Lease() {
     const phoneNumberPattern = /"\d{10}$/
     return phoneNumberPattern.test(phoneNumber)
   }
+
+  const[isSuccess, setIsSuccess] = useState(false)
+
+  const issuccessFunc = () => {
+    setIsSuccess(true)
+  }
+
   return (
     <div className='Lease'>
       <div className="Lease">
@@ -101,7 +109,7 @@ function Lease() {
     </div>
     </div>
 
-            <button type="submit">{t('savebtn')}</button>
+            {isSuccess ? (<Success />) : (<button onClick={issuccessFunc} type="submit">{t('savebtn')}</button>)}
         </form>
         </div>
     </div>

@@ -1,0 +1,83 @@
+.Success{
+    background-color: white;
+    height: 50px;
+    width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 20px;
+}
+
+.success-icon{
+    display: flex;
+    width: 15%;
+    height: 80%;
+    justify-content: space-between;
+    border-radius: 50%;
+    background-color: rgb(0, 228, 159);
+    align-items: center;
+    position: relative;
+}
+
+.success-icon i{
+    color: rgb(0, 128, 0);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.success-line{
+    display: flex;
+    align-items: center;
+    width: 1px;
+    height: 80%;
+    background-color: grey;
+    margin-right: 210px;
+    position: relative;
+}
+
+.success-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    padding-right: 70px;
+    position: absolute;
+    font-size: 20px;
+    color: green;
+}
+
+.icons-success{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 30px;
+}
+
+.icons-success i:nth-child(1){
+    left: 10px;
+    position: relative;
+    rotate: 10deg;
+    animation: successAnimation 0.5s alternate calc(2);
+}
+
+.icons-success i:nth-child(2){
+    position: relative;
+    right: 10px;
+    top: 3px;
+    rotate: -10deg;
+    animation: successAnimation 0.5s alternate calc(2);
+}
+
+@keyframes successAnimation{
+    form{
+        font-size: 1px;
+        rotate: 360deg;
+    }to{
+       font-size: 1px;
+       rotate: 360deg;
+    }
+}
