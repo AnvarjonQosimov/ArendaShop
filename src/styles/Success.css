@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 7px 20px;
+    animation: successAnimate 0.2s alternate-reverse;
 }
 
 .success-icon{
@@ -46,6 +47,7 @@
     position: absolute;
     font-size: 20px;
     color: green;
+    animation: successAnimateText 0.4s alternate-reverse;
 }
 
 .icons-success{
@@ -79,5 +81,21 @@
     }to{
        font-size: 1px;
        rotate: 360deg;
+    }
+}
+
+@keyframes successAnimate {
+    form{
+        width: 10%;
+    }to{
+        width: 20%;
+    }
+}
+
+@keyframes successAnimateText {
+    form{
+        width: 1%;
+    }to{
+        width: 15%;
     }
 }
