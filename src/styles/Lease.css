@@ -127,6 +127,8 @@ form {
 .successJs{
   display: flex;
   justify-content: center;
+  /* bottom: 490px;
+  right: 500px; */
   bottom: 350px;
   right: 3px;
   position: absolute;

@@ -105,7 +105,6 @@ function Lease() {
       Enter your phone number
     <PhoneInput country={'us'} value={phoneNumber} onChange={handleChange} inputProps={{required: true,}} />
     </label>
-    {!valid && (<p className="error-message">Invalide phone number</p>)}
     </div>
     </div>
 
