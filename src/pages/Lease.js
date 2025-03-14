@@ -9,35 +9,35 @@ import Success from "../components/Sucsess.js"
 
 
 function Lease() {
-  // const [users, setUsers] = useState({});
-  // const addDocsFire = async () => {
-  //   try {
-  //     const addData = await addDoc(collection(db, 'user'), {
-  //       name: 'John',
-  //       age: 23,
-  //     });
-  //   } catch (error) {
-  //     console.error('Error adding document: ', error);
-  //   }
-  // };
+  const [users, setUsers] = useState({});
+  const addDocsFire = async () => {
+    try {
+      const addData = await addDoc(collection(db, 'user'), {
+        name: 'John',
+        age: 23,
+      });
+    } catch (error) {
+      console.error('Error adding document: ', error);
+    }
+  };
 
 
-  // // Fetching data from Firestore
-  // useEffect(() => {
-  //   const fetchdata = async () => {
-  //     try {
-  //       const getDate = await getDocs(collection(db, 'user'));
+  // Fetching data from Firestore
+  useEffect(() => {
+    const fetchdata = async () => {
+      try {
+        const getDate = await getDocs(collection(db, 'user'));
 
-  //       getDate.forEach((doc) => {
-  //         setUsers(doc.data());
-  //       });
-  //     } catch (error) {
-  //       console.error('Error getting document: ', error);
-  //     }
-  //   };
+        getDate.forEach((doc) => {
+          setUsers(doc.data());
+        });
+      } catch (error) {
+        console.error('Error getting document: ', error);
+      }
+    };
 
-  //   fetchdata();
-  // }, []);
+    fetchdata();
+  }, []);
 
 
   const { t } = useTranslation()
