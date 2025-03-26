@@ -1,5 +1,5 @@
 .Home{
-    height: 90vh;
+    height: 100vh;
     /* background-color: rgb(91, 154, 190); */
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(../images/ArSh.png);
     background-size: cover;
@@ -9,12 +9,15 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 65px;
+    overflow: hidden;
+    
 }
 
 .home_left{
     width: 63%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .home_left h1{
@@ -26,6 +29,7 @@
     justify-content: center;
     width: 90.5%;
     color: rgb(179, 173, 173);
+    padding: 0 0 200px 0;
 }
 
 .home_left h1 span{
@@ -38,6 +42,9 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    position: relative;
+    top: -100px;
+    left: 30px;
 }
 
 /* .home_right-animation{
@@ -60,17 +67,17 @@
 .circleh{
     position: absolute;
     animation: circleh 1.5s alternate infinite;
-    /* display: flex;
+    display: flex;
     align-items: center;
-    justify-content: center; */
+    justify-content: center;
 }
 
 .circleho{
     position: relative;
     animation: circleho 1.5s alternate infinite;
-    /* display: flex;
+    display: flex;
     align-items: center;
-    justify-content: center; */
+    justify-content: center;
 }
 
 @keyframes circleh{
