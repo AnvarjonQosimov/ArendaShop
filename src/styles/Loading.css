@@ -1,0 +1,25 @@
+.Loading{
+    height: 100vh;
+    width: 100vh;
+    /* background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)); */
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Loading i{
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: loadingIconAnimation 0.5s linear infinite;
+}
+
+@keyframes loadingIconAnimation {
+    from{
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
+}

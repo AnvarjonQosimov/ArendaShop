@@ -160,3 +160,9 @@
     display: flex;
     justify-content: start;
 }
+
+@media(max-width: 1082px){
+    .menu li{
+        font-size: 15px;
+    }
+}

@@ -9,6 +9,7 @@ import "react-phone-input-2/lib/style.css";
 import Success from "../components/Sucsess.js";
 import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Loading from "../components/Loading.js"
 
 function Lease() {
     const [age, setAge] = React.useState('');
@@ -17,12 +18,13 @@ function Lease() {
       setAge(event.target.value);
     }
 
-    // const [video, setVideo] = useState("");
+    const [video, setVideo] = useState("");
     const [initalInformation, setInitalInformation] = useState("");
     const [additionalInformation, setAdditionalInformation] = useState("");
     const [price, setPrice] = useState("");
     const [phoneNumberInPanel, setPhoneNumberInPanel] = useState("");
     const [collectionAdmin, setCollectionAdmin] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -30,20 +32,22 @@ function Lease() {
 
     const addData = async () => {
       try {
+        setIsLoading(true)
         await addDoc(collection(db, collectionAdmin), {
-          // video: File(video),
+          video: video,
           initInf: initalInformation,
           additInf: additionalInformation,
           price: price,
           PhoneNumberInPanel: phoneNumberInPanel
         });
         alert("Ma'lumot muvaffaqiyatli qo'shildi!");
-          // <Success className="successJs"/>
-        // setVideo("");
+        // <Success className="successJs"/>
+        setVideo("");
         setInitalInformation("");
         setAdditionalInformation("");
         setPrice("");
         setPhoneNumberInPanel("");
+        setIsLoading(false)
       } catch (error) {
         console.error("Xatolik:", error);
       }
@@ -80,8 +84,10 @@ function Lease() {
             </h1>
           </div>
 
-          <form onSubmit={handleSubmit}>
-            {/* <div class="input-container">
+        {isLoading ? (<div className="leaseLoading"><Loading /></div>) : (
+            <div>
+              <form onSubmit={handleSubmit}>
+            <div class="input-container">
               <input
                 type="file"
                 value={video}
@@ -97,7 +103,7 @@ function Lease() {
                   {t("ivideopl")}
                 </span>
               </label>
-            </div> */}
+            </div>
 
             <div className="lease-line" />
 
@@ -192,6 +198,8 @@ function Lease() {
         </Dropdown.Menu>
       </Dropdown>
           </form>
+            </div>
+          )}
         </div>
       </div>
     </div>
