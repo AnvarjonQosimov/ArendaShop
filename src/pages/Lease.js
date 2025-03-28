@@ -163,7 +163,11 @@ function Lease() {
                   <PhoneInput
                     country={"us"}
                     value={phoneNumberInPanel}
-                    onChange={handleChange} 
+                    // onChange={(e)=>{
+                    //   setPrice(e.target.value)
+                    //   handleChange
+                    // }} 
+                    onChange={handleChange}
                     // inputProps={{ required: true }}
                     required
                   />
