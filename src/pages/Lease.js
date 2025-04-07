@@ -163,7 +163,7 @@ function Lease() {
              <input
               type="number" 
               value={phoneNumberInPanel}
-              className="input-failed"
+              className="input-failedDif"
               placeholder=" "
               onChange={(e) => setPhoneNumberInPanel(e.target.value)}
               />

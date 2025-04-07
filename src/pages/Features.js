@@ -31,7 +31,7 @@ function Features(props) {
                   title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
+                  referrerolicy="strict-origin-when-cross-origin"
                   allowfullscreen>
                   </iframe>
                   {/* <div className="rentVideo">

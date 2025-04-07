@@ -148,3 +148,11 @@ form {
   justify-content: center;
   color: rgb(202, 201, 201);
 }
+
+.input-failedDif{
+  padding: 7px 10px;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+}

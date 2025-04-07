@@ -17,7 +17,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Features from "../pages/Features.js";
 import { addDoc, getDocs, collection } from "firebase/firestore";
 import { useEffect } from "react";
-import personFace from "../images/personFace.jpg";
+import personFace from "../images/personFace.jpg"
 
 Firebase();
 
@@ -28,6 +28,7 @@ function Header() {
   const [isUser, setIsUser] = useState(false);
   const [IsLogOut, setIsLogOut] = useState(false);
   const [users, setUsers] = useState([]);
+  const [adminEmail, setAdminEmail] = useState(false);
 
   const { t, i18n } = useTranslation();
   const changeLanguage = lng => {
@@ -49,15 +50,15 @@ function Header() {
   const googleSignIn = async () => {
     try {
       await signInWithPopup(auth, Provider).then(users => {
-        
+        setIsUser(true);
         setUser(users.user);
+        setAdminEmail(true);
         setIsRegist(false);
         addDoc(collection(db, "users"), {
           email: users.user.email,
           displayName: users.user.displayName,
           photoUrl: users.user.photoURL
         });
-        setIsUser(true);
       });
     } catch (error) {
       console.log(`Error firebase --- ${error}`);
@@ -109,6 +110,8 @@ function Header() {
   };
 
   const adminEmailMain = "anvarqosimov153@gmail.com";
+
+ 
 
   const [isRegist, setIsRegist] = useState(true);
 
@@ -174,14 +177,94 @@ function Header() {
         </FormControl>
       </div>
 
-      <div className="submit_btn">
-        {isUser
-          ? <div>
-              <div className="user">
+        <div className="submit_btn">
+          {isUser
+            ? <div>
+             
+                <div className="user">
                 {IsLogOut
                   ? null
                   : <div>
-                      <div>
+                      {users[0].email == adminEmailMain
+                      ? <div>
+                            <IconButton
+                              aria-label="more"
+                              id="long-button"
+                              aria-controls={open ? "long-menu" : undefined}
+                              aria-expanded={open ? "true" : undefined}
+                              aria-haspopup="true"
+                              onClick={handleClick}
+                            >
+                              {/* <img
+                                className="user"
+                                src={users[0].photoURL}
+                                alt=""
+                              /> */}
+                              {/* <MoreVertIcon /> */}
+                              <img
+                              className="user"
+                               src={personFace}
+                                alt="personFace" />
+                            </IconButton>
+                            <Menu
+                              id="long-menu"
+                              MenuListProps={{
+                                "aria-labelledby": "long-button"
+                              }}
+                              anchorEl={anchorEl}
+                              open={open}
+                              onClose={handleClose}
+                              slotProps={{
+                                paper: {
+                                  style: {
+                                    maxHeight: ITEM_HEIGHT * 4.5,
+                                    width: "20ch"
+                                  }
+                                }
+                              }}
+                            >
+                              <MenuItem
+                                className="userName"
+                                onClick={handleClose}
+                              >
+                                {users[0].displayName}
+                              </MenuItem>
+
+                              <MenuItem
+                                className="userAdmin"
+                                onClick={handleClose}
+                              >
+                                    <li className="admin">
+                                      <Link className="li" to={"/lease"}>
+                                        {t("admin")}
+                                      </Link>
+                                    </li> 
+                              </MenuItem>
+
+                              <MenuItem
+                                className="userAdmin"
+                                onClick={handleClose}
+                              >
+                                <li className="admin">
+                                        <Link className="li" to={"/features"}>
+                                          {t("saralanganlar")}
+                                        </Link>
+                                      </li>
+                              </MenuItem>
+
+                              <div className="menuItemLine" />
+
+                              <MenuItem onClick={handleClose}>
+                                <button
+                                  className="logout"
+                                  onClick={logOutClick}
+                                >
+                                  {t("logout")}
+                                </button>
+                              </MenuItem>
+                            </Menu>
+                          </div>
+                        : <div>
                         <IconButton
                           aria-label="more"
                           id="long-button"
@@ -191,16 +274,15 @@ function Header() {
                           onClick={handleClick}
                         >
                           {/* <img
-                                className="user"
-                                src={users[0].photoURL}
-                                alt=""
-                              /> */}
+                            className="user"
+                            src={users[0].photoURL}
+                            alt=""
+                          /> */}
                           {/* <MoreVertIcon /> */}
                           <img
-                            className="user"
-                            src={personFace}
-                            alt="personFace"
-                          />
+                          className="user"
+                           src={personFace}
+                            alt="personFace" />
                         </IconButton>
                         <Menu
                           id="long-menu"
@@ -219,48 +301,48 @@ function Header() {
                             }
                           }}
                         >
-                          <MenuItem className="userName" onClick={handleClose}>
+                          <MenuItem
+                            className="userName"
+                            onClick={handleClose}
+                          >
                             {users[0].displayName}
                           </MenuItem>
 
-                          <MenuItem className="userAdmin" onClick={handleClose}>
-                            {users[0].email == adminEmailMain
-                              ? <div>
-                                  <li className="admin">
-                                    <Link className="li" to={"/lease"}>
-                                      {t("admin")}
+                          
+
+                          <MenuItem
+                            className="userAdmin"
+                            onClick={handleClose}
+                          >
+                            <li className="admin">
+                                    <Link className="li" to={"/features"}>
+                                      {t("saralanganlar")}
                                     </Link>
                                   </li>
-                                </div>
-                              : null}
-                          </MenuItem>
-
-                          <MenuItem className="userAdmin" onClick={handleClose}>
-                            <li className="admin">
-                              <Link className="li" to={"/features"}>
-                                {t("saralanganlar")}
-                              </Link>
-                            </li>
                           </MenuItem>
 
                           <div className="menuItemLine" />
 
                           <MenuItem onClick={handleClose}>
-                            <button className="logout" onClick={logOutClick}>
+                            <button
+                              className="logout"
+                              onClick={logOutClick}
+                            >
                               {t("logout")}
                             </button>
                           </MenuItem>
                         </Menu>
-                      </div>
+                      </div>}
                     </div>}
               </div>
+        
             </div>
-          : <div>
-              <button className="login_btn" onClick={googleSignIn}>
-                {t("submitbtn")}
-              </button>
-            </div>}
-      </div>
+            : <div>
+                <button className="login_btn" onClick={googleSignIn}>
+                  {t("submitbtn")}
+                </button>
+              </div>}
+        </div>
     </div>
   );
 }
