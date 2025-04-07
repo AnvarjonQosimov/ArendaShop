@@ -8,12 +8,16 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { signInWithPopup, getAuth, GoogleAuthProvider } from "firebase/auth";
-import Firebase from "../Firebase/Firebase.js";
+import Firebase, { db } from "../Firebase/Firebase.js";
 import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Features from "../pages/Features.js";
+import { addDoc, getDocs, collection } from "firebase/firestore";
+import { useEffect } from "react";
+import personFace from "../images/personFace.jpg";
 
 Firebase();
 
@@ -23,6 +27,7 @@ function Header() {
   const [user, setUser] = useState({});
   const [isUser, setIsUser] = useState(false);
   const [IsLogOut, setIsLogOut] = useState(false);
+  const [users, setUsers] = useState([]);
 
   const { t, i18n } = useTranslation();
   const changeLanguage = lng => {
@@ -44,14 +49,41 @@ function Header() {
   const googleSignIn = async () => {
     try {
       await signInWithPopup(auth, Provider).then(users => {
-        setIsUser(true);
+        
         setUser(users.user);
-        setAdminEmail(true)
+        setIsRegist(false);
+        addDoc(collection(db, "users"), {
+          email: users.user.email,
+          displayName: users.user.displayName,
+          photoUrl: users.user.photoURL
+        });
+        setIsUser(true);
       });
     } catch (error) {
       console.log(`Error firebase --- ${error}`);
     }
   };
+
+  const getData = async () => {
+    try {
+      await getDocs(collection(db, "users")).then(querySnapshot => {
+        // console.log(querySnapshot);
+        const usersData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setIsUser(true)
+        setUsers(usersData);
+        console.log(usersData);
+      });
+    } catch (error) {
+      console.error("Error getting documents: ", error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   // const logOut = () => {
   //   setIsLogOut(true)
@@ -65,8 +97,6 @@ function Header() {
     setIsUser(false);
   };
 
-  console.log(user);
-
   //For Log Out
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -78,9 +108,9 @@ function Header() {
     setAnchorEl(null);
   };
 
-  const adminEmailMain = 'anvarqosimov153@gmail.com'
+  const adminEmailMain = "anvarqosimov153@gmail.com";
 
-  const [adminEmail, setAdminEmail] = useState(false);
+  const [isRegist, setIsRegist] = useState(true);
 
   return (
     <div className="Header">
@@ -146,12 +176,12 @@ function Header() {
 
       <div className="submit_btn">
         {isUser
-          ? <div className="user">
-              {IsLogOut
-                ? null
-                : <div>
-                    {adminEmail
-                      ?<div>
+          ? <div>
+              <div className="user">
+                {IsLogOut
+                  ? null
+                  : <div>
+                      <div>
                         <IconButton
                           aria-label="more"
                           id="long-button"
@@ -160,12 +190,17 @@ function Header() {
                           aria-haspopup="true"
                           onClick={handleClick}
                         >
+                          {/* <img
+                                className="user"
+                                src={users[0].photoURL}
+                                alt=""
+                              /> */}
+                          {/* <MoreVertIcon /> */}
                           <img
                             className="user"
-                            src={user.photoURL}
-                            alt=""
+                            src={personFace}
+                            alt="personFace"
                           />
-                          {/* <MoreVertIcon /> */}
                         </IconButton>
                         <Menu
                           id="long-menu"
@@ -184,43 +219,41 @@ function Header() {
                             }
                           }}
                         >
-                          <MenuItem
-                            className="userName"
-                            onClick={handleClose}
-                          >
-                            {user.displayName}
+                          <MenuItem className="userName" onClick={handleClose}>
+                            {users[0].displayName}
                           </MenuItem>
 
-                          <MenuItem
-                            className="userAdmin"
-                            onClick={handleClose}
-                          >
-                           {user.email == adminEmailMain ?  <li className="admin">
-                              <Link className="li" to={"/lease"}>
-                                {t("admin")}
-                              </Link>
-                            </li> : <div>
-                              <li className="admin">
-                              <Link className="li" to={"/"}>
-                              {t("saralanganlar")}
-                              </Link>
-                              </li>
-                              </div>}
+                          <MenuItem className="userAdmin" onClick={handleClose}>
+                            {users[0].email == adminEmailMain
+                              ? <div>
+                                  <li className="admin">
+                                    <Link className="li" to={"/lease"}>
+                                      {t("admin")}
+                                    </Link>
+                                  </li>
+                                </div>
+                              : null}
                           </MenuItem>
+
+                          <MenuItem className="userAdmin" onClick={handleClose}>
+                            <li className="admin">
+                              <Link className="li" to={"/features"}>
+                                {t("saralanganlar")}
+                              </Link>
+                            </li>
+                          </MenuItem>
+
                           <div className="menuItemLine" />
 
                           <MenuItem onClick={handleClose}>
-                            <button
-                              className="logout"
-                              onClick={logOutClick}
-                            >
+                            <button className="logout" onClick={logOutClick}>
                               {t("logout")}
                             </button>
                           </MenuItem>
                         </Menu>
-                    </div>
-                      : <div></div>}
-                  </div>}
+                      </div>
+                    </div>}
+              </div>
             </div>
           : <div>
               <button className="login_btn" onClick={googleSignIn}>

@@ -3,36 +3,16 @@ import { useTranslation } from "react-i18next";
 import { CiHeart } from "react-icons/ci";
 import { FaTrash } from "react-icons/fa";
 import Firebase from "../Firebase/Firebase.js"
-import { db } from "../Firebase/Firebase.js";
-import { collection, getDocs } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
 import Loading from "../components/Loading.js"
 import { TbRuler2Off } from "react-icons/tb";
+import { v4 as uuid } from "uuid";
+import { useState } from "react";
 
-function Rent() {
-  const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+function Rent(props) {
+   const [featuresId, setFeaturesId] = useState("")
 
-  const getData = () => {
-    getDocs(collection(db, 'cards'))
-    .then((querySnapshot) => {
-      
-      // console.log(querySnapshot);
-      const cardsData = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setCards(cardsData);
-      setIsLoading(false)
-      })
-      .catch((error) => {
-        console.error('Error getting documents: ', error);
-      });
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+   const userCards = props.cards
+   console.log(props)
 
   const { t } = useTranslation();
 
@@ -45,18 +25,18 @@ function Rent() {
       </div>
       
       <div className="cardsAndLoading">
-      {isLoading ? <div className="rentLoading"><Loading /></div> : (
+      {props.isLoading ? <div className="rentLoading"><Loading /></div> : (
         <div className="cards">
-        {cards.map((card) => (
-        <div className="card" key={card}>
-          <iframe autoplay
+        {userCards.map((card) => (
+        <div className="card" key={card.id}>
+          <iframe autoPlay
         width="853"
         height="480"
         src="https://www.youtube.com/embed/FJBp4gKEkMg"
         title="Компактный одноэтажный модульный дом с террасой/Обзор модульных домов в современном стиле"
-        frameborder="0"
+        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
+        referrerPolicy="strict-origin-when-cross-origin"
         allowfullscreen>
         </iframe>
         {/* <div className="rentVideo">
@@ -81,7 +61,7 @@ function Rent() {
         <div className="rentcardicons">
         <div className="rentcardiconanimation">
           <i>
-            <CiHeart />
+            <CiHeart onClick={() => setFeaturesId(card.id)}/>
           </i>
         </div>
         {/* <i><FaTrash /></i> */}
@@ -96,4 +76,4 @@ function Rent() {
   );
 }
 
-export default Rent;
+export default  Rent;

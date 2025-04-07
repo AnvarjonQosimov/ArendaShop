@@ -26,6 +26,7 @@
     "react-scripts": "5.0.1",
     "shadcn": "^2.4.0-canary.17",
     "tailwindcss": "^4.0.15",
+    "uuidv4": "^6.2.13",
     "vite": "^6.2.2",
     "yup": "^1.6.1"
   },

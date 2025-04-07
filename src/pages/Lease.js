@@ -10,6 +10,7 @@ import Success from "../components/Sucsess.js";
 import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from "../components/Loading.js"
+import { v4 as uuid } from "uuid";
 
 function Lease() {
     const [age, setAge] = React.useState('');
@@ -38,7 +39,8 @@ function Lease() {
           initInf: initalInformation,
           additInf: additionalInformation,
           price: price,
-          PhoneNumberInPanel: phoneNumberInPanel
+          PhoneNumberInPanel: phoneNumberInPanel,
+          id: uuid()
         });
         alert("Ma'lumot muvaffaqiyatli qo'shildi!");
         // <Success className="successJs"/>
@@ -157,22 +159,14 @@ function Lease() {
             </div>
 
             <div className="container">
-              <div className="phone-input-container">
-                <label className="label">
-                  Enter your phone number
-                  <PhoneInput
-                    country={"us"}
-                    value={phoneNumberInPanel}
-                    // onChange={(e)=>{
-                    //   setPrice(e.target.value)
-                    //   handleChange
-                    // }} 
-                    onChange={handleChange}
-                    // inputProps={{ required: true }}
-                    required
-                  />
-                </label>
-              </div>
+             <label htmlFor="price" className="input-label">Phone number</label>
+             <input
+              type="number" 
+              value={phoneNumberInPanel}
+              className="input-failed"
+              placeholder=" "
+              onChange={(e) => setPhoneNumberInPanel(e.target.value)}
+              />
             </div>
             <button type="submit" onClick={addData}>{t("savebtn")}</button>
             <Dropdown>

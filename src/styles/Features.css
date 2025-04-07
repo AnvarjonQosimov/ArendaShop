@@ -1,0 +1,16 @@
+.Features{
+    background-color: grey;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    padding: 150px 50px;
+}
+
+.features-text{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    font-size: 100px;
+}
