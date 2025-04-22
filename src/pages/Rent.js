@@ -70,7 +70,7 @@ function Rent(props) {
                 </h3>
                 <div className='rentcardline'></div>
                 <h3>
-                  {t('phonenumber')}: {card.PhoneNumberInPanel}
+                  {t('phonenumber')}: +{card.PhoneNumberInPanel}
                 </h3>
                 <div className='rentcardline'></div>
                 <div className='rentcardicons'>

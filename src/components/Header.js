@@ -133,7 +133,7 @@ function Header() {
               slotProps={{ paper: { style: { maxHeight: ITEM_HEIGHT * 4.5, width: "20ch" } } }}
             >
               <MenuItem onClick={handleClose}>{user.displayName}</MenuItem>
-              <MenuItem onClick={handleClose}>{user.email}</MenuItem>
+              <MenuItem className="user_email_menu" onClick={handleClose}>{user.email}</MenuItem>
 
               {user.email === adminEmailMain && (
                 <MenuItem onClick={handleClose}>
