@@ -56,23 +56,23 @@ function Rent(props) {
           <video src={card.video}></video>
           <img src={card.video} alt="" />
         </div> */}
-                <div className='lineee' />
+                <div className='lineee'></div>
                 <h1>{card.initInf}</h1>
-                <div className='rentcardline' />
+                <div className='rentcardline'></div>
                 <div className='card-h2'>
                   <h2>{card.additInf}</h2>
                 </div>
-                <div className='rentcardline' />
+                <div className='rentcardline'></div>
                 <h3>
-                  {t('price')}: {card.price}$
-                  <div className='priceline' />
+                  {t('price')}: {card.price}
+                  <div className='priceline'></div>
                   <span>{t('oyiga')}</span>
                 </h3>
-                <div className='rentcardline' />
+                <div className='rentcardline'></div>
                 <h3>
                   {t('phonenumber')}: {card.PhoneNumberInPanel}
                 </h3>
-                <div className='rentcardline' />
+                <div className='rentcardline'></div>
                 <div className='rentcardicons'>
                   <div className='rentcardiconanimation'>
                   <i onClick={() => toggleLike(card.id)}>
