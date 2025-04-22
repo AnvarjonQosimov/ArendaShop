@@ -29,5 +29,7 @@
     "logout": "Log Out",
     "oyiga": "(Per month)",
     "admin": "Admin",
-    "saralanganlar": "Favorites"
+    "saralanganlar": "Favorites",
+    "saralanganYoq": "No_favorites",
+    "snachalaVoydite": "Log in first"
 }

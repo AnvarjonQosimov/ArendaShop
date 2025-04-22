@@ -10,6 +10,7 @@ import Features from "./pages/Features.js"
 import { db } from './Firebase/Firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
+import LikeProvider from "./components/likedContext.js"
 
 function App() {
    const [cards, setCards] = useState([]);
@@ -41,6 +42,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <LikeProvider>
       <Routes>
         <Route path={"/"}  element={<Home />}/>
         <Route path={"/about"} element={<About />}/>
@@ -49,6 +51,7 @@ function App() {
         <Route path={"/contact"} element={<Contact />}/>
         <Route path={"/features"} element={<Features cards={cards} />}/>
       </Routes>
+      </LikeProvider>
     </div>
   );
 }

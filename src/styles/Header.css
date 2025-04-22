@@ -115,8 +115,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    max-width: 50px;
+    max-height: 50px;
     border-radius: 50%;
 }
 
@@ -146,23 +146,61 @@
     color: red;
 }
 
-.submit_btn li{
+.linkLi{
+    color: black;
     width: 100%;
-    display: flex;
-    align-items: center;
-    color: black;
-}
-
-.admin a{
     text-decoration: none;
-    color: black;
-    height: 100%;
-    display: flex;
-    justify-content: start;
 }
 
 @media(max-width: 1082px){
     .menu li{
         font-size: 15px;
     }
+
+    .logo img{
+       width: 40px;
+       height: 40px;
+       border-radius: 50%;
+    }
+
+    .logo h2{
+        font-size: 25px;
+    }
+}
+
+@media(max-width: 1000px){
+    .menu li {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 935px){
+    .menu li {
+        font-size: 13px;
+    }
+
+    .logo img {
+        width: 37px;
+        height: 37px;
+        border-radius: 50%;
+    }
+
+    .logo h2{
+        font-size: 22px;
+    }
+
+    .user{
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+    }
+
+    .translate{
+        width: 3% !important;
+        height: 7vh !important;
+    }
+}
+
+.email{
+    font-size: 10px !important;
 }

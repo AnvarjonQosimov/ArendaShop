@@ -67,6 +67,8 @@
     width: 90%;
     margin: 0 auto;
     color: rgb(36, 5, 5);
+    overflow: auto;
+    height: 75px;
 }
 
 .card p{
@@ -204,4 +206,14 @@ h3 span{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.heartIcons i:nth-of-type(1){
+    position: absolute;
+}
+
+.heartIcons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

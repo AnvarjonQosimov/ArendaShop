@@ -29,5 +29,7 @@
     "logout": "Выйти",
     "oyiga": "(В месяц)",
     "admin": "Админ",
-    "saralanganlar": "Избранные"
+    "saralanganlar": "Избранные",
+    "saralanganYoq": "Нет_избранных",
+    "snachalaVoydite": "Сначала войдите"
 }

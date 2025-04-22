@@ -11,6 +11,7 @@ import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from "../components/Loading.js"
 import { v4 as uuid } from "uuid";
+import InputMask from "react-input-mask";
 
 function Lease() {
     const [age, setAge] = React.useState('');
@@ -159,15 +160,24 @@ function Lease() {
             </div>
 
             <div className="container">
-             <label htmlFor="price" className="input-label">Phone number</label>
-             <input
-              type="number" 
-              value={phoneNumberInPanel}
-              className="input-failedDif"
-              placeholder=" "
-              onChange={(e) => setPhoneNumberInPanel(e.target.value)}
-              />
-            </div>
+  <label htmlFor="phone" className="input-label">Phone number</label>
+  <PhoneInput
+    country={'uz'}
+    value={phoneNumberInPanel}
+    onChange={(phone) => setPhoneNumberInPanel(phone)}
+    inputProps={{
+      name: 'phone',
+      required: true,
+      autoFocus: true
+    }}
+    inputStyle={{
+      width: "100%",
+      borderRadius: "8px",
+      fontSize: "16px",
+      border: "1px solid #ccc"
+    }}
+  />
+</div>
             <button type="submit" onClick={addData}>{t("savebtn")}</button>
             <Dropdown>
         <Dropdown.Toggle variant='success' id='dropdown-basic'>
