@@ -6,7 +6,15 @@ import { useTranslation } from "react-i18next";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { signInWithPopup, getAuth, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+import {
+  signInWithPopup,
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+} from "firebase/auth";
 import Firebase, { db } from "../Firebase/Firebase.js";
 import { useState, useEffect } from "react";
 import IconButton from "@mui/material/IconButton";
@@ -30,13 +38,18 @@ function Header() {
   const provider = new GoogleAuthProvider();
   const adminEmailMain = "anvarqosimov153@gmail.com";
 
+  // States for login popup
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [otp, setOtp] = useState("");
+  const [confirmationResult, setConfirmationResult] = useState(null);
+
   const changeLanguage = lng => () => i18n.changeLanguage(lng);
   const handleChange = event => setAge(event.target.value);
 
   const handleClick = event => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
-  // Слушаем авторизованного пользователя
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async currentUser => {
       if (currentUser) {
@@ -48,7 +61,6 @@ function Header() {
         setIsUser(false);
       }
     });
-
     return () => unsubscribe();
   }, []);
 
@@ -69,7 +81,7 @@ function Header() {
   const googleSignIn = async () => {
     try {
       await signInWithPopup(auth, provider);
-      // onAuthStateChanged автоматически выполнит нужные действия
+      setShowLoginPopup(false);
     } catch (error) {
       console.log(`Error firebase --- ${error}`);
     }
@@ -82,6 +94,38 @@ function Header() {
       setUser(null);
     } catch (error) {
       console.error("Error signing out: ", error);
+    }
+  };
+
+  // ==== Phone Auth Logic ====
+  const setupRecaptcha = () => {
+    window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+      size: "invisible",
+      callback: () => handlePhoneSubmit(),
+    });
+  };
+
+  const handlePhoneSubmit = async () => {
+    setupRecaptcha();
+    try {
+      const appVerifier = window.recaptchaVerifier;
+      const confirmation = await signInWithPhoneNumber(auth, phoneNumber, appVerifier);
+      setConfirmationResult(confirmation);
+      alert("Код отправлен по SMS");
+    } catch (error) {
+      console.error("Ошибка отправки SMS: ", error);
+    }
+  };
+
+  const handleOtpSubmit = async () => {
+    try {
+      const result = await confirmationResult.confirm(otp);
+      setUser(result.user);
+      setIsUser(true);
+      await checkAndAddUserToFirestore(result.user);
+      setShowLoginPopup(false);
+    } catch (error) {
+      console.error("Неверный код: ", error);
     }
   };
 
@@ -155,11 +199,48 @@ function Header() {
             </Menu>
           </div>
         ) : (
-          <button className="login_btn" onClick={googleSignIn}>
-            {t("submitbtn")}
+          <button className="login_btn" onClick={() => setShowLoginPopup(true)}>
+            {t("submitbtn") || "Log in"}
           </button>
         )}
       </div>
+
+      {showLoginPopup && (
+        <div className="login_popup">
+          <div className="popup_content">
+            <input
+              type="text"
+              placeholder="+998901234567"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+            <button onClick={handlePhoneSubmit}>{t("send_code") || "Отправить код"}</button>
+
+            {confirmationResult && (
+              <>
+                <input
+                  type="text"
+                  placeholder="Введите код из SMS"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                />
+                <button onClick={handleOtpSubmit}>{t("verify") || "Подтвердить"}</button>
+              </>
+            )}
+
+            <div className="divider" style={{ margin: "15px 0", borderTop: "1px solid #ccc" }}></div>
+
+            <button onClick={googleSignIn} className="google_signin_btn">
+              {t("login_with_google") || "Войти через Google"}
+            </button>
+
+            <button onClick={() => setShowLoginPopup(false)} className="close_popup_btn">
+              ✖
+            </button>
+          </div>
+          <div id="recaptcha-container"></div>
+        </div>
+      )}
     </div>
   );
 }
