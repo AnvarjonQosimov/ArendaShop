@@ -18,7 +18,7 @@
 
 .leasetext {
   color: rgb(218, 218, 218);
-  font-size: 23px;
+  font-size: 40px;
   display: flex;
   align-items: start;
   padding: 100px 0;
@@ -26,6 +26,7 @@
 
 .leasetext  h1{
   color: white;
+  font-size: 50px;
 }
 
 form {
@@ -163,4 +164,66 @@ form {
 
 .il{
   font-size: 10px !important;
+}
+
+
+
+
+
+
+.media-upload-container {
+  position: relative;
+  width: 150%;
+  margin: 20px;
+}
+
+.media-upload-container input[type="file"] {
+  display: none;
+}
+
+.media-upload-label {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+
+  border: 1px solid #868686;
+  border-radius: 4px;
+
+  background-color: transparent;
+  color: rgb(209, 209, 209);
+
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: block;
+  position: relative;
+}
+
+.media-upload-label span {
+  display: none;
+}
+
+.media-upload-label:hover {
+  border-color: #bfbfbf;
+}
+
+.media-upload-container .floating-label {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+
+  color: rgb(224, 224, 224);
+  font-size: 15px;
+
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.media-upload-container input:valid + .media-upload-label + .floating-label,
+.media-upload-container input:focus + .media-upload-label + .floating-label {
+  top: -8px;
+  font-size: 9.5px;
+  color: rgb(82, 51, 255);
+  padding: 0 5px;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+    url(../images/OIP\ \(111\).jpg);
 }
