@@ -267,6 +267,7 @@
   /* Кнопка Google */
   .google_signin_btn {
     background: #db4437 !important;
+    /* margin-top: 50px; */
   }
   
   .google_signin_btn:hover {

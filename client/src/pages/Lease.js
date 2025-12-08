@@ -125,10 +125,17 @@ function Lease() {
                     }}
                     required
                   />
-                  
+
+                  {/* <label htmlFor="media" className="media-upload-label">
+                    {picture?.name || video?.name || t("ivideo")}
+                  </label>
+
+                  {!(picture?.name || video?.name) && (
+                    <label className="floating-label">{t("ivideo")}</label>
+                  )} */}
+
                   <label htmlFor="media" className="media-upload-label">
-                    {t("ivideo")}
-                    <span>{t("ivideopl")}</span>
+                    {picture?.name || video?.name || t("ivideo")}
                   </label>
                 </div>
 
