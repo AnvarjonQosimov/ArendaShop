@@ -5,6 +5,8 @@ import About from "./pages/About.js"
 import  Rent from "./pages/Rent.js"
 import  Lease from "./pages/Lease.js"
 import  Contact from "./pages/Contact.js"
+import  AboutUser from "./pages/AboutUser.js"
+import  MySuggestions from "./pages/MySuggestions.js"
 import {  Route, Routes } from 'react-router-dom'
 import Features from "./pages/Features.js"
 import { db } from './Firebase/Firebase.js';
@@ -49,6 +51,8 @@ function App() {
         <Route path={"/lease"} element={<Lease />}/>
         <Route path={"/rent"} element={<Rent cards={cards} isLoading={isLoading} />}/>
         <Route path={"/contact"} element={<Contact />}/>
+        <Route path={"/mysuggestions"} element={<MySuggestions cards={cards} isLoading={isLoading} />}/>
+        <Route path={"/aboutUser"} element={<AboutUser />}/>
         <Route path={"/features"} element={<Features cards={cards} />}/>
       </Routes>
       </LikeProvider>

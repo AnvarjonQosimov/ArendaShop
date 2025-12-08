@@ -24,6 +24,10 @@
   padding: 100px 0;
 }
 
+.leasetext  h1{
+  color: white;
+}
+
 form {
   display: flex;
   flex-direction: column;

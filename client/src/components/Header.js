@@ -97,38 +97,6 @@ function Header() {
     }
   };
 
-  // ==== Phone Auth Logic ====
-  const setupRecaptcha = () => {
-    window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-      size: "invisible",
-      callback: () => handlePhoneSubmit(),
-    });
-  };
-
-  const handlePhoneSubmit = async () => {
-    setupRecaptcha();
-    try {
-      const appVerifier = window.recaptchaVerifier;
-      const confirmation = await signInWithPhoneNumber(auth, phoneNumber, appVerifier);
-      setConfirmationResult(confirmation);
-      alert("Код отправлен по SMS");
-    } catch (error) {
-      console.error("Ошибка отправки SMS: ", error);
-    }
-  };
-
-  const handleOtpSubmit = async () => {
-    try {
-      const result = await confirmationResult.confirm(otp);
-      setUser(result.user);
-      setIsUser(true);
-      await checkAndAddUserToFirestore(result.user);
-      setShowLoginPopup(false);
-    } catch (error) {
-      console.error("Неверный код: ", error);
-    }
-  };
-
   return (
     <div className="Header">
       <div className="logo">
@@ -144,6 +112,7 @@ function Header() {
         <li><Link className="li" to={"/"}>{t("home")}</Link></li>
         <li><Link className="li" to={"/about"}>{t("about")}</Link></li>
         <li><Link className="li" to={"/rent"}>{t("rent")}</Link></li>
+        <li><Link className="li" to={"/mysuggestions"}>My Suggestions</Link></li>
         <li><Link className="li" to={"/contact"}>{t("contact")}</Link></li>
       </div>
 
@@ -177,7 +146,9 @@ function Header() {
               slotProps={{ paper: { style: { maxHeight: ITEM_HEIGHT * 4.5, width: "20ch" } } }}
             >
               <MenuItem onClick={handleClose}>{user.displayName}</MenuItem>
-              <MenuItem className="user_email_menu" onClick={handleClose}>{user.email}</MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link className="linkLi" to={"/aboutUser"}>AboutUser</Link>
+              </MenuItem>
 
               {user.email === adminEmailMain && (
                 <MenuItem onClick={handleClose}>
@@ -208,28 +179,7 @@ function Header() {
       {showLoginPopup && (
         <div className="login_popup">
           <div className="popup_content">
-            <input
-              type="text"
-              placeholder="+998901234567"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
-            <button onClick={handlePhoneSubmit}>{t("send_code") || "Отправить код"}</button>
-
-            {confirmationResult && (
-              <>
-                <input
-                  type="text"
-                  placeholder="Введите код из SMS"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                />
-                <button onClick={handleOtpSubmit}>{t("verify") || "Подтвердить"}</button>
-              </>
-            )}
-
-            <div className="divider" style={{ margin: "15px 0", borderTop: "1px solid #ccc" }}></div>
-
+            
             <button onClick={googleSignIn} className="google_signin_btn">
               {t("login_with_google") || "Войти через Google"}
             </button>
@@ -237,8 +187,8 @@ function Header() {
             <button onClick={() => setShowLoginPopup(false)} className="close_popup_btn">
               ✖
             </button>
+
           </div>
-          <div id="recaptcha-container"></div>
         </div>
       )}
     </div>

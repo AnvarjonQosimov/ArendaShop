@@ -64,7 +64,7 @@ function Rent(props) {
                 </div>
                 <div className='rentcardline'></div>
                 <h3>
-                  {t('price')}: {card.price}
+                  {t('price')}: {card.price} $
                   <div className='priceline'></div>
                   <span>{t('oyiga')}</span>
                 </h3>
@@ -76,7 +76,7 @@ function Rent(props) {
                 <div className='rentcardicons'>
                   <div className='rentcardiconanimation'>
                   <i onClick={() => toggleLike(card.id)}>
-                  <CiHeart style={{ color: likedIds.includes(card.id) ? 'red' : 'gray', cursor: 'pointer' }} />
+                  <IoMdHeart style={{ color: likedIds.includes(card.id) ? 'red' : 'gray', cursor: 'pointer' }} />
                   </i>
                   </div>
                   {/* <i><FaTrash /></i> */}
