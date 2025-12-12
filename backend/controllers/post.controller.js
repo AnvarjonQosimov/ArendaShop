@@ -12,19 +12,17 @@ class PostController {
   }
 
   async createPost(req, res) {
-    try {
-      // const {picture, initInfSchema, additInfSchema, prise, phoneNumber} = req.body
-      const newInformations = await postService.createPost(
-        req.body,
-        req.files.picture,
-        req.files.video
-      );
-      res.status(201).json({ newInformations });
-    } catch (error) {
-      console.log(error);
-      res.status(500).send("Server xatosi");
-    }
+  try {
+    const newInformations = await postService.createPost(
+      req.body,
+      req.files
+    );
+    res.status(201).json({ newInformations });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Server error");
   }
+}
 
   async delete(req, res) {
     try {

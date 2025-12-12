@@ -96,3 +96,15 @@
 /* .right a:nth-of-type(2) span{ 
     padding-right: 21px;
 } */
+
+/* @media(max-width: 900px){
+    .Contact{flex-direction: column;height: 100vh;padding-top: 120px;gap: 40px;}
+    .left{padding: 0;width: 100%;text-align: center;}
+    .contact-line{display: none;}
+    .right{padding: 0;width: 100%;}
+}
+@media(max-width: 600px){
+    .left h1{font-size: 28px;}
+    .left h1 span{font-size: 40px;}
+    .right h1{font-size: 26px;}
+} */

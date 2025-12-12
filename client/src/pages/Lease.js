@@ -13,6 +13,7 @@ import Loading from "../components/Loading.js";
 import { v4 as uuid } from "uuid";
 import InputMask from "react-input-mask";
 import axios from "axios";
+import { auth } from "../Firebase/Firebase.js";
 
 function Lease() {
   const [age, setAge] = React.useState("");
@@ -23,6 +24,7 @@ function Lease() {
 
   const [picture, setPicture] = useState("");
   const [video, setVideo] = useState("");
+  const [files, setFiles] = useState([]);
   const [initalInformation, setInitalInformation] = useState("");
   const [additionalInformation, setAdditionalInformation] = useState("");
   const [price, setPrice] = useState("");
@@ -37,19 +39,30 @@ function Lease() {
   const addData = async (e) => {
     e.preventDefault();
 
+    const wordCount = additionalInformation.trim().split(/\s+/).length;
+    if (wordCount < 30) {
+      alert("Description must contain at least 30 words.");
+      return;
+    }
+
     try {
       setIsLoading(true);
       const formData = new FormData();
 
       const cleanPhone = phoneNumberInPanel.replace(/\D/g, "");
 
-      formData.append("picture", picture);
-      formData.append("video", video);
+      const ownerId = auth.currentUser?.uid;
+      formData.append("ownerId", ownerId);
       formData.append("initInformation", initalInformation);
       formData.append("additInformation", additionalInformation);
       formData.append("price", price);
       formData.append("phoneNumber", cleanPhone);
       formData.append("id", uuid());
+
+      for (let file of files) {
+        formData.append("media", file);
+      }
+
       await axios.post("http://localhost:8090/api/post/create", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -107,37 +120,58 @@ function Lease() {
               <form onSubmit={(e) => addData(e)}>
                 <div className="media-upload-container">
                   <input
-                    type="file"
-                    accept="image/*,video/*"
-                    placeholder=" "
                     id="media"
-                    onChange={(e) => {
-                      const file = e.target.files[0];
-                      if (!file) return;
-
-                      if (file.type.startsWith("image/")) {
-                        setPicture(file);
-                        setVideo(null);
-                      } else if (file.type.startsWith("video/")) {
-                        setVideo(file);
-                        setPicture(null);
-                      }
-                    }}
-                    required
+                    type="file"
+                    multiple
+                    accept="image/*,video/*"
+                    onChange={(e) => setFiles([...files, ...e.target.files])}
+                    style={{ display: "none" }}
                   />
 
-                  {/* <label htmlFor="media" className="media-upload-label">
+                  <div className="preview-container">
+                    {files.map((file, index) => (
+                      <div key={index} className="preview-item">
+                        {file.type.startsWith("image/") ? (
+                          <img
+                            src={URL.createObjectURL(file)}
+                            alt="preview"
+                            className="preview-image"
+                          />
+                        ) : (
+                          <video
+                            className="preview-video"
+                            src={URL.createObjectURL(file)}
+                            controls
+                          />
+                        )}
+
+                        <button
+                          className="remove-btn"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setFiles(files.filter((_, i) => i !== index));
+                          }}
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+
+                  <label htmlFor="media" className="media-upload-label">
+                    {files.length > 0
+                      ? `Selected: ${files.length} files`
+                      : t("ivideo")}
+                  </label>
+                </div>
+
+                {/* <label htmlFor="media" className="media-upload-label">
                     {picture?.name || video?.name || t("ivideo")}
                   </label>
 
                   {!(picture?.name || video?.name) && (
                     <label className="floating-label">{t("ivideo")}</label>
                   )} */}
-
-                  <label htmlFor="media" className="media-upload-label">
-                    {picture?.name || video?.name || t("ivideo")}
-                  </label>
-                </div>
 
                 <div className="lease-line" />
 

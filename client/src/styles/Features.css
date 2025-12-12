@@ -1,5 +1,5 @@
 .Features{
-    background-color: grey;
+    background-color: rgb(49, 120, 128);
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -8,9 +8,136 @@
 }
 
 .features-text{
-    width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
-    font-size: 100px;
+    width: 100%;
+}
+
+.features-text h1{
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  width: 100%;
+}
+
+.heartBrokenIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hbIcon {
+  font-size: 28px;
+  color: #777;
+  transition: 0.25s ease;
+}
+
+.hbIcon:hover {
+  color: #555;
+  transform: scale(1.05);
+}
+
+.activeHB {
+  transform: scale(1.15);
+}
+
+.hbIcon {
+  font-size: 20px;
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+.hbIcon:hover {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.activeHB {
+  opacity: 1;
+}
+
+.fade-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.fade-image {
+  opacity: 0;
+  animation: fadeIn 0.35s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.thumbnailRow {
+  display: flex;
+  gap: 8px;
+  margin: 10px auto 15px;
+  justify-content: center;
+}
+
+.thumb {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: 0.25s;
+  border: 1px solid transparent;
+}
+
+.thumb:hover {
+  opacity: 0.85;
+}
+
+.thumbActive {
+  opacity: 1;
+  border: 1px solid white;
+  box-shadow: 0 0 6px rgba(255,255,255,0.4);
+}
+
+.fade-wrapper {
+  position: relative;
+}
+
+.fade-image {
+  opacity: 0;
+  animation: fadeIn 0.35s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.thumbnailRow {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px 0 18px;
+}
+
+.thumb {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 6px;
+  opacity: 0.55;
+  cursor: pointer;
+  transition: 0.25s;
+  border: 1px solid transparent;
+}
+
+.thumb:hover {
+  opacity: 0.85;
+}
+
+.thumbActive {
+  opacity: 1;
+  border: 1px solid white;
+  box-shadow: 0 0 5px rgba(255,255,255,0.4);
 }

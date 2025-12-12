@@ -12,7 +12,7 @@ import Features from "./pages/Features.js"
 import { db } from './Firebase/Firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import LikeProvider from "./components/likedContext.js"
+import {LikeProvider} from "./components/likedContext.js"
 
 function App() {
    const [cards, setCards] = useState([]);

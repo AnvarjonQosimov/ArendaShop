@@ -205,21 +205,20 @@
     font-size: 11px !important;
 }
 
-/* Затемнённый фон */
 .login_popup {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.6); /* полупрозрачный чёрный */
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 999;
   }
   
-  /* Содержимое формы */
+
   .popup_content {
     background: white;
     padding: 30px 25px;
@@ -233,8 +232,7 @@
     gap: 15px;
     animation: popup-fade-in 0.3s ease;
   }
-  
-  /* Вводы */
+
   .popup_content input {
     padding: 12px;
     border-radius: 8px;
@@ -247,8 +245,7 @@
   .popup_content input:focus {
     border-color: #007bff;
   }
-  
-  /* Кнопки */
+
   .popup_content button {
     padding: 12px;
     background: #007bff;
@@ -263,18 +260,21 @@
   .popup_content button:hover {
     background: #0056b3;
   }
-  
-  /* Кнопка Google */
+
   .google_signin_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #db4437 !important;
+    font-size: 25px !important;
+    max-height: 50px;
     /* margin-top: 50px; */
   }
   
   .google_signin_btn:hover {
     background: #c23321 !important;
   }
-  
-  /* Кнопка закрытия */
+
   .close_popup_btn {
     position: absolute;
     top: 10px;
@@ -290,8 +290,7 @@
   .close_popup_btn:hover {
     color: #333;
   }
-  
-  /* Плавное появление */
+
   @keyframes popup-fade-in {
     from {
       transform: translateY(-20px);
@@ -302,4 +301,9 @@
       opacity: 1;
     }
   }
-      
+
+  .popup_conteent_h3{
+    display: flex;
+    justify-content: center;
+    color: rgb(142, 142, 142);
+}

@@ -166,11 +166,6 @@ form {
   font-size: 10px !important;
 }
 
-
-
-
-
-
 .media-upload-container {
   position: relative;
   width: 150%;
@@ -226,4 +221,189 @@ form {
   padding: 0 5px;
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
     url(../images/OIP\ \(111\).jpg);
+}
+
+.preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.preview-item {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.preview-image,
+.preview-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 92px !important;
+  right: 1px !important;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  padding: 10px 0 10px 0;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@media (max-width: 1200px){
+    .input-field{
+        width: 120%;
+    }
+    form button{
+        margin-left: 150px;
+    }
+}
+
+@media (max-width: 1000px){
+    .leasetext{
+        padding: 60px 0;
+        font-size: 32px;
+    }
+    .leasetext h1{
+        font-size: 40px;
+    }
+    form{
+        margin-right: 60px;
+    }
+    .input-field{
+        width: 110%;
+    }
+    form button{
+        width: 50%;
+        margin-left: 80px;
+    }
+    .media-upload-container{
+        width: 120%;
+    }
+}
+
+@media (max-width: 850px){
+    .Lease{
+        padding: 140px 0 40px 0;
+        min-height: auto;
+    }
+    .adminPanel{
+        width: 100%;
+        height: auto;
+        padding: 0 20px;
+    }
+    .leasetext{
+        justify-content: center;
+        font-size: 30px;
+        padding: 30px 0;
+    }
+    .leasetext h1{
+        font-size: 34px;
+        text-align: center;
+    }
+    form{
+        margin-right: 0;
+        width: 100%;
+        align-items: center;
+    }
+    .input-container{
+        width: 90%;
+        margin: 15px 0;
+    }
+    .input-field{
+        width: 100%;
+    }
+    .media-upload-container{
+        width: 90%;
+        margin: 15px 0;
+    }
+    form button{
+        margin-left: 0;
+        width: 60%;
+    }
+}
+
+@media (max-width: 650px){
+    .leasetext{
+        font-size: 26px;
+        padding: 20px 0;
+    }
+    .leasetext h1{
+        font-size: 30px;
+    }
+    .input-container{
+        width: 95%;
+    }
+    .media-upload-container{
+        width: 95%;
+    }
+    form button{
+        width: 70%;
+    }
+    .preview-item{
+        width: 100px;
+        height: 100px;
+    }
+    .remove-btn{
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (max-width: 500px){
+    .leasetext{
+        font-size: 22px;
+    }
+    .leasetext h1{
+        font-size: 26px;
+    }
+    .preview-item{
+        width: 90px;
+        height: 90px;
+    }
+    .remove-btn{
+        width: 20px;
+        height: 20px;
+        bottom: 80px !important;
+    }
+    form button{
+        width: 80%;
+        padding: 10px 0;
+    }
+}
+
+@media (max-width: 400px){
+    .leasetext h1{
+        font-size: 22px;
+    }
+    .input-field{
+        font-size: 14px;
+    }
+    .media-upload-label{
+        font-size: 14px;
+        padding: 10px;
+    }
+    .preview-item{
+        width: 80px;
+        height: 80px;
+    }
+    form button{
+        width: 85%;
+        font-size: 14px;
+    }
 }

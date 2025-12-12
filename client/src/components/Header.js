@@ -22,6 +22,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import personFace from "../images/personFace.jpg";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+import { FaGoogle } from "react-icons/fa";
 
 Firebase();
 
@@ -31,6 +32,7 @@ function Header() {
   const [user, setUser] = useState(null);
   const [isUser, setIsUser] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [burgerOpen, setBurgerOpen] = useState(false);
   const open = Boolean(anchorEl);
   const [age, setAge] = React.useState("");
   const { t, i18n } = useTranslation();
@@ -53,10 +55,12 @@ function Header() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async currentUser => {
       if (currentUser) {
+        localStorage.setItem("userEmail", currentUser.email);
         setUser(currentUser);
         setIsUser(true);
         await checkAndAddUserToFirestore(currentUser);
       } else {
+        localStorage.removeItem("userEmail");
         setUser(null);
         setIsUser(false);
       }
@@ -79,13 +83,14 @@ function Header() {
   };
 
   const googleSignIn = async () => {
-    try {
-      await signInWithPopup(auth, provider);
-      setShowLoginPopup(false);
-    } catch (error) {
-      console.log(`Error firebase --- ${error}`);
-    }
-  };
+  try {
+    const result = await signInWithPopup(auth, provider);
+    localStorage.setItem("userEmail", result.user.email);
+    setShowLoginPopup(false);
+  } catch (error) {
+    console.log(`Error firebase --- ${error}`);
+  }
+};
 
   const logOutClick = async () => {
     try {
@@ -112,7 +117,7 @@ function Header() {
         <li><Link className="li" to={"/"}>{t("home")}</Link></li>
         <li><Link className="li" to={"/about"}>{t("about")}</Link></li>
         <li><Link className="li" to={"/rent"}>{t("rent")}</Link></li>
-        <li><Link className="li" to={"/mysuggestions"}>My Suggestions</Link></li>
+        <li><Link className="li" to={"/mysuggestions"}>{t('meningtakliflarim')}</Link></li>
         <li><Link className="li" to={"/contact"}>{t("contact")}</Link></li>
       </div>
 
@@ -137,7 +142,7 @@ function Header() {
         {isUser ? (
           <div className="user">
             <IconButton onClick={handleClick}>
-              <img className="user" src={user.photoURL || personFace} alt="User" />
+              <img className="user" src={personFace || user.photoURL} alt="User" />
             </IconButton>
             <Menu
               anchorEl={anchorEl}
@@ -179,9 +184,10 @@ function Header() {
       {showLoginPopup && (
         <div className="login_popup">
           <div className="popup_content">
+            <h3 className="popup_conteent_h3">Log In / Sign Up</h3>
             
             <button onClick={googleSignIn} className="google_signin_btn">
-              {t("login_with_google") || "Войти через Google"}
+              <FaGoogle />
             </button>
 
             <button onClick={() => setShowLoginPopup(false)} className="close_popup_btn">

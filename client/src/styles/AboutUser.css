@@ -128,3 +128,15 @@ h1 {
     height: 100px;
   }
 }
+
+@media(max-width: 750px){
+    .aboutUserCard{width: 92%;padding: 20px;}
+    .userImage{width: 90px;height: 90px;}
+    h1{font-size: 20px;}
+    .infoRow{padding: 10px 15px;}
+}
+@media(max-width: 500px){
+    .aboutUserCard{width: 95%;padding: 15px;}
+    .infoRow h3{font-size: 13px;}
+    .userImage{width: 80px;height: 80px;}
+}

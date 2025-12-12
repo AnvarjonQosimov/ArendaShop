@@ -7,16 +7,28 @@ class PostService {
     return posts;
   }
 
-  async createPost(post, picture, video) {
-    const pictureName = picture ? fileService.save(picture) : null;
-    const videoName = video ? fileService.save(video) : null;
-    const newPost = await Informations.create({
-      ...post,
-      picture: pictureName,
-      video:videoName
+ async createPost(post, files) {
+  let mediaArray = [];
+
+  if (files?.media) {
+    const mediaFiles = Array.isArray(files.media)
+      ? files.media
+      : [files.media];
+
+    mediaFiles.forEach((file) => {
+      const savedName = fileService.save(file);
+      mediaArray.push(savedName);
     });
-    return newPost;
   }
+
+  const newPost = await Informations.create({
+    ownerId: post.ownerId,
+    ...post,
+    media: mediaArray
+  });
+
+  return newPost;
+}
 
   async delete(id) {
     const post = await Informations.findByIdAndDelete(id);
