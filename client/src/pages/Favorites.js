@@ -1,6 +1,5 @@
-// src/pages/Features.js
 import React, { useContext, useEffect, useState } from "react";
-import "../styles/Features.css";
+import "../styles/Favorites.css";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { LikeContext } from "../components/likedContext";
@@ -11,6 +10,7 @@ import "react-medium-image-zoom/dist/styles.css";
 
 function Features() {
   const { likedIds, toggleLike } = useContext(LikeContext);
+  const [confirmUnlike, setConfirmUnlike] = useState(null);
   const { t } = useTranslation();
 
   const [cards, setCards] = useState([]);
@@ -149,7 +149,7 @@ function Features() {
               <div className="rentcardicons">
                 <i
                   className="heartBrokenIcon"
-                  onClick={() => toggleLike(card._id)}
+                  onClick={() => setConfirmUnlike(card._id)}
                 >
                   <FaHeartBroken
                     className={`hbIcon ${
@@ -164,7 +164,7 @@ function Features() {
 
         {likedCards.length === 0 && (
           <p style={{ textAlign: "center", marginTop: "20px" }}>
-            {t("saralangan_yoq")}
+            {t("saralanganyoq")}
           </p>
         )}
       </div>
@@ -265,6 +265,30 @@ function Features() {
                 onClick={() => setFullCard(null)}
               >
                 Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {confirmUnlike && (
+        <div className="confirmOverlay" onClick={() => setConfirmUnlike(null)}>
+          <div className="confirmBox" onClick={(e) => e.stopPropagation()}>
+            <h2>Удалить из избранных?</h2>
+
+            <div className="confirmButtons">
+              <button
+                className="yesBtn"
+                onClick={() => {
+                  toggleLike(confirmUnlike);
+                  setConfirmUnlike(null);
+                }}
+              >
+                Да
+              </button>
+
+              <button className="noBtn" onClick={() => setConfirmUnlike(null)}>
+                Отмена
               </button>
             </div>
           </div>

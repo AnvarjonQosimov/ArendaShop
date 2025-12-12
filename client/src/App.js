@@ -8,7 +8,7 @@ import  Contact from "./pages/Contact.js"
 import  AboutUser from "./pages/AboutUser.js"
 import  MySuggestions from "./pages/MySuggestions.js"
 import {  Route, Routes } from 'react-router-dom'
-import Features from "./pages/Features.js"
+import Features from "./pages/Favorites.js"
 import { db } from './Firebase/Firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
