@@ -40,7 +40,6 @@ function Header() {
   const provider = new GoogleAuthProvider();
   const adminEmailMain = "anvarqosimov153@gmail.com";
 
-  // States for login popup
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
@@ -155,11 +154,15 @@ function Header() {
                 <Link className="linkLi" to={"/aboutUser"}>AboutUser</Link>
               </MenuItem>
 
-              {user.email === adminEmailMain && (
+              {/* {user.email === adminEmailMain && (
                 <MenuItem onClick={handleClose}>
                   <Link className="linkLi" to={"/lease"}>{t("admin")}</Link>
                 </MenuItem>
-              )}
+              )} */}
+
+              <MenuItem onClick={handleClose}>
+                  <Link className="linkLi" to={"/lease"}>{t("admin")}</Link>
+                </MenuItem>
 
               <MenuItem onClick={handleClose}>
                 <Link className="linkLi" to={"/features"}>{t("saralanganlar")}</Link>
@@ -176,7 +179,7 @@ function Header() {
           </div>
         ) : (
           <button className="login_btn" onClick={() => setShowLoginPopup(true)}>
-            {t("submitbtn") || "Log in"}
+            {t("submitbtn")}
           </button>
         )}
       </div>
@@ -184,7 +187,7 @@ function Header() {
       {showLoginPopup && (
         <div className="login_popup">
           <div className="popup_content">
-            <h3 className="popup_conteent_h3">Log In / Sign Up</h3>
+            <h3 className="popup_conteent_h3">{t('submitText')}</h3>
             
             <button onClick={googleSignIn} className="google_signin_btn">
               <FaGoogle />

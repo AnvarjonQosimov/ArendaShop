@@ -32,6 +32,8 @@ function Lease() {
   const [collectionAdmin, setCollectionAdmin] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const mediaInputRef = React.useRef(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   };
@@ -70,6 +72,12 @@ function Lease() {
       });
       alert("Ma'lumot muvaffaqiyatli qo'shildi!");
       // <Success className="successJs"/>
+
+      setFiles([]);
+      if (mediaInputRef.current) {
+        mediaInputRef.current.value = "";
+      }
+
       setVideo(null);
       setInitalInformation("");
       setAdditionalInformation("");
@@ -120,6 +128,7 @@ function Lease() {
               <form onSubmit={(e) => addData(e)}>
                 <div className="media-upload-container">
                   <input
+                    ref={mediaInputRef}
                     id="media"
                     type="file"
                     multiple
@@ -223,9 +232,6 @@ function Lease() {
                 </div>
 
                 <div className="container">
-                  <label htmlFor="phone" className="input-label">
-                    Phone number
-                  </label>
                   <PhoneInput
                     country={"uz"}
                     value={phoneNumberInPanel}
@@ -243,7 +249,6 @@ function Lease() {
                     }}
                   />
                 </div>
-
                 <button type="submit">{t("savebtn")}</button>
               </form>
             </div>
