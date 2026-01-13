@@ -190,6 +190,7 @@ function Lease() {
                   <input
                     type="text"
                     value={initalInformation}
+                    maxle={25}
                     className="input-field"
                     placeholder=" "
                     onChange={(e) => setInitalInformation(e.target.value)}

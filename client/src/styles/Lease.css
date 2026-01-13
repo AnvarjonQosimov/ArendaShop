@@ -1,6 +1,6 @@
 .Lease {
   width: 100%;
-  min-height: 135vh;
+  min-height: 135vh !important;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(../images/OIP\ \(111\).jpg);
   padding: 40px 0 20px 0;
@@ -414,4 +414,64 @@ form {
 
 .media-upload-label {
   margin-top: 10px;
+}
+
+@media (max-width: 344px) {
+  .input-container {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
+  .input-label {
+    font-size: 13px;
+  }
+
+  .media-upload-container {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .media-upload-label {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .phone-custom {
+    width: 100%;
+  }
+
+  .phone-custom .react-tel-input input {
+    width: 100%;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  form button {
+    width: 90%;
+    padding: 8px 0;
+    font-size: 14px;
+    margin-top: 15px;
+  }
+
+  .preview-item {
+    width: 70px;
+    height: 70px;
+  }
+
+  .remove-btn {
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    bottom: 60px !important;
+  }
+
+  .leasetext h1 {
+    font-size: 20px;
+  }
 }

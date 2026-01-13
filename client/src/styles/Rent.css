@@ -20,6 +20,7 @@
   margin: 42px 42px;
   background-color: rgb(247, 248, 230) !important;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   /* justify-content: center; */
   padding: 0 0 15px 0 !important;
@@ -61,14 +62,18 @@
 }
 
 .card h1 {
-  text-transform: capitalize;
   font-size: 25px;
-  text-align: center;
   width: 90%;
   margin: 0 auto;
   color: rgb(36, 5, 5);
-  overflow: auto;
-  height: 75px;
+  text-align: center;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  height: auto;
+  max-height: none;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .card p {
@@ -445,7 +450,7 @@ h3 span {
   font-size: 30px;
 }
 
-.price{
+.price {
   font-size: 15px;
 }
 
@@ -477,7 +482,6 @@ h3 span {
   height: 100%;
   object-fit: cover;
 }
-
 
 .fullSliderInner {
   display: flex;
@@ -536,7 +540,6 @@ h3 span {
   font-size: 20px;
   font-weight: 600;
 }
-
 
 .closeFullBtn2 {
   background: black;
@@ -710,7 +713,6 @@ h3 span {
   }
 }
 
-
 .modal-content {
   display: flex;
   flex-direction: column;
@@ -780,7 +782,7 @@ h3 span {
   top: 50%;
   transform: translateY(-50%);
   font-size: 42px;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
   color: white;
   border: none;
   cursor: pointer;
@@ -824,14 +826,20 @@ h3 span {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.65);
+  background: rgba(0, 0, 0, 0.65);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -915,7 +923,7 @@ h3 span {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   color: white;
   border: none;
   padding: 10px 14px;
@@ -925,8 +933,12 @@ h3 span {
   z-index: 2;
 }
 
-.arrow.left { left: 10px; }
-.arrow.right { right: 10px; }
+.arrow.left {
+  left: 10px;
+}
+.arrow.right {
+  right: 10px;
+}
 
 .topModalInfo {
   margin-top: 20px;
@@ -953,7 +965,7 @@ h3 span {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -967,7 +979,7 @@ h3 span {
   width: 320px;
   text-align: center;
   font-family: sans-serif;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .confirmBox h2 {
@@ -987,7 +999,8 @@ h3 span {
   gap: 15px;
 }
 
-.confirmYes, .confirmNo {
+.confirmYes,
+.confirmNo {
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
@@ -1014,39 +1027,39 @@ h3 span {
   background: #d3d3d3;
 }
 
-@media(max-width: 802px){
-  .sliderBtn.left{
+@media (max-width: 802px) {
+  .sliderBtn.left {
     height: 50px;
     width: 50px !important;
     font-size: 24px;
     padding: 15px 0 20px 0;
   }
 
-  .topSlider .arrow{
+  .topSlider .arrow {
     height: 50px;
     width: 50px !important;
     font-size: 24px;
     padding: 15px 0 20px 0;
   }
 }
-@media(max-width: 400px){
-  .card{
+@media (max-width: 400px) {
+  .card {
     width: 300px;
   }
 }
 
-@media(max-width: 400px){
-  .card{
+@media (max-width: 400px) {
+  .card {
     width: 250px;
   }
 
-  .Rent_text h1{
+  .Rent_text h1 {
     font-size: 45px;
   }
 }
 
-@media(max-width: 370px){
-  .Rent_text h1{
+@media (max-width: 370px) {
+  .Rent_text h1 {
     font-size: 40px;
   }
 }
@@ -1133,5 +1146,33 @@ h3 span {
 
   .topDescription {
     font-size: 13px;
+  }
+}
+
+.card h1,
+.card h2,
+.card p,
+.fullModalText,
+.topDescription,
+.additional-info {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+@media (max-width: 400px) {
+  .card h1,
+  .card h2,
+  .topDescription {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 360px) {
+  .card h1 {
+    font-size: 14px;
+    line-height: 1.35;
   }
 }
