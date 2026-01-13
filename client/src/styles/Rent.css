@@ -20,7 +20,6 @@
   margin: 42px 42px;
   background-color: rgb(247, 248, 230) !important;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   /* justify-content: center; */
   padding: 0 0 15px 0 !important;
