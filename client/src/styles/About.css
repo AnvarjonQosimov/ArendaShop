@@ -1,6 +1,6 @@
 .About{
     /* background-color: rgb(91, 154, 190); */
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../images/aab.avif);
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../images/auI.avif);
     background-size: cover;
     background-repeat: no-repeat;
     height: 110vh;
@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 115px 0 50px 0;
-    color: white;
+    color: white;   
 }
 
 .lines_circles{

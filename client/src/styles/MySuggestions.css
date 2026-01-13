@@ -1258,3 +1258,125 @@
 .confirmNo:hover {
   background: #d3d3d3;
 }
+
+@media(max-width: 802px){
+  .sliderBtn.left{
+    height: 50px;
+    width: 50px !important;
+    font-size: 24px;
+    padding: 15px 0 20px 0;
+  }
+
+  .topSlider .arrow{
+    height: 50px;
+    width: 50px !important;
+    font-size: 24px;
+    padding: 15px 0 20px 0;
+  }
+}
+@media(max-width: 400px){
+  .card{
+    width: 300px;
+  }
+}
+
+@media(max-width: 400px){
+  .card{
+    width: 250px;
+  }
+
+  .Rent_text h1{
+    font-size: 45px;
+  }
+}
+
+@media(max-width: 370px){
+  .Rent_text h1{
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .fullModalContent.topView {
+    width: 90%;
+    max-width: 900px;
+  }
+
+  .topSlider {
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fullModalContent.topView {
+    width: 95%;
+    padding: 16px;
+  }
+
+  .topSlider {
+    height: 300px;
+  }
+
+  .topModalInfo h1 {
+    font-size: 22px;
+  }
+
+  .topDescription {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 560px) {
+  .fullModalOverlay {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  .fullModalContent.topView {
+    width: 96%;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  .topSlider {
+    height: 240px;
+  }
+
+  .topSliderImage {
+    object-fit: contain;
+  }
+
+  .arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+  }
+
+  .topModalInfo h1 {
+    font-size: 20px;
+  }
+
+  .topDescription {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .closeFullBtn {
+    width: 100%;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .topSlider {
+    height: 200px;
+  }
+
+  .topModalInfo h1 {
+    font-size: 18px;
+  }
+
+  .topDescription {
+    font-size: 13px;
+  }
+}

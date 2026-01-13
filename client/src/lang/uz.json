@@ -34,5 +34,20 @@
     "snachalaVoydite": "Avval royxatdan oting",
     "meningtakliflarim": "Mening Takliflarim",
     "saralanganyoq": "Saralanganlar Yoq",
-    "submitText": "Kirish / Ro'yxatdan o'tish"
+    "submitText": "Kirish / Ro'yxatdan o'tish",
+    "deletefromfeatures": "Saralanganlardan o'chirilsinmi?",
+    "ha": "Ha",
+    "yoq": "Yo'q",
+    "edit": "Malumotni tahrirlash",
+    "editBtn": "Tahrirlash",
+    "delete": "O'chirish",
+    "title": "Sarlavha",
+    "description": "Tavsif",
+    "price": "Narx",
+    "phone": "Telefon raqami",
+    "updatebtn": "Yangilash",
+    "deleteconfirm": "Haqiqatdan ham o'chirilsinmi?",
+    "close": "Yopish",
+    "deleteP": "Ushbu karta doimiy ravishda o‘chirib yuboriladi.",
+    "save": "Saqlash"
 }

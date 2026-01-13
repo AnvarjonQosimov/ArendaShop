@@ -34,5 +34,20 @@
     "snachalaVoydite": "Log in first",
     "meningtakliflarim": "My Suggestions",
     "saralanganyoq": "No Favorites",
-    "submitText": "Log In / Sign Up"
+    "submitText": "Log In / Sign Up",
+    "deletefromfeatures": "Remove from favorites?",
+    "ha": "Yes",
+    "yoq": "No",
+    "edit": "Edit Information",
+    "editBtn": "Edit",
+    "delete": "Delete",
+    "title": "Title",
+    "description": "Description",
+    "price": "Price",
+    "phone": "Phone Number",
+    "updatebtn": "Update",
+    "deleteconfirm": "Are you sure ?",
+    "close": "Close",
+    "deleteP": "This card will be permanently deleted.",
+    "save": "Save"
 }

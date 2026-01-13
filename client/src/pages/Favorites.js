@@ -254,17 +254,17 @@ function Features() {
               <p className="topDescription">{fullCard.additInformation}</p>
 
               <p>
-                <strong>Price:</strong> {fullCard.price} $
+                <strong>{t("price")}:</strong> {fullCard.price} $
               </p>
               <p>
-                <strong>Phone:</strong> +{fullCard.phoneNumber}
+                <strong>{t("phone")}:</strong> +{fullCard.phoneNumber}
               </p>
 
               <button
                 className="closeFullBtn"
                 onClick={() => setFullCard(null)}
               >
-                Close
+                {t("close")}
               </button>
             </div>
           </div>
@@ -274,7 +274,7 @@ function Features() {
       {confirmUnlike && (
         <div className="confirmOverlay" onClick={() => setConfirmUnlike(null)}>
           <div className="confirmBox" onClick={(e) => e.stopPropagation()}>
-            <h2>Удалить из избранных?</h2>
+            <h2>{t("deletefromfeatures")}</h2>
 
             <div className="confirmButtons">
               <button
@@ -284,11 +284,11 @@ function Features() {
                   setConfirmUnlike(null);
                 }}
               >
-                Да
+                {t("ha")}
               </button>
 
               <button className="noBtn" onClick={() => setConfirmUnlike(null)}>
-                Отмена
+                {t("yoq")}
               </button>
             </div>
           </div>

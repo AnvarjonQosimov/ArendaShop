@@ -268,7 +268,7 @@ function Rent(props) {
                       className="deleteBtn"
                       onClick={() => setConfirmDeleteId(card._id)}
                     >
-                      Delete
+                      {t("delete")}
                     </button>
                   )}
                 </div>
@@ -281,9 +281,9 @@ function Rent(props) {
       {isEditOpen && (
         <div className="modalOverlay">
           <div className="modalContent">
-            <h2>Edit Information</h2>
+            <h2>{t("edit")}</h2>
 
-            <label>Title</label>
+            <label>{t("title")}</label>
             <input
               value={editData.initInformation}
               onChange={(e) =>
@@ -294,7 +294,7 @@ function Rent(props) {
               }
             />
 
-            <label>Description</label>
+            <label>{t("description")}</label>
             <input
               value={editData.additInformation}
               onChange={(e) =>
@@ -305,7 +305,7 @@ function Rent(props) {
               }
             />
 
-            <label>Price</label>
+            <label>{t("price")}</label>
             <input
               value={editData.price}
               onChange={(e) =>
@@ -316,7 +316,7 @@ function Rent(props) {
               }
             />
 
-            <label>Phone</label>
+            <label>{t("phone")}</label>
             <input
               value={editData.phoneNumber}
               onChange={(e) => {
@@ -341,13 +341,13 @@ function Rent(props) {
                   }
                 }}
               >
-                Save
+                {t("save")}
               </button>
               <button
                 className="cancelBtn"
                 onClick={() => setIsEditOpen(false)}
               >
-                Cancel
+                {t("cancel")}
               </button>
             </div>
           </div>
@@ -439,17 +439,17 @@ function Rent(props) {
               <p className="topDescription">{fullCard.additInformation}</p>
 
               <p>
-                <strong>Price:</strong> {fullCard.price} $
+                <strong>{t("price")}:</strong> {fullCard.price} $
               </p>
               <p>
-                <strong>Phone:</strong> +{fullCard.phoneNumber}
+                <strong>{t("phone")}:</strong> +{fullCard.phoneNumber}
               </p>
 
               <button
                 className="closeFullBtn"
                 onClick={() => setFullCard(null)}
               >
-                Close
+                {t("close")}
               </button>
             </div>
           </div>
@@ -462,8 +462,8 @@ function Rent(props) {
           onClick={() => setConfirmDeleteId(null)}
         >
           <div className="confirmBox" onClick={(e) => e.stopPropagation()}>
-            <h2>Are you sure?</h2>
-            <p>This card will be permanently deleted.</p>
+            <h2>{t("deleteconfirm")}?</h2>
+            <p>{t("deleteP")}</p>
 
             <div className="confirmButtons">
               <button
@@ -473,14 +473,14 @@ function Rent(props) {
                   setConfirmDeleteId(null);
                 }}
               >
-                Yes
+                {t("yes")}
               </button>
 
               <button
                 className="confirmNo"
                 onClick={() => setConfirmDeleteId(null)}
               >
-                No
+                {t("no")}
               </button>
             </div>
           </div>
