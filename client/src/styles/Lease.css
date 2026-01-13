@@ -168,7 +168,7 @@ form {
 
 .media-upload-container {
   position: relative;
-  width: 150%;
+  width: 131.5%;
   margin: 20px;
 }
 
@@ -406,4 +406,12 @@ form {
         width: 85%;
         font-size: 14px;
     }
+}
+
+.phone-custom .react-tel-input .selected-flag .arrow {
+  display: none;
+}
+
+.media-upload-label {
+  margin-top: 10px;
 }

@@ -14,8 +14,10 @@
     "axios": "^1.13.2",
     "bootstrap": "^5.3.3",
     "buffer": "^6.0.3",
+    "button": "^1.1.1",
     "classnames": "^2.5.1",
     "cra-template": "1.2.0",
+    "dropdown-menu": "^0.1.1",
     "firebase": "^11.3.1",
     "i18next": "^24.2.2",
     "input": "^1.0.1",
@@ -36,6 +38,7 @@
     "react-scripts": "5.0.1",
     "shadcn": "^2.4.0-canary.17",
     "tailwindcss": "^4.0.15",
+    "ui": "^0.2.4",
     "uuidv4": "^6.2.13",
     "vite": "^6.2.2",
     "yup": "^1.6.1"

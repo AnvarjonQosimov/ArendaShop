@@ -31,6 +31,8 @@ function Lease() {
   const [phoneNumberInPanel, setPhoneNumberInPanel] = useState("");
   const [collectionAdmin, setCollectionAdmin] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
+  const [mediaError, setMediaError] = useState("");
 
   const mediaInputRef = React.useRef(null);
 
@@ -231,7 +233,7 @@ function Lease() {
                   </label>
                 </div>
 
-                <div className="container">
+                <div className="container phone-custom">
                   <PhoneInput
                     country={"uz"}
                     value={phoneNumberInPanel}
@@ -239,16 +241,11 @@ function Lease() {
                     inputProps={{
                       name: "phone",
                       required: true,
-                      autoFocus: true,
-                    }}
-                    inputStyle={{
-                      width: "100%",
-                      borderRadius: "8px",
-                      fontSize: "16px",
-                      border: "1px solid #ccc",
+                      autofocus: true,
                     }}
                   />
                 </div>
+
                 <button type="submit">{t("savebtn")}</button>
               </form>
             </div>

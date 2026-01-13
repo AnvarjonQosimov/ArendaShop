@@ -16,13 +16,14 @@ import {
   signInWithPhoneNumber,
 } from "firebase/auth";
 import Firebase, { db } from "../Firebase/Firebase.js";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import personFace from "../images/personFace.jpg";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import { FaGoogle } from "react-icons/fa";
+import { NavLink } from "react-router-dom"
 
 Firebase();
 
@@ -32,24 +33,22 @@ function Header() {
   const [user, setUser] = useState(null);
   const [isUser, setIsUser] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [burgerOpen, setBurgerOpen] = useState(false);
-  const open = Boolean(anchorEl);
   const [age, setAge] = React.useState("");
   const { t, i18n } = useTranslation();
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   const adminEmailMain = "anvarqosimov153@gmail.com";
-
+  const menuRef = useRef(null)
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [confirmationResult, setConfirmationResult] = useState(null);
-
   const changeLanguage = lng => () => i18n.changeLanguage(lng);
   const handleChange = event => setAge(event.target.value);
-
   const handleClick = event => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
+  const [burgerOpen, setBurgerOpen] = useState(false)
+  const openUserMenu = Boolean(anchorEl)
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async currentUser => {
@@ -66,6 +65,17 @@ function Header() {
     });
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+  const handleClickOutside = (e) => {
+    if (menuRef.current && !menuRef.current.contains(e.target)) {
+      setBurgerOpen(false)
+    }
+  }
+
+  document.addEventListener("mousedown", handleClickOutside)
+  return () => document.removeEventListener("mousedown", handleClickOutside)
+}, [])
 
   const checkAndAddUserToFirestore = async (user) => {
     const usersRef = collection(db, "users");
@@ -120,8 +130,38 @@ function Header() {
         <li><Link className="li" to={"/contact"}>{t("contact")}</Link></li>
       </div>
 
+      <div className="burger-wrapper" ref={menuRef}>
+      <button
+        className={`burger ${burgerOpen ? "active" : ""}`}
+        onClick={() => setBurgerOpen(!burgerOpen)}
+        aria-label="Menu"
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+
+      <div className={`burger-dropdown ${burgerOpen ? "show" : ""}`}>
+        <NavLink to="/" onClick={() => setBurgerOpen(false)} className="menu-link">
+          Home
+        </NavLink>
+
+        <NavLink to="/about" onClick={() => setBurgerOpen(false)} className="menu-link">
+          About
+        </NavLink>
+
+        <NavLink to="/rent" onClick={() => setBurgerOpen(false)} className="menu-link">
+          Rent
+        </NavLink>
+
+        <NavLink to="/contact" onClick={() => setBurgerOpen(false)} className="menu-link">
+          Contact
+        </NavLink>
+      </div>
+    </div>
+
       <div className="translate">
-        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+        <FormControl sx={{ m: 1, minWidth: 80 }} size="small">
           <InputLabel id="demo-select-small-label">{t("lang")}</InputLabel>
           <Select
             labelId="demo-select-small-label"
@@ -145,7 +185,7 @@ function Header() {
             </IconButton>
             <Menu
               anchorEl={anchorEl}
-              open={open}
+              open={openUserMenu}
               onClose={handleClose}
               slotProps={{ paper: { style: { maxHeight: ITEM_HEIGHT * 4.5, width: "20ch" } } }}
             >
