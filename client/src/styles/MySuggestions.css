@@ -1259,7 +1259,7 @@
   background: #d3d3d3;
 }
 
-@media(max-width: 802px){
+@media(max-width: 807px){
   .sliderBtn.left{
     height: 50px;
     width: 50px !important;

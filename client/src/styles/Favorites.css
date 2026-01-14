@@ -2,6 +2,8 @@
     background-color: rgb(49, 120, 128);
     width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     min-height: 100vh;
     padding: 150px 50px;
@@ -193,43 +195,6 @@
   to { opacity: 1; transform: scale(1); }
 }
 
-@media(max-width: 802px){
-  .sliderBtn.left{
-    height: 50px;
-    width: 50px !important;
-    font-size: 24px;
-    padding: 15px 0 20px 0;
-  }
-
-  .topSlider .arrow{
-    height: 50px;
-    width: 50px !important;
-    font-size: 24px;
-    padding: 15px 0 20px 0;
-  }
-}
-@media(max-width: 400px){
-  .card{
-    width: 300px;
-  }
-}
-
-@media(max-width: 400px){
-  .card{
-    width: 250px;
-  }
-
-  .Rent_text h1{
-    font-size: 45px;
-  }
-}
-
-@media(max-width: 370px){
-  .Rent_text h1{
-    font-size: 40px;
-  }
-}
-
 @media (max-width: 1024px) {
   .fullModalContent.topView {
     width: 90%;
@@ -238,6 +203,23 @@
 
   .topSlider {
     height: 360px;
+  }
+}
+
+@media (max-width: 807px) {
+  .sliderBtn.left,
+  .sliderBtn.right {
+    height: 50px;
+    width: 50px;
+    font-size: 24px;
+    padding: 15px 0 20px 0;
+  }
+
+  .topSlider .arrow {
+    height: 50px;
+    width: 50px;
+    font-size: 24px;
+    padding: 15px 0 20px 0;
   }
 }
 
@@ -298,6 +280,36 @@
   .closeFullBtn {
     width: 100%;
     margin-top: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    width: 250px;
+  }
+
+  .features-text h1 {
+    font-size: 45px;
+  }
+
+  .card h1,
+  .card h2,
+  .topDescription {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 370px) {
+  .features-text h1 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .card h1 {
+    font-size: 14px;
+    line-height: 1.35;
   }
 }
 

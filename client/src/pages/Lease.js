@@ -33,6 +33,7 @@ function Lease() {
   const [isLoading, setIsLoading] = useState(false);
   const [phoneError, setPhoneError] = useState("");
   const [mediaError, setMediaError] = useState("");
+  const [initialError, setInitialError] = useState("");
 
   const mediaInputRef = React.useRef(null);
 
@@ -41,6 +42,10 @@ function Lease() {
   };
 
   const addData = async (e) => {
+    if (initalInformation.length > 21) {
+      alert("Initial information не может быть больше 21 букв");
+      return;
+    }
     e.preventDefault();
 
     const wordCount = additionalInformation.trim().split(/\s+/).length;
@@ -112,6 +117,18 @@ function Lease() {
   // const issuccessFunc = () => {
   //   setIsSuccess(true);
   // };
+
+  const handleInitialChange = (e) => {
+    const value = e.target.value;
+
+    if (value.length > 21) {
+      setInitialError("Максимум 21 символов");
+      return;
+    }
+
+    setInitialError("");
+    setInitalInformation(value);
+  };
 
   return (
     <div className="Lease">
@@ -193,7 +210,7 @@ function Lease() {
                     maxle={25}
                     className="input-field"
                     placeholder=" "
-                    onChange={(e) => setInitalInformation(e.target.value)}
+                    onChange={handleInitialChange}
                     id="name"
                     required
                   />

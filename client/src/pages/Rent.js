@@ -462,7 +462,7 @@ function Rent(props) {
           onClick={() => setConfirmDeleteId(null)}
         >
           <div className="confirmBox" onClick={(e) => e.stopPropagation()}>
-            <h2>{t("deleteconfirm")}?</h2>
+            <h2>{t("deleteconfirm")}</h2>
             <p>{t("deleteP")}</p>
 
             <div className="confirmButtons">
@@ -473,14 +473,14 @@ function Rent(props) {
                   setConfirmDeleteId(null);
                 }}
               >
-                {t("yes")}
+                {t("ha")}
               </button>
 
               <button
                 className="confirmNo"
                 onClick={() => setConfirmDeleteId(null)}
               >
-                {t("no")}
+                {t("yoq")}
               </button>
             </div>
           </div>

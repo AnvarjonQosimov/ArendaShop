@@ -473,14 +473,14 @@ function Rent(props) {
                   setConfirmDeleteId(null);
                 }}
               >
-                {t("yes")}
+                {t("ha")}
               </button>
 
               <button
                 className="confirmNo"
                 onClick={() => setConfirmDeleteId(null)}
               >
-                {t("no")}
+                {t("yoq")}
               </button>
             </div>
           </div>
