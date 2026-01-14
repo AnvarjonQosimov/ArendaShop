@@ -143,19 +143,23 @@ function Header() {
 
       <div className={`burger-dropdown ${burgerOpen ? "show" : ""}`}>
         <NavLink to="/" onClick={() => setBurgerOpen(false)} className="menu-link">
-          Home
+          {t("home")}
         </NavLink>
 
         <NavLink to="/about" onClick={() => setBurgerOpen(false)} className="menu-link">
-          About
+          {t("about")}
         </NavLink>
 
         <NavLink to="/rent" onClick={() => setBurgerOpen(false)} className="menu-link">
-          Rent
+          {t("rent")}
+        </NavLink>
+
+        <NavLink to="/rent" onClick={() => setBurgerOpen(false)} className="menu-link">
+          {t("meningtakliflarim")}
         </NavLink>
 
         <NavLink to="/contact" onClick={() => setBurgerOpen(false)} className="menu-link">
-          Contact
+          {t("contact")}
         </NavLink>
       </div>
     </div>
