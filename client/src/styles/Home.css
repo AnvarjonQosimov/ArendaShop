@@ -54,8 +54,8 @@
 } */
 
 .home_right img {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   margin: 0 auto;
   position: absolute;
@@ -82,14 +82,14 @@
 
 @keyframes circleh {
   from {
-    height: 150px;
-    width: 150px;
+    height: 130px;
+    width: 130px;
     border-radius: 50%;
     box-shadow: 10px 10px 10px inset rgb(150, 150, 150);
   }
   to {
-    height: 300px;
-    width: 300px;
+    height: 280px;
+    width: 280px;
     border-radius: 50%;
     box-shadow: 10px 5px 70px inset rgb(156, 156, 156);
   }
@@ -97,14 +97,14 @@
 
 @keyframes circleho {
   from {
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
     box-shadow: 10px 10px 10px inset rgb(160, 160, 160);
   }
   to {
-    height: 300px;
-    width: 300px;
+    height: 280px;
+    width: 280px;
     border-radius: 50%;
     box-shadow: 10px 5px 70px inset rgb(160, 160, 160);
   }
