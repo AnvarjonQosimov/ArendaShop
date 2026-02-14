@@ -1,4 +1,4 @@
-import "../styles/Rent.css";
+import "../styles/MySuggestions.css";
 import { useTranslation } from "react-i18next";
 import { CiHeart } from "react-icons/ci";
 import { FaTrash } from "react-icons/fa";
@@ -12,14 +12,34 @@ import { IoMdHeart } from "react-icons/io";
 import axios from "axios";
 import "react-medium-image-zoom/dist/styles.css";
 import Zoom from "react-medium-image-zoom";
-import { auth } from "../Firebase/Firebase.js";
 
-function Rent(props) {
+function MySuggestions(props) {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isHeartClicked, setIsHeartClicked] = useState(false);
   const [isClickedHeart, setIsClickedHeart] = useState(true);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("rentDarkMode") === "true";
+  });
+  const adminEmailMain = "anvarqosimov153@gmail.com";
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const authUser = localStorage.getItem("userEmail");
+    if (authUser) {
+      setCurrentUser(authUser);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("rentDarkMode", darkMode);
+  }, [darkMode]);
 
   const [userCards, setUserCards] = useState([]);
+  const [search, setSearch] = useState("");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [sortType, setSortType] = useState("new");
   const [isLoading, setIsLoading] = useState(true);
 
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -42,6 +62,7 @@ function Rent(props) {
       setUserCards(response.data);
       setIsLoading(false);
     } catch (error) {
+      console.log(error);
       setIsLoading(false);
     }
   };
@@ -51,6 +72,24 @@ function Rent(props) {
   }, []);
 
   const { t } = useTranslation();
+
+  const filteredCards = userCards
+    .filter((card) => card.userEmail === currentUser)
+    .filter((card) => {
+      const matchesSearch =
+        card.initInformation?.toLowerCase().includes(search.toLowerCase()) ||
+        card.additInformation?.toLowerCase().includes(search.toLowerCase());
+
+      const matchesMin = minPrice ? card.price >= Number(minPrice) : true;
+      const matchesMax = maxPrice ? card.price <= Number(maxPrice) : true;
+
+      return matchesSearch && matchesMin && matchesMax;
+    })
+    .sort((a, b) => {
+      if (sortType === "cheap") return a.price - b.price;
+      if (sortType === "popular") return (b.views || 0) - (a.views || 0);
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
 
   const heartClicked = () => {
     setIsClickedHeart((prev) => !prev);
@@ -81,13 +120,13 @@ function Rent(props) {
     try {
       await axios.put(
         `http://localhost:8090/api/post/edit/${editId}`,
-        editData
+        editData,
       );
 
       setUserCards((prev) =>
         prev.map((card) =>
-          card._id === editId ? { ...card, ...editData } : card
-        )
+          card._id === editId ? { ...card, ...editData } : card,
+        ),
       );
 
       setIsEditOpen(false);
@@ -122,9 +161,68 @@ function Rent(props) {
   }, [isEditOpen, fullCard]);
 
   return (
-    <div className="Rent">
+    <div className={`Rent ${darkMode ? "dark" : ""}`}>
+      <button
+        className="darkToggle"
+        onClick={() => setDarkMode((prev) => !prev)}
+      >
+        {darkMode ? <TbRuler2Off /> : <TbRuler />}
+      </button>
+
       <div className="Rent_text">
         <h1>{t("meningtakliflarim")}</h1>
+      </div>
+
+      <div className="rentFiltersWrapper">
+        <button className="openFilterBtn" onClick={() => setIsFilterOpen(true)}>
+          {t("sort")}
+        </button>
+
+        <div className="rentFilters">
+          <input
+            type="text"
+            placeholder={t("search")}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <input
+            type="number"
+            placeholder={t("minPrice")}
+            value={minPrice}
+            onChange={(e) => setMinPrice(e.target.value)}
+          />
+
+          <input
+            type="number"
+            placeholder={t("maxPrice")}
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(e.target.value)}
+          />
+
+          <div className="sortButtons">
+            <button
+              className={sortType === "new" ? "active" : ""}
+              onClick={() => setSortType("new")}
+            >
+              {t("newest")}
+            </button>
+
+            <button
+              className={sortType === "cheap" ? "active" : ""}
+              onClick={() => setSortType("cheap")}
+            >
+              {t("cheapest")}
+            </button>
+
+            <button
+              className={sortType === "popular" ? "active" : ""}
+              onClick={() => setSortType("popular")}
+            >
+              {t("popular")}
+            </button>
+          </div>
+        </div>
       </div>
 
       <div className="cardsAndLoading">
@@ -134,146 +232,157 @@ function Rent(props) {
           </div>
         ) : (
           <div className="cards">
-            {userCards
-              .filter((card) => card.ownerId === auth?.currentUser?.uid)
-              .map((card) => (
-                <div className="card" key={card._id}>
-                  <div className="rentVideo">
-                    {card.media && card.media.length > 0 && (
-                      <div className="sliderContainer">
-                        {card.media.length > 1 && (
-                          <button
-                            className="sliderBtn left"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setCurrentSlide((prev) => ({
-                                ...prev,
-                                [card._id]:
-                                  prev[card._id] > 0
-                                    ? prev[card._id] - 1
-                                    : card.media.length - 1,
-                              }));
-                            }}
-                          >
-                            ‹
-                          </button>
-                        )}
-
-                        <div
-                          className="sliderInner"
-                          style={{
-                            width: `${card.media.length * 100}%`,
-                            transform: `translateX(-${
-                              (currentSlide[card._id] || 0) * 100
-                            }%)`,
+            {filteredCards.map((card) => (
+              <div className="card" key={card._id}>
+                <div className="rentVideo">
+                  {card.media && card.media.length > 0 && (
+                    <div className="sliderContainer">
+                      {card.media.length > 1 && (
+                        <button
+                          className="sliderBtn left"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentSlide((prev) => ({
+                              ...prev,
+                              [card._id]:
+                                prev[card._id] > 0
+                                  ? prev[card._id] - 1
+                                  : card.media.length - 1,
+                            }));
                           }}
                         >
-                          {card.media.map((file, index) => {
-                            const url = `http://localhost:8090/${file}`;
+                          ‹
+                        </button>
+                      )}
 
-                            return file.endsWith(".mp4") ||
-                              file.endsWith(".mov") ||
-                              file.endsWith(".avi") ? (
-                              <video
-                                key={index}
-                                src={url}
-                                controls
-                                className="slideItem"
-                              />
-                            ) : (
-                              <img
-                                key={index}
-                                src={url}
-                                className="slideItem"
-                                onClick={() => setZoomImage(url)}
-                              />
-                            );
-                          })}
-                        </div>
-
-                        {card.media.length > 1 && (
-                          <button
-                            className="sliderBtn right"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setCurrentSlide((prev) => ({
-                                ...prev,
-                                [card._id]:
-                                  prev[card._id] < card.media.length - 1
-                                    ? prev[card._id] + 1
-                                    : 0,
-                              }));
-                            }}
-                          >
-                            ›
-                          </button>
-                        )}
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="lineee"></div>
-
-                  <h1>{card.initInformation}</h1>
-
-                  <div className="rentcardline"></div>
-
-                  <div className="card-h2">
-                    <h2
-                      className="short-text"
-                      onClick={() => setFullCard(card)}
-                    >
-                      {card.additInformation.length > 43
-                        ? card.additInformation.slice(0, 43) + "..."
-                        : card.additInformation}
-                    </h2>
-                  </div>
-
-                  <div className="rentcardline"></div>
-
-                  <h3 className="price">
-                    {t("price")}: {card.price} $
-                    <div className="priceline"></div>
-                    <span>{t("oyiga")}</span>
-                  </h3>
-
-                  <div className="rentcardline"></div>
-
-                  <h3>
-                    {t("phonenumber")}: +{card.phoneNumber}
-                  </h3>
-
-                  <div className="rentcardline"></div>
-
-                  <div className="rentcardicons">
-                    <i
-                      onClick={() => toggleLike(card._id)}
-                      className="likeIcon"
-                    >
-                      <IoMdHeart
+                      <div
+                        className="sliderInner"
                         style={{
-                          color: likedIds?.includes(card._id) ? "red" : "gray",
-                          cursor: "pointer",
+                          width: `${card.media.length * 100}%`,
+                          transform: `translateX(-${
+                            (currentSlide[card._id] || 0) * 100
+                          }%)`,
                         }}
-                      />
-                    </i>
+                      >
+                        {card.media.map((file, index) => {
+                          const url = `http://localhost:8090/${file}`;
 
-                    <button
-                      className="editBtn"
-                      onClick={() => handleEdit(card)}
-                    >
-                      {t("editBtn")}
-                    </button>
+                          return file.endsWith(".mp4") ||
+                            file.endsWith(".mov") ||
+                            file.endsWith(".avi") ? (
+                            <video
+                              key={index}
+                              src={url}
+                              controls
+                              className="slideItem"
+                            />
+                          ) : (
+                            <img
+                              key={index}
+                              src={url}
+                              className="slideItem"
+                              onClick={() => setZoomImage(url)}
+                            />
+                          );
+                        })}
+                      </div>
 
+                      {card.media.length > 1 && (
+                        <button
+                          className="sliderBtn right"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentSlide((prev) => ({
+                              ...prev,
+                              [card._id]:
+                                prev[card._id] < card.media.length - 1
+                                  ? prev[card._id] + 1
+                                  : 0,
+                            }));
+                          }}
+                        >
+                          ›
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <div className="lineee"></div>
+
+                <h1>{card.initInformation}</h1>
+
+                <div className="rentcardline"></div>
+
+                <div className="card-h2">
+                  <h2
+                    className="short-text"
+                    onClick={async () => {
+                      setFullCard(card);
+
+                      try {
+                        await axios.put(
+                          `http://localhost:8090/api/post/view/${card._id}`,
+                        );
+
+                        setUserCards((prev) =>
+                          prev.map((c) =>
+                            c._id === card._id
+                              ? { ...c, views: (c.views || 0) + 1 }
+                              : c,
+                          ),
+                        );
+                      } catch (e) {
+                        console.log(e);
+                      }
+                    }}
+                  >
+                    {card.additInformation.length > 43
+                      ? card.additInformation.slice(0, 43) + "..."
+                      : card.additInformation}
+                  </h2>
+                </div>
+
+                <div className="rentcardline"></div>
+
+                <h3 className="price">
+                  {t("price")}: {card.price} $<div className="priceline"></div>
+                  <span>{t("oyiga")}</span>
+                </h3>
+
+                <div className="rentcardline"></div>
+
+                <h4 className="phoneNum">
+                  {t("phonenumber")}: +998 (90) 996-51-02
+                </h4>
+
+                <div className="rentcardline"></div>
+
+                <div className="rentcardicons">
+                  <i onClick={() => toggleLike(card._id)} className="likeIcon">
+                    <IoMdHeart
+                      style={{
+                        color: likedIds?.includes(card._id) ? "red" : "gray",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </i>
+
+                  <button className="editBtn" onClick={() => handleEdit(card)}>
+                    {t("editBtn")}
+                  </button>
+
+                  {currentUser && (
                     <button
                       className="deleteBtn"
                       onClick={() => setConfirmDeleteId(card._id)}
                     >
                       {t("delete")}
                     </button>
-                  </div>
+                  )}
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
         )}
       </div>
@@ -384,13 +493,12 @@ function Rent(props) {
                 </button>
               )}
 
-              <Zoom>
+              <Zoom key={currentSlide.full || 0}>
                 <img
                   src={`http://localhost:8090/${
                     fullCard.media[currentSlide.full || 0]
                   }`}
                   className="topSliderImage fade-image"
-                  key={currentSlide.full}
                   alt=""
                 />
               </Zoom>
@@ -441,6 +549,7 @@ function Rent(props) {
               <p>
                 <strong>{t("price")}:</strong> {fullCard.price} $
               </p>
+
               <p>
                 <strong>{t("phone")}:</strong> +{fullCard.phoneNumber}
               </p>
@@ -486,8 +595,73 @@ function Rent(props) {
           </div>
         </div>
       )}
+
+      {isFilterOpen && (
+        <div
+          className="filterModalOverlay"
+          onClick={() => setIsFilterOpen(false)}
+        >
+          <div
+            className="filterModalContent"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2>Sort & Filter</h2>
+
+            <input
+              type="text"
+              placeholder={t("search")}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+
+            <input
+              type="number"
+              placeholder={t("minPrice")}
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
+            />
+
+            <input
+              type="number"
+              placeholder={t("maxPrice")}
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
+            />
+
+            <div className="sortButtons modalSort">
+              <button
+                className={sortType === "new" ? "active" : ""}
+                onClick={() => setSortType("new")}
+              >
+                {t("newest")}
+              </button>
+
+              <button
+                className={sortType === "cheap" ? "active" : ""}
+                onClick={() => setSortType("cheap")}
+              >
+                {t("cheapest")}
+              </button>
+
+              <button
+                className={sortType === "popular" ? "active" : ""}
+                onClick={() => setSortType("popular")}
+              >
+                {t("popular")}
+              </button>
+            </div>
+
+            <button
+              className="closeFilterBtn"
+              onClick={() => setIsFilterOpen(false)}
+            >
+              {t("close")}
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-export default Rent;
+export default MySuggestions;

@@ -1,11 +1,12 @@
-.MySuggestions {
-  background-color: rgb(49, 120, 128);
+.Rent {
+  /* background-color: rgb(49, 120, 128); */
+  background: linear-gradient(135deg, hsl(228, 45%, 89%) 0%, #1d5826 100%);
   width: 100%;
   padding: 130px 0 20px 0;
   min-height: 100vh;
 }
 
-.MySuggestions_cards {
+.cards {
   padding: 70px 50px 0 50px;
   margin: 0 auto;
   display: flex;
@@ -13,7 +14,7 @@
   justify-content: space-between;
 }
 
-.MySuggestions_card {
+.card {
   cursor: pointer;
   border-radius: 20px !important;
   width: 330px;
@@ -21,64 +22,65 @@
   background-color: rgb(247, 248, 230) !important;
   display: flex;
   flex-wrap: wrap;
+  /* justify-content: center; */
   padding: 0 0 15px 0 !important;
   text-align: center;
   box-shadow: 10px 10px 50px rgb(77, 77, 77);
   transition: 0.3s;
 }
 
-.MySuggestions_card:hover {
+.card:hover {
   box-shadow: 10px 10px 50px rgb(77, 77, 77);
 }
 
-.MySuggestions_mediaBox {
+.rentVideo {
   border-radius: 20px;
   width: 100%;
   max-height: 300px !important;
   border-radius: 20px 20px 0 0;
 }
 
-.MySuggestions_mediaBox iframe {
+.rentVideo iframe {
   border-radius: 20px;
   width: 100%;
   max-height: 300px !important;
   border-radius: 20px 20px 0 0;
 }
 
-.MySuggestions_header h1 {
+.Rent_text h1 {
   font-size: 50px;
   display: flex;
   justify-content: center;
   font-weight: 700;
-  color: white;
 }
 
-.MySuggestions_line {
+.lineee {
   width: 70%;
   height: 1px;
   background-color: grey;
   margin: 20px 0 20px 50px;
 }
 
-.MySuggestions_card h1,
-.MySuggestions_title {
-  text-transform: capitalize;
+.card h1 {
   font-size: 25px;
-  text-align: center;
   width: 90%;
   margin: 0 auto;
   color: rgb(36, 5, 5);
-  overflow: auto;
-  height: 75px;
+  text-align: center;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  height: auto;
+  max-height: none;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
-.MySuggestions_card p {
+.card p {
   text-align: center;
 }
 
-.MySuggestions_card-h2,
-.MySuggestions_descriptionShort,
-.MySuggestions_card .card-h2 {
+.card-h2 {
   max-width: 90% !important;
   margin: 0 auto;
   display: flex;
@@ -86,15 +88,13 @@
   overflow: auto;
 }
 
-.MySuggestions_card h2,
-.MySuggestions_descriptionShort {
+.card h2 {
   font-size: 20px;
   width: 100%;
   max-height: 50px;
 }
 
-.MySuggestions_rentcardline,
-.MySuggestions_rentcardline_div {
+.rentcardline {
   width: 90%;
   display: flex;
   justify-content: center;
@@ -103,7 +103,7 @@
   margin: 20px;
 }
 
-.MySuggestions_price span {
+h3 span {
   font-size: 17px;
   color: red;
   display: flex;
@@ -111,8 +111,7 @@
   justify-content: center;
 }
 
-.MySuggestions_card h3:nth-of-type(1),
-.MySuggestions_price {
+.card h3:nth-of-type(1) {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -120,27 +119,28 @@
   margin: 0 auto;
 }
 
-.MySuggestions_priceline {
+.phoneNum{
+  font-size: 17px;
+}
+
+.priceline {
   width: 1px;
   height: 30px;
   background-color: grey;
 }
 
-.MySuggestions_card h3:nth-of-type(2) {
+.card h3:nth-of-type(2) {
   font-size: 17px;
 }
 
-.MySuggestions_actions,
-.MySuggestions_rentcardicons {
+.rentcardicons {
   display: flex;
   width: 80%;
   justify-content: center;
   margin: 0 auto;
 }
 
-.MySuggestions_actions i,
-.MySuggestions_rentcardicons i,
-.MySuggestions_likeIcon {
+.rentcardicons i {
   font-size: 25px;
   justify-content: center;
   background-color: transparent;
@@ -150,8 +150,8 @@
   align-items: center;
 }
 
-.MySuggestions_rentcardiconanimation {
-  animation: MySuggestions_iconAnimation 1s linear infinite;
+.rentcardiconanimation {
+  animation: iconAnimation 1s linear infinite;
   width: 15% !important;
   height: 100% !important;
   overflow: hidden;
@@ -161,7 +161,7 @@
   padding: 5px 10px;
 }
 
-@keyframes MySuggestions_iconAnimation {
+@keyframes iconAnimation {
   1% {
     width: 20px;
     height: 20px;
@@ -200,8 +200,7 @@
   }
 }
 
-.MySuggestions_loading,
-.MySuggestions_rentLoading {
+.rentLoading {
   display: flex;
   width: 100%;
   align-items: center;
@@ -209,8 +208,7 @@
   height: 100vh;
 }
 
-.MySuggestions_cardsAndLoading,
-.MySuggestions_cardsAndLoadingDiv {
+.cardsAndLoading {
   width: 100%;
   height: 100%;
   display: flex;
@@ -218,18 +216,16 @@
   justify-content: center;
 }
 
-.MySuggestions_heartIcons i:nth-of-type(1) {
+.heartIcons i:nth-of-type(1) {
   position: absolute;
 }
 
-.MySuggestions_heartIcons {
+.heartIcons {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.MySuggestions_editBtn,
-.MySuggestions_deleteBtn,
 .editBtn,
 .deleteBtn {
   padding: 6px 12px;
@@ -240,17 +236,17 @@
   font-size: 14px;
 }
 
-.MySuggestions_editBtn {
+.editBtn {
   background-color: #4caf50;
   color: white;
 }
 
-.MySuggestions_deleteBtn {
+.deleteBtn {
   background-color: #e53935;
   color: white;
 }
 
-.MySuggestions_modalOverlay {
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -263,7 +259,7 @@
   z-index: 2000;
 }
 
-.MySuggestions_modalContent {
+.modalContent {
   background: #ffffff;
   padding: 25px;
   width: 360px;
@@ -271,17 +267,17 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  animation: MySuggestions_fadeIn 0.2s ease-in-out;
+  animation: fadeIn 0.2s ease-in-out;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-.MySuggestions_modalContent h2 {
+.modalContent h2 {
   margin-bottom: 8px;
   font-weight: 600;
   text-align: center;
 }
 
-.MySuggestions_modalContent input {
+.modalContent input {
   padding: 8px;
   border: 1px solid #d1d1d1;
   border-radius: 6px;
@@ -289,13 +285,13 @@
   font-size: 15px;
 }
 
-.MySuggestions_modalButtons {
+.modalButtons {
   display: flex;
   gap: 10px;
   margin-top: 10px;
 }
 
-.MySuggestions_saveBtn {
+.saveBtn {
   flex: 1;
   background: #1e88e5;
   color: white;
@@ -306,7 +302,7 @@
   font-size: 15px;
 }
 
-.MySuggestions_cancelBtn {
+.cancelBtn {
   flex: 1;
   background: #bdbdbd;
   border: none;
@@ -316,7 +312,7 @@
   font-size: 15px;
 }
 
-@keyframes MySuggestions_fadeIn {
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: scale(0.92);
@@ -327,21 +323,20 @@
   }
 }
 
-.MySuggestions_likeIcon,
 .likeIcon {
   display: flex;
   align-items: center;
   font-size: 24px;
 }
 
-.MySuggestions_zoomableImage {
+.zoomableImage {
   width: 100%;
   height: 100%;
   cursor: zoom-in;
   object-fit: cover;
 }
 
-.MySuggestions_zoomOverlay {
+.zoomOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -355,7 +350,7 @@
   z-index: 9999;
 }
 
-.MySuggestions_zoomFull {
+.zoomFull {
   max-width: 90%;
   max-height: 90%;
   border-radius: 10px;
@@ -363,12 +358,12 @@
   transform: scale(1);
 }
 
-.MySuggestions_card {
+.card {
   height: auto !important;
   min-height: 480px;
 }
 
-.MySuggestions_slideItem {
+.slideItem {
   min-width: 100%;
   height: 300px;
   background: #000;
@@ -378,22 +373,22 @@
   border-radius: 20px 20px 0 0;
 }
 
-.MySuggestions_slideItem img,
-.MySuggestions_slideItem video {
+.slideItem img,
+.slideItem video {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   border-radius: 20px 20px 0 0;
 }
 
-.MySuggestions_slider {
+.slider {
   position: relative;
   width: 100%;
   height: 300px;
   overflow: hidden;
 }
 
-.MySuggestions_sliderContainer {
+.sliderContainer {
   position: relative;
   width: 100%;
   height: 300px;
@@ -401,15 +396,13 @@
   overflow: hidden;
 }
 
-.MySuggestions_sliderInner {
+.sliderInner {
   display: flex;
   height: 100%;
   transition: transform 0.35s ease-in-out;
 }
 
-.MySuggestions_sliderBtn,
-.MySuggestions_arrowLeft,
-.MySuggestions_arrowRight {
+.sliderBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -426,17 +419,21 @@
   color: white;
   cursor: pointer;
   transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 50;
   backdrop-filter: blur(3px);
 }
 
-.MySuggestions_sliderBtn:hover,
-.MySuggestions_arrowLeft:hover,
-.MySuggestions_arrowRight:hover {
+.sliderBtn:hover {
   background: rgba(0, 0, 0, 0.8);
 }
 
-.MySuggestions_arrowLeft {
+.sliderBtn.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   left: 10px;
   height: 50px;
   width: 50px;
@@ -445,7 +442,10 @@
   font-size: 30px;
 }
 
-.MySuggestions_arrowRight {
+.sliderBtn.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   right: 10px;
   height: 50px;
   width: 50px;
@@ -454,22 +454,24 @@
   font-size: 30px;
 }
 
-.MySuggestions_price {
+.price {
   font-size: 15px;
 }
 
-.MySuggestions_fullModalContent2 {
+.fullModalContent2 {
   width: 85%;
   max-width: 1050px;
   max-height: 85vh;
+
   background: white;
   border-radius: 18px;
   overflow: hidden;
   display: flex;
-  animation: MySuggestions_modalPop 0.25s ease;
+
+  animation: modalPop 0.25s ease;
 }
 
-.MySuggestions_fullSlider2 {
+.fullSlider2 {
   width: 55%;
   height: 100%;
   display: flex;
@@ -479,19 +481,19 @@
   background: black;
 }
 
-.MySuggestions_fullSlide2 {
+.fullSlide2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.MySuggestions_fullSliderInner {
+.fullSliderInner {
   display: flex;
   height: 100%;
   transition: transform 0.35s ease-in-out;
 }
 
-.MySuggestions_fullSliderBtn {
+.fullSliderBtn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -507,43 +509,43 @@
   transition: 0.2s;
 }
 
-.MySuggestions_fullSliderBtn:hover {
+.fullSliderBtn:hover {
   background: rgba(0, 0, 0, 0.8);
 }
 
-.MySuggestions_fullSliderBtn.left {
+.fullSliderBtn.left {
   left: 12px;
 }
 
-.MySuggestions_fullSliderBtn.right {
+.fullSliderBtn.right {
   right: 12px;
 }
 
-.MySuggestions_fullInfoBox {
+.fullInfoBox {
   width: 45%;
   padding: 25px;
   overflow-y: auto;
 }
 
-.MySuggestions_fullInfoBox h1 {
+.fullInfoBox h1 {
   font-size: 30px;
   margin-bottom: 10px;
   font-weight: 700;
 }
 
-.MySuggestions_fullInfoBox p {
+.fullInfoBox p {
   font-size: 16px;
   margin-bottom: 20px;
   color: #333;
 }
 
-.MySuggestions_fullInfoBox h3 {
+.fullInfoBox h3 {
   margin-bottom: 15px;
   font-size: 20px;
   font-weight: 600;
 }
 
-.MySuggestions_closeFullBtn2 {
+.closeFullBtn2 {
   background: black;
   color: white;
   padding: 12px 28px;
@@ -555,11 +557,11 @@
   transition: 0.2s;
 }
 
-.MySuggestions_closeFullBtn2:hover {
+.closeFullBtn2:hover {
   background: rgb(40, 40, 40);
 }
 
-.MySuggestions_fullModalOverlay {
+.fullModalOverlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
@@ -567,10 +569,10 @@
   justify-content: center;
   align-items: center;
   z-index: 999;
-  animation: MySuggestions_fadeIn 0.2s ease;
+  animation: fadeIn 0.2s ease;
 }
 
-@keyframes MySuggestions_fadeIn {
+@keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -579,7 +581,7 @@
   }
 }
 
-@keyframes MySuggestions_modalPop {
+@keyframes modalPop {
   from {
     transform: translateY(40px) scale(0.95);
     opacity: 0;
@@ -590,7 +592,7 @@
   }
 }
 
-.MySuggestions_full-card-container {
+.full-card-container {
   display: flex;
   gap: 20px;
   width: 90%;
@@ -600,31 +602,31 @@
   background: white;
 }
 
-.MySuggestions_full-card-image {
+.full-card-image {
   width: 45%;
   min-width: 300px;
   height: auto;
 }
 
-.MySuggestions_full-card-image img {
+.full-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
 }
 
-.MySuggestions_full-card-info {
+.full-card-info {
   width: 55%;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.MySuggestions_full-card-info h2 {
+.full-card-info h2 {
   margin: 0;
 }
 
-.MySuggestions_full-card-text {
+.full-card-text {
   font-size: 16px;
   line-height: 1.4;
   white-space: normal;
@@ -632,7 +634,7 @@
   overflow-wrap: break-word;
 }
 
-.MySuggestions_fullModalOverlay {
+.fullModalOverlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -640,10 +642,10 @@
   justify-content: center;
   align-items: center;
   z-index: 2000;
-  animation: MySuggestions_fadeIn 0.25s ease;
+  animation: fadeIn 0.25s ease;
 }
 
-.MySuggestions_fullModalContent {
+.fullModalContent {
   background: white;
   width: 80%;
   max-width: 900px;
@@ -651,14 +653,14 @@
   display: flex;
   gap: 20px;
   padding: 20px;
-  animation: MySuggestions_modalPop 0.25s ease;
+  animation: modalPop 0.25s ease;
 }
 
-.MySuggestions_fullModalLeft {
+.fullModalLeft {
   width: 45%;
 }
 
-.MySuggestions_fullModalSlider img {
+.fullModalSlider img {
   width: 100%;
   height: 320px;
   object-fit: cover;
@@ -666,20 +668,20 @@
   cursor: zoom-in;
 }
 
-.MySuggestions_fullModalRight {
+.fullModalRight {
   width: 55%;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.MySuggestions_fullModalRight h1 {
+.fullModalRight h1 {
   margin: 0;
   font-size: 28px;
   font-weight: 700;
 }
 
-.MySuggestions_fullModalText {
+.fullModalText {
   font-size: 16px;
   color: #333;
   line-height: 1.4;
@@ -688,7 +690,7 @@
   overflow-wrap: break-word;
 }
 
-.MySuggestions_closeFullBtn {
+.closeFullBtn {
   width: 140px;
   padding: 10px;
   border: none;
@@ -700,11 +702,11 @@
   margin-top: 10px;
 }
 
-.MySuggestions_closeFullBtn:hover {
+.closeFullBtn:hover {
   background: #333;
 }
 
-@keyframes MySuggestions_modalPop {
+@keyframes modalPop {
   from {
     transform: translateY(40px) scale(0.95);
     opacity: 0;
@@ -715,7 +717,7 @@
   }
 }
 
-.MySuggestions_modal-content {
+.modal-content {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -726,7 +728,7 @@
   border-radius: 18px;
 }
 
-.MySuggestions_modal-content-custom {
+.modal-content-custom {
   width: 85%;
   max-width: 1100px;
   margin: 40px auto;
@@ -734,27 +736,27 @@
   overflow: hidden;
 }
 
-.MySuggestions_modal-image-wrapper {
+.modal-image-wrapper {
   width: 100%;
   max-height: 260px;
   overflow: hidden;
   border-radius: 14px;
 }
 
-.MySuggestions_modal-image-wrapper img {
+.modal-image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   background: #f1f1f1;
 }
 
-.MySuggestions_additional-info {
+.additional-info {
   word-wrap: break-word;
   white-space: normal;
   line-height: 1.4;
 }
 
-.MySuggestions_fullModalContent.topView {
+.fullModalContent.topView {
   width: 70%;
   max-width: 950px;
   background: white;
@@ -762,10 +764,10 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  animation: MySuggestions_fadeIn 0.25s ease;
+  animation: fadeIn 0.25s ease;
 }
 
-.MySuggestions_topSlider {
+.topSlider {
   position: relative;
   width: 100%;
   height: 420px;
@@ -773,18 +775,18 @@
   overflow: hidden;
 }
 
-.MySuggestions_topSliderImage {
+.topSliderImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.MySuggestions_arrow {
+.arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   font-size: 42px;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
   color: white;
   border: none;
   cursor: pointer;
@@ -792,7 +794,7 @@
   border-radius: 6px;
 }
 
-.MySuggestions_arrow.left {
+.arrow.left {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -804,7 +806,7 @@
   font-size: 30px;
 }
 
-.MySuggestions_arrow.right {
+.arrow.right {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -816,33 +818,39 @@
   font-size: 30px;
 }
 
-.MySuggestions_topModalInfo {
+.topModalInfo {
   margin-top: 20px;
 }
 
-.MySuggestions_topDescription {
+.topDescription {
   margin: 12px 0;
   line-height: 1.5;
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }
 
-@keyframes MySuggestions_fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.MySuggestions_modal-overlay {
+.modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.65);
+  background: rgba(0, 0, 0, 0.65);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-.MySuggestions_modal-window {
+.modal-window {
   width: 80%;
   max-width: 900px;
   background: #fff;
@@ -851,7 +859,7 @@
   overflow: hidden;
 }
 
-.MySuggestions_image-container {
+.image-container {
   width: 100%;
   max-height: 65vh;
   overflow: hidden;
@@ -859,14 +867,14 @@
   justify-content: center;
 }
 
-.MySuggestions_modal-img {
+.modal-img {
   width: 100%;
   height: auto;
   object-fit: contain;
   border-radius: 12px;
 }
 
-.MySuggestions_close-btn {
+.close-btn {
   width: 120px;
   margin-top: 20px;
   padding: 10px 16px;
@@ -877,7 +885,7 @@
   cursor: pointer;
 }
 
-.MySuggestions_fullModalOverlay {
+.fullModalOverlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -887,7 +895,7 @@
   z-index: 9999;
 }
 
-.MySuggestions_fullModalContent {
+.fullModalContent {
   width: 80%;
   max-width: 900px;
   background: #fff;
@@ -897,7 +905,7 @@
   flex-direction: column;
 }
 
-.MySuggestions_topSlider {
+.topSlider {
   width: 100%;
   height: 350px;
   display: flex;
@@ -908,18 +916,18 @@
   border-radius: 12px;
 }
 
-.MySuggestions_topSliderImage {
+.topSliderImage {
   max-width: 100%;
-  max-height: 100%;
+  height: 100%;
   object-fit: contain;
   cursor: zoom-in;
 }
 
-.MySuggestions_arrow {
+.arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   color: white;
   border: none;
   padding: 10px 14px;
@@ -929,19 +937,23 @@
   z-index: 2;
 }
 
-.MySuggestions_arrow.left { left: 10px; }
-.MySuggestions_arrow.right { right: 10px; }
+.arrow.left {
+  left: 10px;
+}
+.arrow.right {
+  right: 10px;
+}
 
-.MySuggestions_topModalInfo {
+.topModalInfo {
   margin-top: 20px;
 }
 
-.MySuggestions_topDescription {
+.topDescription {
   margin: 10px 0;
   line-height: 1.4;
 }
 
-.MySuggestions_closeFullBtn {
+.closeFullBtn {
   margin-top: 20px;
   padding: 10px 18px;
   background: black;
@@ -951,254 +963,13 @@
   cursor: pointer;
 }
 
-.MySuggestions {
-    background-color: rgb(49, 120, 128);
-    width: 100%;
-    padding: 130px 0 20px 0;
-    min-height: 100vh;
-}
-
-.MySuggestions_cards {
-    padding: 70px 50px 0 50px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.MySuggestions_card {
-    cursor: pointer;
-    width: 30%;
-    min-width: 280px;
-    margin-bottom: 60px;
-
-    background-color: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-
-    display: flex;
-    flex-direction: column;
-
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.MySuggestions_card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
-}
-
-.MySuggestions_mediaBox {
-    width: 100%;
-}
-
-.MySuggestions_slider {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    height: 240px;
-}
-
-.MySuggestions_sliderInner {
-    display: flex;
-    transition: transform 0.4s ease;
-}
-
-.MySuggestions_slideItem {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-}
-
-.MySuggestions_arrowLeft,
-.MySuggestions_arrowRight {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.7);
-    border: none;
-    padding: 4px 10px;
-    font-size: 32px;
-    cursor: pointer;
-    border-radius: 8px;
-    z-index: 10;
-}
-
-.MySuggestions_arrowLeft { left: 10px; }
-.MySuggestions_arrowRight { right: 10px; }
-
-.MySuggestions_arrowLeft:hover,
-.MySuggestions_arrowRight:hover {
-    background: rgba(255,255,255,0.9);
-}
-
-.MySuggestions_title {
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    padding: 10px 0;
-}
-
-.MySuggestions_descriptionShort {
-    font-size: 16px;
-    padding: 0 14px 10px;
-    cursor: pointer;
-}
-
-.MySuggestions_price {
-    font-size: 18px;
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.MySuggestions_phone {
-    font-size: 16px;
-    padding: 10px 14px;
-}
-
-.MySuggestions_actions {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    padding-bottom: 15px;
-}
-
-.MySuggestions_editBtn,
-.MySuggestions_deleteBtn {
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    background-color: #e5e5e5;
-}
-
-.MySuggestions_editBtn:hover,
-.MySuggestions_deleteBtn:hover {
-    background-color: #d2d2d2;
-}
-
-.MySuggestions_fullOverlay {
-    background: rgba(0,0,0,0.65);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.MySuggestions_fullContent {
-    background: #fff;
-    width: 80%;
-    padding: 25px;
-    border-radius: 14px;
-    display: flex;
-    gap: 40px;
-}
-
-.MySuggestions_fullSlider {
-    width: 50%;
-    position: relative;
-}
-
-.MySuggestions_fullImage {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-}
-
-.MySuggestions_fullArrowLeft,
-.MySuggestions_fullArrowRight {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 42px;
-    border: none;
-    background: rgba(0,0,0,0.35);
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    padding: 4px 12px;
-}
-
-.MySuggestions_fullArrowLeft { left: 10px; }
-.MySuggestions_fullArrowRight { right: 10px; }
-
-.MySuggestions_fullInfo {
-    width: 50%;
-    padding-right: 15px;
-}
-
-.MySuggestions_fullInfo h1 {
-    margin-bottom: 14px;
-}
-
-.MySuggestions_fullClose {
-    margin-top: 20px;
-    padding: 10px 16px;
-    background: #e5e5e5;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-}
-
-@media (max-width: 1200px) {
-  .MySuggestions_cards {
-    justify-content: center;
-    padding: 50px 20px 0;
-  }
-
-  .MySuggestions_card {
-    width: 45%;
-    margin: 25px;
-  }
-
-  .MySuggestions_fullContent {
-    flex-direction: column;
-    gap: 20px;
-    width: 90%;
-  }
-
-  .MySuggestions_fullSlider,
-  .MySuggestions_fullInfo {
-    width: 100%;
-  }
-
-  .MySuggestions_fullImage {
-    height: 320px;
-  }
-}
-
-@media (max-width: 992px) {
-  .MySuggestions_card {
-    width: 48%;
-    margin: 20px 10px;
-  }
-
-  .MySuggestions_title {
-    font-size: 20px;
-  }
-
-  .MySuggestions_descriptionShort {
-    font-size: 15px;
-  }
-
-  .MySuggestions_fullImage {
-    height: 300px;
-  }
-}
-
 .confirmOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1212,7 +983,7 @@
   width: 320px;
   text-align: center;
   font-family: sans-serif;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .confirmBox h2 {
@@ -1232,7 +1003,8 @@
   gap: 15px;
 }
 
-.confirmYes, .confirmNo {
+.confirmYes,
+.confirmNo {
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
@@ -1259,39 +1031,34 @@
   background: #d3d3d3;
 }
 
-@media(max-width: 807px){
-  .sliderBtn.left{
+@media (max-width: 807px) {
+  .sliderBtn.left {
     height: 50px;
     width: 50px !important;
     font-size: 24px;
     padding: 15px 0 20px 0;
   }
 
-  .topSlider .arrow{
+  .topSlider .arrow {
     height: 50px;
     width: 50px !important;
     font-size: 24px;
     padding: 15px 0 20px 0;
   }
 }
-@media(max-width: 400px){
-  .card{
-    width: 300px;
-  }
-}
 
-@media(max-width: 400px){
-  .card{
+@media (max-width: 400px) {
+  .card {
     width: 250px;
   }
 
-  .Rent_text h1{
+  .Rent_text h1 {
     font-size: 45px;
   }
 }
 
-@media(max-width: 370px){
-  .Rent_text h1{
+@media (max-width: 370px) {
+  .Rent_text h1 {
     font-size: 40px;
   }
 }
@@ -1378,5 +1145,224 @@
 
   .topDescription {
     font-size: 13px;
+  }
+}
+
+.card h1,
+.card h2,
+.card p,
+.fullModalText,
+.topDescription,
+.additional-info {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+@media (max-width: 400px) {
+  .card h1,
+  .card h2,
+  .topDescription {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .phoneNum{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .card h1 {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+}
+
+.darkToggle {
+  position: fixed;
+  top: 100px;
+  right: 25px;
+  z-index: 9999;
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+
+  transition: 0.3s ease;
+}
+
+.darkToggle:hover {
+  transform: scale(1.08);
+}
+
+.Rent {
+  min-height: 100vh;
+  background: linear-gradient(135deg, hsl(228, 45%, 89%) 0%, #1d5826 100%);
+  transition: 0.4s ease;
+}
+
+.Rent.dark {
+  background: linear-gradient(135deg, hsl(135, 2%, 36%) 0%, #0e3b15 100%);
+  color: #7a9683;
+}
+
+.Rent.dark .Rent_text h1 {
+  color: #b8cbbe;
+}
+
+.Rent.dark .card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  color: #6c6c6c;
+}
+
+.Rent.dark .modalContent,
+.Rent.dark .fullModalContent,
+.Rent.dark .confirmBox {
+  background: #0b2e10;
+  color: rgb(163, 163, 163);
+}
+
+.Rent.dark input {
+  background: #243328;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.rentFilters {
+  display: flex;
+  gap: 10px;
+  margin: 20px 20px 20px 0;
+  justify-content: center;
+}
+
+.rentFilters input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid gray;
+}
+
+.rentFilters select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid gray;
+}
+
+.sortButtons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sortButtons button {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  transition: 0.25s;
+  font-size: 14px;
+}
+
+.sortButtons button:hover {
+  background: #f3f3f3;
+}
+
+.sortButtons button.active {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+.rentFiltersWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.rentFilters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.rentFilters input {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  min-width: 130px;
+  max-width: 160px;
+}
+
+.openFilterBtn {
+  display: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+.filterModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.filterModalContent {
+  width: 90%;
+  max-width: 360px;
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: fadeIn 0.3s ease;
+}
+
+.closeFilterBtn {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .rentFilters {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .rentFilters {
+    display: none;
+  }
+
+  .openFilterBtn {
+    display: block;
   }
 }

@@ -1,5 +1,6 @@
 .Rent {
-  background-color: rgb(49, 120, 128);
+  /* background-color: rgb(49, 120, 128); */
+  background: linear-gradient(135deg, hsl(228, 45%, 89%) 0%, #1d5826 100%);
   width: 100%;
   padding: 130px 0 20px 0;
   min-height: 100vh;
@@ -116,6 +117,10 @@ h3 span {
   justify-content: space-between;
   width: 80%;
   margin: 0 auto;
+}
+
+.phoneNum{
+  font-size: 17px;
 }
 
 .priceline {
@@ -1041,11 +1046,6 @@ h3 span {
     padding: 15px 0 20px 0;
   }
 }
-@media (max-width: 400px) {
-  .card {
-    width: 300px;
-  }
-}
 
 @media (max-width: 400px) {
   .card {
@@ -1167,11 +1167,202 @@ h3 span {
     font-size: 14px;
     line-height: 1.4;
   }
+
+  .phoneNum{
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 360px) {
   .card h1 {
     font-size: 14px;
     line-height: 1.35;
+  }
+}
+
+.darkToggle {
+  position: fixed;
+  top: 100px;
+  right: 25px;
+  z-index: 9999;
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+
+  transition: 0.3s ease;
+}
+
+.darkToggle:hover {
+  transform: scale(1.08);
+}
+
+.Rent {
+  min-height: 100vh;
+  background: linear-gradient(135deg, hsl(228, 45%, 89%) 0%, #1d5826 100%);
+  transition: 0.4s ease;
+}
+
+.Rent.dark {
+  background: linear-gradient(135deg, hsl(135, 2%, 36%) 0%, #0e3b15 100%);
+  color: #7a9683;
+}
+
+.Rent.dark .Rent_text h1 {
+  color: #b8cbbe;
+}
+
+.Rent.dark .card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  color: #6c6c6c;
+}
+
+.Rent.dark .modalContent,
+.Rent.dark .fullModalContent,
+.Rent.dark .confirmBox {
+  background: #0b2e10;
+  color: rgb(163, 163, 163);
+}
+
+.Rent.dark input {
+  background: #243328;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.rentFilters {
+  display: flex;
+  gap: 10px;
+  margin: 20px 20px 20px 0;
+  justify-content: center;
+}
+
+.rentFilters input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid gray;
+}
+
+.rentFilters select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid gray;
+}
+
+.sortButtons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sortButtons button {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  transition: 0.25s;
+  font-size: 14px;
+}
+
+.sortButtons button:hover {
+  background: #f3f3f3;
+}
+
+.sortButtons button.active {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+.rentFiltersWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.rentFilters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.rentFilters input {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  min-width: 130px;
+  max-width: 160px;
+}
+
+.openFilterBtn {
+  display: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+.filterModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.filterModalContent {
+  width: 90%;
+  max-width: 360px;
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: fadeIn 0.3s ease;
+}
+
+.closeFilterBtn {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .rentFilters {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .rentFilters {
+    display: none;
+  }
+
+  .openFilterBtn {
+    display: block;
   }
 }
