@@ -204,6 +204,12 @@ function Header() {
                 </MenuItem>
               )} */}
 
+              {user.email === adminEmailMain && (
+                <MenuItem onClick={handleClose}>
+                  <Link className="linkLi" to={"/adminpage"}>{t("adminpage")}</Link>
+                </MenuItem>
+              )}
+
               <MenuItem onClick={handleClose}>
                   <Link className="linkLi" to={"/lease"}>{t("admin")}</Link>
                 </MenuItem>

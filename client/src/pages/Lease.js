@@ -14,6 +14,7 @@ import { v4 as uuid } from "uuid";
 import InputMask from "react-input-mask";
 import axios from "axios";
 import { auth } from "../Firebase/Firebase.js";
+import { onAuthStateChanged } from "firebase/auth";
 
 function Lease() {
   const [age, setAge] = React.useState("");
@@ -34,8 +35,8 @@ function Lease() {
   const [phoneError, setPhoneError] = useState("");
   const [mediaError, setMediaError] = useState("");
   const [initialError, setInitialError] = useState("");
-
   const mediaInputRef = React.useRef(null);
+  const [user, setUser] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,7 +73,7 @@ function Lease() {
         formData.append("media", file);
       }
 
-      await axios.post("http://localhost:8090/api/post/create", formData, {
+      await axios.post("http://localhost:8080/api/post/create", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -129,6 +130,16 @@ function Lease() {
     setInitialError("");
     setInitalInformation(value);
   };
+
+  const adminEmail = "anvarqosimov153@gmail.com";
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <div className="Lease">
@@ -259,12 +270,12 @@ function Lease() {
                     inputProps={{
                       name: "phone",
                       required: true,
-                      autofocus: true,
+                      autoFocus: true,
                     }}
                   />
                 </div>
 
-                <button type="submit">{t("savebtn")}</button>
+                  <button type="submit">{t("savebtn")}</button>
               </form>
             </div>
           )}

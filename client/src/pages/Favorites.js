@@ -21,7 +21,7 @@ function Features() {
   useEffect(() => {
     let cancelled = false;
     axios
-      .get("http://localhost:8090/api/post/get")
+      .get("http://localhost:8080/api/post/get")
       .then((res) => {
         if (!cancelled) setCards(res.data || []);
       })
@@ -77,7 +77,7 @@ function Features() {
                       }}
                     >
                       {card.media.map((file, index) => {
-                        const url = `http://localhost:8090/${file}`;
+                        const url = `http://localhost:8080/${file}`;
                         return file.endsWith(".mp4") ||
                           file.endsWith(".mov") ||
                           file.endsWith(".avi") ? (
@@ -201,7 +201,7 @@ function Features() {
 
               <Zoom>
                 <img
-                  src={`http://localhost:8090/${
+                  src={`http://localhost:8080/${
                     fullCard.media[currentSlide.full || 0]
                   }`}
                   className="topSliderImage fade-image"
@@ -233,7 +233,7 @@ function Features() {
                 {fullCard.media.map((img, index) => (
                   <img
                     key={index}
-                    src={`http://localhost:8090/${img}`}
+                    src={`http://localhost:8080/${img}`}
                     className={`thumb ${
                       index === (currentSlide.full || 0) ? "thumbActive" : ""
                     }`}

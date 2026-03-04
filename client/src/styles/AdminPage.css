@@ -1,0 +1,240 @@
+.AdminPage {
+  padding: 60px;
+  background: linear-gradient(135deg,#f0f4ff,#f9f9f9);
+  min-height: 100vh;
+  font-family: "Helvetica Neue",Arial,sans-serif;
+  padding-top: 120px;
+}
+
+.AdminPage h1 {
+  margin-bottom: 40px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.stats {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.statBox {
+  background: #fff;
+  padding: 30px;
+  border-radius: 14px;
+  width: 230px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+  transition: .25s ease;
+  cursor: pointer;
+}
+
+.statBox:hover {
+  transform: translateY(-6px);
+}
+
+.statBox h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.statBox p {
+  font-size: 26px;
+  font-weight: 600;
+  color: #111;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 35px;
+  justify-content: center;
+  width: 100%;
+}
+
+.controls input {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  background: #fff;
+  font-size: 14px;
+  transition: .2s;
+  border: none;
+}
+
+.controls input:focus,
+.controls select:focus {
+  border-color: #999;
+}
+
+.cardsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+  gap: 25px;
+}
+
+.adminCard {
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: .25s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+}
+
+.adminCard:hover {
+  transform: translateY(-5px);
+}
+
+.adminCard h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.adminCard p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  flex-grow: 1;
+}
+
+.views {
+  position: absolute;
+  bottom: 18px;
+  right: 22px;
+  font-size: 13px;
+  color: #777;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modalContent {
+  background: #fff;
+  padding: 40px;
+  border-radius: 18px;
+  width: 480px;
+  max-width: 100%;
+  box-shadow: 0 15px 50px rgba(0,0,0,.2);
+  animation: fadeIn .2s ease;
+}
+
+.modalContent h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.modalContent p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  color: #444;
+  word-break: break-word;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.deleteBtn {
+  background: #111;
+  border: none;
+  padding: 12px 22px;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.closeBtn {
+  background: #e6e6e6;
+  border: none;
+  padding: 12px 22px;
+  color: #111;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.deleteBtn:hover {
+  opacity: .85;
+}
+
+.closeBtn:hover {
+  background: #d9d9d9;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;transform:scale(.95);}
+  to {opacity:1;transform:scale(1);}
+}
+
+.controls select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 12px 38px 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: .2s ease;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='10' viewBox='0 0 20 20' width='10' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+}
+
+.controls select:focus {
+  border-color: #999;
+}
+
+@media(max-width: 352px){
+  .AdminPage h1{
+    font-size: 24px;
+  }
+}
+
+@media(max-width: 311px){
+  .AdminPage h1{
+    font-size: 20px;
+  }
+}

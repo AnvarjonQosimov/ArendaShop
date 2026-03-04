@@ -58,7 +58,7 @@ function MySuggestions(props) {
 
   const fetchCards = async () => {
     try {
-      const response = await axios.get("http://localhost:8090/api/post/get");
+      const response = await axios.get("http://localhost:8080/api/post/get");
       setUserCards(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -98,7 +98,7 @@ function MySuggestions(props) {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8090/api/post/delete/${id}`);
+      await axios.delete(`http://localhost:8080/api/post/delete/${id}`);
       setUserCards((prev) => prev.filter((card) => card._id !== id));
     } catch (error) {
       console.log(error);
@@ -119,7 +119,7 @@ function MySuggestions(props) {
   const saveEdit = async () => {
     try {
       await axios.put(
-        `http://localhost:8090/api/post/edit/${editId}`,
+        `http://localhost:8080/api/post/edit/${editId}`,
         editData,
       );
 
@@ -226,7 +226,7 @@ function MySuggestions(props) {
       </div>
 
       <div className="cardsAndLoading">
-        {props.isLoading ? (
+        {isLoading ? (
           <div className="rentLoading">
             <Loading />
           </div>
@@ -265,7 +265,7 @@ function MySuggestions(props) {
                         }}
                       >
                         {card.media.map((file, index) => {
-                          const url = `http://localhost:8090/${file}`;
+                          const url = `http://localhost:8080/${file}`;
 
                           return file.endsWith(".mp4") ||
                             file.endsWith(".mov") ||
@@ -322,7 +322,7 @@ function MySuggestions(props) {
 
                       try {
                         await axios.put(
-                          `http://localhost:8090/api/post/view/${card._id}`,
+                          `http://localhost:8080/api/post/view/${card._id}`,
                         );
 
                         setUserCards((prev) =>
@@ -495,7 +495,7 @@ function MySuggestions(props) {
 
               <Zoom key={currentSlide.full || 0}>
                 <img
-                  src={`http://localhost:8090/${
+                  src={`http://localhost:8080/${
                     fullCard.media[currentSlide.full || 0]
                   }`}
                   className="topSliderImage fade-image"
@@ -526,7 +526,7 @@ function MySuggestions(props) {
                 {fullCard.media.map((img, index) => (
                   <img
                     key={index}
-                    src={`http://localhost:8090/${img}`}
+                    src={`http://localhost:8080/${img}`}
                     className={`thumb ${
                       index === (currentSlide.full || 0) ? "thumbActive" : ""
                     }`}

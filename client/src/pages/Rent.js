@@ -58,7 +58,7 @@ function Rent(props) {
 
   const fetchCards = async () => {
     try {
-      const response = await axios.get("http://localhost:8090/api/post/get");
+      const response = await axios.get("http://localhost:8080/api/post/get");
       setUserCards(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -102,7 +102,7 @@ function Rent(props) {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8090/api/post/delete/${id}`);
+      await axios.delete(`http://localhost:8080/api/post/delete/${id}`);
       setUserCards((prev) => prev.filter((card) => card._id !== id));
     } catch (error) {
       console.log(error);
@@ -123,7 +123,7 @@ function Rent(props) {
   const saveEdit = async () => {
     try {
       await axios.put(
-        `http://localhost:8090/api/post/edit/${editId}`,
+        `http://localhost:8080/api/post/edit/${editId}`,
         editData,
       );
 
@@ -213,13 +213,6 @@ function Rent(props) {
             </button>
 
             <button
-              className={sortType === "cheap" ? "active" : ""}
-              onClick={() => setSortType("cheap")}
-            >
-              {t("cheapest")}
-            </button>
-
-            <button
               className={sortType === "popular" ? "active" : ""}
               onClick={() => setSortType("popular")}
             >
@@ -231,13 +224,13 @@ function Rent(props) {
 
       <div className="aiHelper">
         <script
-          src="https://bot.jaicp.com/chatwidget/NTswTJbU:f28c384cf327dbeaaf2675baf3189064c446ac80/justwidget.js"
+          src="https://bot.jaicp.com/chatwidget/bxRYREsK:f1b087a0c5feb7efd5b06e27219aee2d06e82173/justwidget.js"
           async
         ></script>
       </div>
 
       <div className="cardsAndLoading">
-        {props.isLoading ? (
+        {isLoading ? (
           <div className="rentLoading">
             <Loading />
           </div>
@@ -276,7 +269,7 @@ function Rent(props) {
                         }}
                       >
                         {card.media.map((file, index) => {
-                          const url = `http://localhost:8090/${file}`;
+                          const url = `http://localhost:8080/${file}`;
 
                           return file.endsWith(".mp4") ||
                             file.endsWith(".mov") ||
@@ -333,7 +326,7 @@ function Rent(props) {
 
                       try {
                         await axios.put(
-                          `http://localhost:8090/api/post/view/${card._id}`,
+                          `http://localhost:8080/api/post/view/${card._id}`,
                         );
 
                         setUserCards((prev) =>
@@ -363,9 +356,7 @@ function Rent(props) {
 
                 <div className="rentcardline"></div>
 
-                <h4 className="phoneNum">
-                  {t("phonenumber")}: +998 (90) 996-51-02
-                </h4>
+                <h4 className="phoneNum">{t("phonenumber")}: {card.phoneNumber}</h4>
 
                 <div className="rentcardline"></div>
 
@@ -379,9 +370,11 @@ function Rent(props) {
                     />
                   </i>
 
-                  <button className="editBtn" onClick={() => handleEdit(card)}>
+                  {currentUser === adminEmailMain && (
+                    <button className="editBtn" onClick={() => handleEdit(card)}>
                     {t("editBtn")}
                   </button>
+                  )}
 
                   {currentUser === adminEmailMain && (
                     <button
@@ -506,7 +499,7 @@ function Rent(props) {
 
               <Zoom key={currentSlide.full || 0}>
                 <img
-                  src={`http://localhost:8090/${
+                  src={`http://localhost:8080/${
                     fullCard.media[currentSlide.full || 0]
                   }`}
                   className="topSliderImage fade-image"
@@ -537,7 +530,7 @@ function Rent(props) {
                 {fullCard.media.map((img, index) => (
                   <img
                     key={index}
-                    src={`http://localhost:8090/${img}`}
+                    src={`http://localhost:8080/${img}`}
                     className={`thumb ${
                       index === (currentSlide.full || 0) ? "thumbActive" : ""
                     }`}
@@ -645,13 +638,6 @@ function Rent(props) {
                 onClick={() => setSortType("new")}
               >
                 {t("newest")}
-              </button>
-
-              <button
-                className={sortType === "cheap" ? "active" : ""}
-                onClick={() => setSortType("cheap")}
-              >
-                {t("cheapest")}
               </button>
 
               <button
