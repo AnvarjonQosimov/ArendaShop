@@ -2,7 +2,7 @@ import "../styles/MySuggestions.css";
 import { useTranslation } from "react-i18next";
 import { CiHeart } from "react-icons/ci";
 import { FaTrash } from "react-icons/fa";
-import Firebase from "../Firebase/Firebase.js";
+import Firebase, { auth, db } from "../Firebase/Firebase.js";
 import Loading from "../components/Loading.js";
 import { TbRuler, TbRuler2Off } from "react-icons/tb";
 import { v4 as uuid } from "uuid";
@@ -12,8 +12,12 @@ import { IoMdHeart } from "react-icons/io";
 import axios from "axios";
 import "react-medium-image-zoom/dist/styles.css";
 import Zoom from "react-medium-image-zoom";
+import { onAuthStateChanged } from "firebase/auth";
+import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 
 function MySuggestions(props) {
+  const [user, setUser] = useState(null);
+  const [isUser, setIsUser] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isHeartClicked, setIsHeartClicked] = useState(false);
   const [isClickedHeart, setIsClickedHeart] = useState(true);
@@ -24,12 +28,40 @@ function MySuggestions(props) {
   const adminEmailMain = "anvarqosimov153@gmail.com";
   const [currentUser, setCurrentUser] = useState(null);
 
+  // useEffect(() => {
+  //   const authUser = localStorage.getItem("userEmail");
+  //   if (authUser) {
+  //     setCurrentUser(authUser);
+  //   }
+  // }, []);
+
   useEffect(() => {
-    const authUser = localStorage.getItem("userEmail");
-    if (authUser) {
-      setCurrentUser(authUser);
+  const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+    if (firebaseUser) {
+      localStorage.setItem("userEmail", firebaseUser.email);
+
+      setUser({
+        email: firebaseUser.email,
+        displayName: firebaseUser.displayName,
+        photoURL: firebaseUser.photoURL,
+        uid: firebaseUser.uid,
+      });
+
+      setCurrentUser(firebaseUser);
+      setIsUser(true);
+
+    } else {
+      localStorage.removeItem("userEmail");
+      setUser(null);
+      setCurrentUser(null);
+      setIsUser(false);
     }
-  }, []);
+  });
+
+  return () => unsubscribe();
+}, []);
+
+
 
   useEffect(() => {
     localStorage.setItem("rentDarkMode", darkMode);
@@ -56,9 +88,16 @@ function MySuggestions(props) {
 
   const { likedIds, toggleLike } = useContext(LikeContext);
 
-  const fetchCards = async () => {
+  const fetchCards = async (ownerId, email) => {
     try {
-      const response = await axios.get("http://localhost:8080/api/post/get");
+      // server can filter using ownerId or email, pass what we have
+      const params = {};
+      if (ownerId) params.ownerId = ownerId;
+      if (email) params.userEmail = email;
+
+      const response = await axios.get("http://localhost:8080/api/post/get", {
+        params,
+      });
       setUserCards(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -68,28 +107,36 @@ function MySuggestions(props) {
   };
 
   useEffect(() => {
-    fetchCards();
-  }, []);
+    // once we know the authenticated user, fetch their own cards
+    if (user) {
+      setIsLoading(true);
+      fetchCards(user.uid, user.email);
+    }
+  }, [user]);
 
   const { t } = useTranslation();
 
-  const filteredCards = userCards
-    .filter((card) => card.userEmail === currentUser)
-    .filter((card) => {
-      const matchesSearch =
-        card.initInformation?.toLowerCase().includes(search.toLowerCase()) ||
-        card.additInformation?.toLowerCase().includes(search.toLowerCase());
+  const filteredCards = user
+    ? userCards
+        // server already returned only this user's posts; still apply client-side filters
+        .filter((card) => {
+          const matchesSearch =
+            card.initInformation
+              ?.toLowerCase()
+              .includes(search.toLowerCase()) ||
+            card.additInformation?.toLowerCase().includes(search.toLowerCase());
 
-      const matchesMin = minPrice ? card.price >= Number(minPrice) : true;
-      const matchesMax = maxPrice ? card.price <= Number(maxPrice) : true;
+          const matchesMin = minPrice ? card.price >= Number(minPrice) : true;
+          const matchesMax = maxPrice ? card.price <= Number(maxPrice) : true;
 
-      return matchesSearch && matchesMin && matchesMax;
-    })
-    .sort((a, b) => {
-      if (sortType === "cheap") return a.price - b.price;
-      if (sortType === "popular") return (b.views || 0) - (a.views || 0);
-      return new Date(b.createdAt) - new Date(a.createdAt);
-    });
+          return matchesSearch && matchesMin && matchesMax;
+        })
+        .sort((a, b) => {
+          if (sortType === "cheap") return a.price - b.price;
+          if (sortType === "popular") return (b.views || 0) - (a.views || 0);
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        })
+    : [];
 
   const heartClicked = () => {
     setIsClickedHeart((prev) => !prev);
@@ -522,7 +569,7 @@ function MySuggestions(props) {
             </div>
 
             {fullCard.media.length > 1 && (
-              <div className="thumbnailRow">
+              <div>
                 {fullCard.media.map((img, index) => (
                   <img
                     key={index}
@@ -628,7 +675,7 @@ function MySuggestions(props) {
               onChange={(e) => setMaxPrice(e.target.value)}
             />
 
-            <div className="sortButtons modalSort">
+            <div className="sortButtons">
               <button
                 className={sortType === "new" ? "active" : ""}
                 onClick={() => setSortType("new")}

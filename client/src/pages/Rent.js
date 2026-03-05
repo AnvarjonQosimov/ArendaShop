@@ -213,6 +213,13 @@ function Rent(props) {
             </button>
 
             <button
+              className={sortType === "cheap" ? "active" : ""}
+              onClick={() => setSortType("cheap")}
+            >
+              {t("cheapest")}
+            </button>
+
+            <button
               className={sortType === "popular" ? "active" : ""}
               onClick={() => setSortType("popular")}
             >
@@ -639,6 +646,13 @@ function Rent(props) {
               >
                 {t("newest")}
               </button>
+
+              <button
+              className={sortType === "cheap" ? "active" : ""}
+              onClick={() => setSortType("cheap")}
+            >
+              {t("cheapest")}
+            </button>
 
               <button
                 className={sortType === "popular" ? "active" : ""}

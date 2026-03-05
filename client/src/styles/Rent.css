@@ -1341,6 +1341,12 @@ h3 span {
   animation: fadeIn 0.3s ease;
 }
 
+.filterModalContent input{
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
 .closeFilterBtn {
   padding: 10px;
   border-radius: 10px;

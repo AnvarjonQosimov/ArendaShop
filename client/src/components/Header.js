@@ -154,7 +154,7 @@ function Header() {
           {t("rent")}
         </NavLink>
 
-        <NavLink to="/rent" onClick={() => setBurgerOpen(false)} className="menu-link">
+        <NavLink to="/mysuggestions" onClick={() => setBurgerOpen(false)} className="menu-link">
           {t("meningtakliflarim")}
         </NavLink>
 

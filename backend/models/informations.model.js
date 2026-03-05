@@ -4,6 +4,8 @@ const { MAX } = require('uuid')
 
 const Informations = new Schema({
     ownerId: { type: String, required: true },
+    // store email coming from Firebase for easier lookups
+    userEmail: { type: String, required: false },
     media: [{type: String, required: true}],
     initInformation: {type: String, required: true},
     additInformation: {type: String, required: true},

@@ -7,28 +7,35 @@ class PostService {
     return posts;
   }
 
- async createPost(post, files) {
-  let mediaArray = [];
+  async createPost(post, files) {
+    let mediaArray = [];
 
-  if (files?.media) {
-    const mediaFiles = Array.isArray(files.media)
-      ? files.media
-      : [files.media];
+    if (files?.media) {
+      const mediaFiles = Array.isArray(files.media)
+        ? files.media
+        : [files.media];
 
-    mediaFiles.forEach((file) => {
-      const savedName = fileService.save(file);
-      mediaArray.push(savedName);
+      mediaFiles.forEach((file) => {
+        const savedName = fileService.save(file);
+        mediaArray.push(savedName);
+      });
+    }
+
+    const newPost = await Informations.create({
+      initInformation: post.initInformation,
+      additInformation: post.additInformation,
+      price: post.price,
+      phoneNumber: post.phoneNumber,
+      media: mediaArray,
+
+      ownerId: post.ownerId,
+      userEmail: post.userEmail,
+
+      createdAt: new Date(),
     });
+
+    return newPost;
   }
-
-  const newPost = await Informations.create({
-    ownerId: post.ownerId,
-    ...post,
-    media: mediaArray
-  });
-
-  return newPost;
-}
 
   async delete(id) {
     const post = await Informations.findByIdAndDelete(id);
