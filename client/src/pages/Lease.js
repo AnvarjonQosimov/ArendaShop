@@ -43,11 +43,42 @@ function Lease() {
   };
 
   const addData = async (e) => {
+    e.preventDefault();
+
+    if (!files.length) {
+      alert("Добавьте хотя бы одно изображение или видео");
+      return;
+    }
+
+    if (!initalInformation.trim()) {
+      alert("Введите начальную информацию");
+      return;
+    }
+
+    if (!additionalInformation.trim()) {
+      alert("Введите описание");
+      return;
+    }
+
+    if (!price) {
+      alert("Введите цену");
+      return;
+    }
+
+    if (!phoneNumberInPanel) {
+      alert("Введите номер телефона");
+      return;
+    }
+
     if (initalInformation.length > 21) {
       alert("Initial information не может быть больше 21 букв");
       return;
     }
-    e.preventDefault();
+
+    if (initalInformation.length > 21) {
+      alert("Initial information не может быть больше 21 букв");
+      return;
+    }
 
     const wordCount = additionalInformation.trim().split(/\s+/).length;
     if (wordCount < 30) {
@@ -141,6 +172,27 @@ function Lease() {
     return () => unsubscribe();
   }, []);
 
+  const isFormValid =
+    files.length > 0 &&
+    initalInformation.trim() &&
+    additionalInformation.trim() &&
+    price &&
+    phoneNumberInPanel;
+
+  const handleKeyDown = (e) => {
+    if (e.target.tagName === "TEXTAREA" && e.key === "Enter") {
+      e.preventDefault();
+      return;
+    }
+
+    if (e.key === "Enter") {
+      if (!isFormValid) {
+        e.preventDefault();
+        alert("Пожалуйста заполните все поля и добавьте медиа.");
+      }
+    }
+  };
+
   return (
     <div className="Lease">
       <div className="Lease">
@@ -155,7 +207,7 @@ function Lease() {
             </div>
           ) : (
             <div>
-              <form onSubmit={(e) => addData(e)}>
+              <form onSubmit={addData} onKeyDown={handleKeyDown}>
                 <div className="media-upload-container">
                   <input
                     ref={mediaInputRef}
@@ -218,7 +270,7 @@ function Lease() {
                   <input
                     type="text"
                     value={initalInformation}
-                    maxle={25}
+                    maxLength={25}
                     className="input-field"
                     placeholder=" "
                     onChange={handleInitialChange}
@@ -232,7 +284,7 @@ function Lease() {
                 </div>
 
                 <div className="input-container">
-                  <input
+                  <textarea
                     type="text"
                     value={additionalInformation}
                     className="input-field"
@@ -265,8 +317,14 @@ function Lease() {
                 <div className="container phone-custom">
                   <PhoneInput
                     country={"uz"}
+                    onlyCountries={["uz"]}
+                    disableDropdown={true}
+                    countryCodeEditable={false}
                     value={phoneNumberInPanel}
-                    onChange={(phone) => setPhoneNumberInPanel(phone)}
+                    onChange={(phone) => {
+                      if (!phone.startsWith("998")) return;
+                      setPhoneNumberInPanel(phone);
+                    }}
                     inputProps={{
                       name: "phone",
                       required: true,
@@ -275,7 +333,9 @@ function Lease() {
                   />
                 </div>
 
-                  <button type="submit">{t("savebtn")}</button>
+                <button type="submit" disabled={!isFormValid}>
+                  {t("savebtn")}
+                </button>
               </form>
             </div>
           )}

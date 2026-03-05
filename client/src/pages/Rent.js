@@ -120,7 +120,18 @@ function Rent(props) {
     setIsEditOpen(true);
   };
 
+  const countWords = (text) => {
+    return text.trim().split(/\s+/).filter(Boolean).length;
+  };
+
   const saveEdit = async () => {
+    const words = countWords(editData.additInformation);
+
+    if (words < 30) {
+      alert("Additional information must contain at least 30 words");
+      return;
+    }
+
     try {
       await axios.put(
         `http://localhost:8080/api/post/edit/${editId}`,
@@ -348,8 +359,8 @@ function Rent(props) {
                       }
                     }}
                   >
-                    {card.additInformation.length > 43
-                      ? card.additInformation.slice(0, 43) + "..."
+                    {card.additInformation.length > 55
+                      ? card.additInformation.slice(0, 55) + "..."
                       : card.additInformation}
                   </h2>
                 </div>
@@ -364,7 +375,7 @@ function Rent(props) {
                 <div className="rentcardline"></div>
 
                 <h4 className="phoneNum">
-                  {t("phonenumber")}: {card.phoneNumber}
+                  {t("phonenumber")}: +{card.phoneNumber}
                 </h4>
 
                 <div className="rentcardline"></div>
@@ -411,16 +422,20 @@ function Rent(props) {
             <label>{t("title")}</label>
             <input
               value={editData.initInformation}
-              onChange={(e) =>
+              maxLength={21}
+              onChange={(e) => {
+                const value = e.target.value.slice(0, 21);
+
                 setEditData({
                   ...editData,
-                  initInformation: e.target.value,
-                })
-              }
+                  initInformation: value,
+                });
+              }}
             />
 
             <label>{t("description")}</label>
-            <input
+            <textarea
+              className="additionalInput"
               value={editData.additInformation}
               onChange={(e) =>
                 setEditData({
@@ -443,10 +458,17 @@ function Rent(props) {
 
             <label>{t("phone")}</label>
             <input
-              value={editData.phoneNumber}
+              value={`+998${editData.phoneNumber.replace(/^998/, "")}`}
               onChange={(e) => {
                 let value = e.target.value.replace(/\D/g, "");
-                if (value.length > 12) value = value.slice(0, 12);
+
+                if (!value.startsWith("998")) {
+                  value = "998";
+                }
+
+                if (value.length > 12) {
+                  value = value.slice(0, 12);
+                }
 
                 setEditData({
                   ...editData,
