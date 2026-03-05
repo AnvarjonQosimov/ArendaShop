@@ -231,7 +231,7 @@ function Rent(props) {
 
       <div className="aiHelper">
         <script
-          src="https://bot.jaicp.com/chatwidget/bxRYREsK:f1b087a0c5feb7efd5b06e27219aee2d06e82173/justwidget.js"
+          src="https://bot.jaicp.com/chatwidget/NTswTJbU:f28c384cf327dbeaaf2675baf3189064c446ac80/justwidget.js"
           async
         ></script>
       </div>
@@ -363,7 +363,9 @@ function Rent(props) {
 
                 <div className="rentcardline"></div>
 
-                <h4 className="phoneNum">{t("phonenumber")}: {card.phoneNumber}</h4>
+                <h4 className="phoneNum">
+                  {t("phonenumber")}: {card.phoneNumber}
+                </h4>
 
                 <div className="rentcardline"></div>
 
@@ -378,9 +380,12 @@ function Rent(props) {
                   </i>
 
                   {currentUser === adminEmailMain && (
-                    <button className="editBtn" onClick={() => handleEdit(card)}>
-                    {t("editBtn")}
-                  </button>
+                    <button
+                      className="editBtn"
+                      onClick={() => handleEdit(card)}
+                    >
+                      {t("editBtn")}
+                    </button>
                   )}
 
                   {currentUser === adminEmailMain && (
@@ -648,11 +653,11 @@ function Rent(props) {
               </button>
 
               <button
-              className={sortType === "cheap" ? "active" : ""}
-              onClick={() => setSortType("cheap")}
-            >
-              {t("cheapest")}
-            </button>
+                className={sortType === "cheap" ? "active" : ""}
+                onClick={() => setSortType("cheap")}
+              >
+                {t("cheapest")}
+              </button>
 
               <button
                 className={sortType === "popular" ? "active" : ""}
