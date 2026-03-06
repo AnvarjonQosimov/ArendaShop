@@ -157,7 +157,7 @@ function AdminPage() {
           borderRadius: "8px",
           border: "none",
           cursor: "pointer",
-          background: darkMode ? "#101b3f" : "#949bd7",
+          // background: darkMode ? "#101b3f" : "#949bd7",
           position: "absolute",
           top: "100px",
           right: "20px",
