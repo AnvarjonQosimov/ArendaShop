@@ -526,6 +526,11 @@
     .burger-wrapper span{
         height: 2px;
     }
+
+    .burger{
+        width: 28px;
+        height: 22px;
+    }
 }
 
 @media(max-width: 480px){
@@ -570,6 +575,14 @@
     .burger-wrapper{
         display: block;
         margin-left: -30px;
+    }
+
+    .burger-dropdown{
+        width: 180px;
+    }
+
+    .burger-dropdown .menu-link{
+        font-size: 14px;
     }
 }
 

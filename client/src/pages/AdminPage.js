@@ -27,6 +27,7 @@ function AdminPage() {
   const [selectedPost, setSelectedPost] = useState(null);
   const [viewsData, setViewsData] = useState([]);
   const [timeRange, setTimeRange] = useState("3m");
+  const [darkMode, setDarkMode] = useState(false);
 
   const generateViewsStats = () => {
     const map = {};
@@ -34,6 +35,7 @@ function AdminPage() {
     const now = new Date();
     let startDate = new Date();
 
+    if (timeRange === "1d") startDate.setDate(now.getDate() - 1);
     if (timeRange === "7d") startDate.setDate(now.getDate() - 7);
     if (timeRange === "30d") startDate.setDate(now.getDate() - 30);
     if (timeRange === "3m") startDate.setMonth(now.getMonth() - 3);
@@ -102,16 +104,16 @@ function AdminPage() {
     generateViewsStats();
   }, [posts, timeRange]);
 
-  const deletePost = async (id) => {
-    try {
-      await axios.delete(`http://localhost:8080/api/post/delete/${id}`);
+  // const deletePost = async (id) => {
+  //   try {
+  //     await axios.delete(`http://localhost:8080/api/post/delete/${id}`);
 
-      setPosts(posts.filter((post) => post._id !== id));
-      setSelectedPost(null);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     setPosts(posts.filter((post) => post._id !== id));
+  //     setSelectedPost(null);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const getOwner = (ownerId) => {
     const user = users.find((u) => u.uid === ownerId);
@@ -143,8 +145,26 @@ function AdminPage() {
   }
 
   return (
-    <div className="AdminPage">
+    <div className={`AdminPage ${darkMode ? "dark" : ""}`}>
       <h1>Admin Panel</h1>
+
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="darkmode"
+        style={{
+          marginBottom: "20px",
+          padding: "10px 16px",
+          borderRadius: "8px",
+          border: "none",
+          cursor: "pointer",
+          background: darkMode ? "#101b3f" : "#949bd7",
+          position: "absolute",
+          top: "100px",
+          right: "20px",
+        }}
+      >
+        {darkMode ? "☀️" : "🌙"}
+      </button>
 
       <div className="stats">
         <div className="statBox">
@@ -191,18 +211,33 @@ function AdminPage() {
             >
               Last 7 days
             </button>
+
+            <button
+              className={timeRange === "1d" ? "active" : ""}
+              onClick={() => setTimeRange("1d")}
+            >
+              Last 1 day
+            </button>
           </div>
         </div>
 
         <div className="chartBox">
           {/* <pre>{JSON.stringify(viewsData, null, 2)}</pre> */}
-          <ResponsiveContainer width="100%" height={300}>
-            <AreaChart data={viewsData}>
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart
+              data={viewsData}
+              margin={{
+                top: 10,
+                right: 10,
+                left: -10,
+                bottom: 0,
+              }}
+            >
               <CartesianGrid strokeDasharray="3 3" />
 
-              <XAxis dataKey="date" />
+              <XAxis dataKey="date" tick={{ fontSize: 12 }} />
 
-              <YAxis />
+              <YAxis tick={{ fontSize: 12 }} />
 
               <Tooltip
                 contentStyle={{
@@ -214,9 +249,10 @@ function AdminPage() {
               />
 
               <Area
+                className="chartArea"
                 type="monotone"
                 dataKey="views"
-                stroke="#ffffff"
+                stroke="#4f6fe4"
                 fill="url(#colorViews)"
                 strokeWidth={2}
               />
@@ -283,13 +319,6 @@ function AdminPage() {
             </p>
 
             <div className="modalButtons">
-              <button
-                className="deleteBtn"
-                onClick={() => deletePost(selectedPost._id)}
-              >
-                Delete
-              </button>
-
               <button
                 className="closeBtn"
                 onClick={() => setSelectedPost(null)}

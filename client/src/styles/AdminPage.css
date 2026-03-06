@@ -1,5 +1,5 @@
 .AdminPage {
-  padding: 60px;
+  padding: 30px;
   background: linear-gradient(135deg,#f0f4ff,#f9f9f9);
   min-height: 100vh;
   font-family: "Helvetica Neue",Arial,sans-serif;
@@ -158,6 +158,7 @@
 .modalContent h2 {
   margin-bottom: 20px;
   font-weight: 600;
+  color: #8c8c8c;
 }
 
 .modalContent p {
@@ -240,70 +241,361 @@
 }
 
 .analytics{
-margin:70px 0;
-background:#111;
-/* background:#2a2929; */
-border-radius:20px;
-padding:35px;
-color:white;
-box-shadow:0 15px 40px rgba(0,0,0,0.25);
+  width: 100%;
+  margin:70px 0;
+  background:#fff;
+  border-radius:18px;
+  padding:35px;
+  color:#111;
+  box-shadow:0 10px 30px rgba(0,0,0,0.07);
+  transition:.25s ease;
 }
 
-.chartBox{
-width:100%;
-height:320px;
-margin-top:20px;  
+.analytics:hover{
+  background:#fff;
+  box-shadow: 0 0 20px #c0c3e3;
 }
 
 .analyticsHeader{
-margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:20px;
+  margin-bottom:20px;
 }
 
 .analyticsHeader h2{
-font-size:20px;
-margin-bottom:4px;
+  font-size:20px;
+  font-weight:600;
 }
 
 .analyticsHeader p{
-font-size:13px;
-opacity:.6;
+  font-size:13px;
+  color:#777;
 }
 
 .chartBox{
-width:100%;
-height:300px;
-}
-
-.analyticsHeader{
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-gap:20px;
+  width:100%;
+  height:320px;
+  margin-top:20px;
 }
 
 .timeFilter{
-display:flex;
-background:#1c1c1c;
-border-radius:12px;
-overflow:hidden;
+  display:flex;
+  background:#f3f3f3;
+  border-radius:10px;
+  overflow:hidden;
 }
 
 .timeFilter button{
-border:none;
-padding:10px 18px;
-background:transparent;
-color:#aaa;
-cursor:pointer;
-font-size:14px;
-transition:.2s;
+  border:none;
+  padding:10px 18px;
+  background:transparent;
+  color:#666;
+  cursor:pointer;
+  font-size:14px;
+  transition:.2s;
 }
 
 .timeFilter button:hover{
-color:white;
+  background:#eaeaea;
+  color:#111;
 }
 
 .timeFilter button.active{
-background:#2a2a2a;
-color:white;
+  background:#111;
+  color:#fff;
+}
+
+.AdminPage.dark{
+  background:#0f0f14;
+  color:#fff;
+}
+
+.AdminPage.dark h1{
+  color:#fff;
+}
+
+.AdminPage.dark .statBox{
+  background:#1c1c24;
+  color:#fff;
+  box-shadow:0 5px 20px rgba(0,0,0,0.4);
+}
+
+.AdminPage.dark .statBox p{
+  color:#fff;
+}
+
+.AdminPage.dark .adminCard{
+  background:#1c1c24;
+  color:#fff;
+}
+
+.AdminPage.dark .adminCard h3{
+  color:#a2a2a2;
+}
+
+.AdminPage.dark .analytics{
+  background:#1c1c24;
+  color:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.AdminPage.dark .timeFilter{
+  background:#2a2a34;
+}
+
+.AdminPage.dark .timeFilter button{
+  color:#bbb;
+}
+
+.AdminPage.dark .timeFilter button.active{
+  background:#4f6fe4;
+  color:white;
+}
+
+.AdminPage.dark input{
+  background:#1c1c24;
+  color:#fff;
+}
+
+.AdminPage.dark input:hover{
+  box-shadow: 0 0 10px #4f6fe4;
+}
+
+.AdminPage.dark select{
+  background:#1c1c24;
+  color:#fff;
+}
+
+@media (max-width: 530px){
+
+  .analytics{
+    padding:20px;
+    border-radius:14px;
+  }
+
+  .analyticsHeader{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .analyticsHeader h2{
+    font-size:16px;
+  }
+
+  .analyticsHeader p{
+    font-size:12px;
+  }
+
+  .timeFilter{
+    width:100%;
+    flex-wrap:wrap;
+  }
+
+  .timeFilter button{
+    flex:1;
+    padding:8px 10px;
+    font-size:12px;
+  }
+
+  .chartBox{
+    height:220px;
+  }
+
+}
+
+@media (max-width: 415px){
+
+  .analytics{
+    padding:18px;
+    border-radius:12px;
+    margin:50px 0;
+  }
+
+  .analyticsHeader{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .analyticsHeader h2{
+    font-size:15px;
+  }
+
+  .analyticsHeader p{
+    font-size:12px;
+  }
+
+  .chartBox{
+    height:200px;
+  }
+
+  .timeFilter{
+    flex-wrap:wrap;
+    width:100%;
+  }
+
+  .timeFilter button{
+    flex:1 1 50%;
+    font-size:12px;
+    padding:8px;
+  }
+
+}
+
+@media (max-width: 380px){
+
+  .analytics{
+    padding:16px;
+    border-radius:12px;
+    margin:45px 0;
+  }
+
+  .analyticsHeader h2{
+    font-size:14px;
+  }
+
+  .analyticsHeader p{
+    font-size:11px;
+  }
+
+  .chartBox{
+    height:190px;
+  }
+
+  .timeFilter{
+    flex-direction:column;
+    width:100%;
+  }
+
+  .timeFilter button{
+    width:100%;
+    padding:7px;
+    font-size:11px;
+  }
+
+  .cardsList{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media (max-width: 315px){
+
+  .analytics{
+    padding:15px;
+    border-radius:12px;
+    margin:40px 0;
+  }
+
+  .analyticsHeader h2{
+    font-size:14px;
+  }
+
+  .analyticsHeader p{
+    font-size:11px;
+  }
+
+  .chartBox{
+    height:180px;
+  }
+
+  .timeFilter{
+    flex-direction:column;
+    width:100%;
+  }
+
+  .timeFilter button{
+    width:100%;
+    padding:7px;
+    font-size:11px;
+  }
+
+  .cardsList{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media (max-width:310px){
+  .cardsList{
+    grid-template-columns:1fr;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modalContent {
+  background: #fff;
+  padding: 40px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 15px 50px rgba(0,0,0,.2);
+  animation: fadeIn .2s ease;
+}
+
+@media (max-width:380px){
+
+  .modalOverlay{
+    padding:12px;
+  }
+
+  .modalContent{
+    padding:20px;
+  }
+
+  .modalContent h2{
+    font-size:16px;
+  }
+
+  .modalContent p{
+    font-size:13px;
+  }
+
+  .darkmode{
+    padding: 7px 10px !important;
+  }
+
+}
+
+@media (max-width:315px){
+
+  .modalContent{
+    padding:16px;
+    border-radius:12px;
+  }
+
+  .modalContent h2{
+    font-size:15px;
+  }
+
+  .modalButtons{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .modalButtons button{
+    width:100%;
+  }
+
+  .darkmode{
+    padding: 5px 7px !important;
+  }
+
 }

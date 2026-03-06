@@ -240,12 +240,12 @@ function Rent(props) {
         </div>
       </div>
 
-      <div className="aiHelper">
+      {/* <div className="aiHelper">
         <script
           src="https://bot.jaicp.com/chatwidget/NTswTJbU:f28c384cf327dbeaaf2675baf3189064c446ac80/justwidget.js"
           async
         ></script>
-      </div>
+      </div> */}
 
       <div className="cardsAndLoading">
         {isLoading ? (
@@ -257,7 +257,7 @@ function Rent(props) {
             {filteredCards.map((card) => (
               <div className="card" key={card._id}>
                 <div className="rentVideo">
-                  {card.media && card.media.length > 0 && (
+                  { card.media && card.media.length > 0 && (
                     <div className="sliderContainer">
                       {card.media.length > 1 && (
                         <button
