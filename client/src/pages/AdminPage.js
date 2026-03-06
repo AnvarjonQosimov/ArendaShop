@@ -2,72 +2,135 @@ import "../styles/AdminPage.css";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db, auth } from "../Firebase/Firebase";
-import axios from "axios";
 import { onAuthStateChanged } from "firebase/auth";
-import { useTranslation } from "react-i18next";
+import axios from "axios";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+  AreaChart,
+  Area,
+} from "recharts";
 
 function AdminPage() {
-    const { t } = useTranslation();
+  const adminEmail = "anvarqosimov153@gmail.com";
 
-  const [usersCount, setUsersCount] = useState(0);
-  const [cards, setCards] = useState([]);
-  const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
-  const [sortType, setSortType] = useState("newest");
-  const [search, setSearch] = useState("");
-  const adminEmail = "oltinnisbatarch@gmail.com";
   const [users, setUsers] = useState([]);
-  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [posts, setPosts] = useState([]);
+  const [search, setSearch] = useState("");
+  const [sortType, setSortType] = useState("newest");
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [viewsData, setViewsData] = useState([]);
+  const [timeRange, setTimeRange] = useState("3m");
+
+  const generateViewsStats = () => {
+    const map = {};
+
+    const now = new Date();
+    let startDate = new Date();
+
+    if (timeRange === "7d") startDate.setDate(now.getDate() - 7);
+    if (timeRange === "30d") startDate.setDate(now.getDate() - 30);
+    if (timeRange === "3m") startDate.setMonth(now.getMonth() - 3);
+
+    posts.forEach((post) => {
+      if (!post.createdAt) return;
+
+      const date = new Date(post.createdAt);
+
+      if (isNaN(date)) return;
+
+      if (date < startDate) return;
+
+      const formatted = date.toISOString().split("T")[0];
+
+      if (!map[formatted]) map[formatted] = 0;
+
+      map[formatted] += post.views || 0;
+    });
+
+    const result = Object.keys(map)
+      .map((date) => ({
+        date,
+        views: map[date],
+      }))
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    setViewsData(result);
+  };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
     });
-  }, []);
-  useEffect(() => {
-    fetchUsers();
-    fetchCards();
+
+    return () => unsubscribe();
   }, []);
 
-  const fetchUsers = async () => {
-    const querySnapshot = await getDocs(collection(db, "users"));
-    const usersData = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
+  const loadUsers = async () => {
+    const snapshot = await getDocs(collection(db, "users"));
+
+    const data = snapshot.docs.map((doc) => ({
+      uid: doc.id,
       ...doc.data(),
     }));
-    setUsers(usersData);
-    setUsersCount(usersData.length);
+
+    setUsers(data);
   };
 
-  const fetchCards = async () => {
+  const loadPosts = async () => {
     try {
       const res = await axios.get("http://localhost:8080/api/post/get");
-      setCards(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const deleteCard = async (id) => {
-    try {
-      await axios.delete(`http://localhost:8080/api/post/delete/${id}`);
-      setCards(cards.filter((card) => card._id !== id));
-      setSelectedCard(null);
+      setPosts(res.data);
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const sortedCards = [...cards]
-    .filter((card) =>
-      card.initInformation.toLowerCase().includes(search.toLowerCase()),
+  useEffect(() => {
+    loadUsers();
+    loadPosts();
+  }, []);
+
+  useEffect(() => {
+    generateViewsStats();
+  }, [posts, timeRange]);
+
+  const deletePost = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/api/post/delete/${id}`);
+
+      setPosts(posts.filter((post) => post._id !== id));
+      setSelectedPost(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getOwner = (ownerId) => {
+    const user = users.find((u) => u.uid === ownerId);
+    return user ? `${user.name} (${user.email})` : "Unknown";
+  };
+
+  const filteredPosts = [...posts]
+    .filter((p) =>
+      p.initInformation?.toLowerCase().includes(search.toLowerCase()),
     )
     .sort((a, b) => {
       if (sortType === "newest") {
         return new Date(b.createdAt) - new Date(a.createdAt);
       }
+
       if (sortType === "views") {
         return (b.views || 0) - (a.views || 0);
       }
+
       return 0;
     });
 
@@ -79,119 +142,159 @@ function AdminPage() {
     );
   }
 
-  const getOwnerEmail = (ownerId) => {
-    const user = users.find((u) => u.uid === ownerId);
-    return user ? user.email : "Unknown";
-  };
-
-  const handleDelete = async (id) => {
-  await deleteCard(id);
-};
-
   return (
     <div className="AdminPage">
-      <h1>{t("adminpage")}</h1>
+      <h1>Admin Panel</h1>
+
       <div className="stats">
         <div className="statBox">
-          <h2>Users</h2>
-          <p>{usersCount}</p>
+          <h3>Users</h3>
+          <p>{users.length}</p>
         </div>
+
         <div className="statBox">
-          <h2>Cards</h2>
-          <p>{cards.length}</p>
+          <h3>Posts</h3>
+          <p>{posts.length}</p>
         </div>
+
         <div className="statBox">
-          <h2>Views</h2>
-          <p>{cards.reduce((acc, card) => acc + (card.views || 0), 0)}</p>
+          <h3>Total Views</h3>
+          <p>{posts.reduce((acc, post) => acc + (post.views || 0), 0)}</p>
         </div>
       </div>
+
+      <div className="analytics">
+        <div className="analyticsHeader">
+          <div>
+            <h2>Total Visitors</h2>
+            <p>Total for the selected period</p>
+          </div>
+
+          <div className="timeFilter">
+            <button
+              className={timeRange === "3m" ? "active" : ""}
+              onClick={() => setTimeRange("3m")}
+            >
+              Last 3 months
+            </button>
+
+            <button
+              className={timeRange === "30d" ? "active" : ""}
+              onClick={() => setTimeRange("30d")}
+            >
+              Last 30 days
+            </button>
+
+            <button
+              className={timeRange === "7d" ? "active" : ""}
+              onClick={() => setTimeRange("7d")}
+            >
+              Last 7 days
+            </button>
+          </div>
+        </div>
+
+        <div className="chartBox">
+          {/* <pre>{JSON.stringify(viewsData, null, 2)}</pre> */}
+          <ResponsiveContainer width="100%" height={300}>
+            <AreaChart data={viewsData}>
+              <CartesianGrid strokeDasharray="3 3" />
+
+              <XAxis dataKey="date" />
+
+              <YAxis />
+
+              <Tooltip
+                contentStyle={{
+                  background: "#1c1c1c",
+                  border: "none",
+                  borderRadius: "8px",
+                  color: "white",
+                }}
+              />
+
+              <Area
+                type="monotone"
+                dataKey="views"
+                stroke="#ffffff"
+                fill="url(#colorViews)"
+                strokeWidth={2}
+              />
+
+              <defs>
+                <linearGradient id="colorViews" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#ffffff" stopOpacity={0.4} />
+                  <stop offset="95%" stopColor="#ffffff" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
       <div className="controls">
         <input
-          type="text"
-          placeholder="Search..."
+          placeholder="Search post..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <select className="choose" value={sortType} onChange={(e) => setSortType(e.target.value)}>
+
+        <select value={sortType} onChange={(e) => setSortType(e.target.value)}>
           <option value="newest">Newest</option>
-          <option value="views">Most Viewed</option>
+          <option value="views">Most viewed</option>
         </select>
       </div>
+
       <div className="cardsList">
-        {sortedCards.map((card) => (
+        {filteredPosts.map((post) => (
           <div
-            key={card._id}
+            key={post._id}
             className="adminCard"
-            onClick={() => setSelectedCard(card)}
+            onClick={() => setSelectedPost(post)}
           >
-            <h3>{card.initInformation}</h3>
-            <p>{card.additInformation}</p>
-            <span className="views">👁 {card.views || 0}</span>
+            <h3>{post.initInformation}</h3>
+            <p>{post.additInformation}</p>
+
+            <span>👁 {post.views || 0}</span>
           </div>
         ))}
       </div>
-      {selectedCard && (
-        <div className="modalOverlay" onClick={() => setSelectedCard(null)}>
+
+      {selectedPost && (
+        <div className="modalOverlay" onClick={() => setSelectedPost(null)}>
           <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-            <h2>{selectedCard.initInformation}</h2>
-            <p>{selectedCard.additInformation}</p>
+            <h2>{selectedPost.initInformation}</h2>
+
+            <p>{selectedPost.additInformation}</p>
+
             <p>
-              <strong>Owner:</strong> {getOwnerEmail(selectedCard.ownerId)}
+              <b>Owner:</b> {getOwner(selectedPost.ownerId)}
             </p>
+
             <p>
-              <strong>Views:</strong> {selectedCard.views || 0}
+              <b>Views:</b> {selectedPost.views || 0}
             </p>
+
             <p>
-              <strong>Created:</strong>{" "}
-              {selectedCard.createdAt
-                ? new Date(selectedCard.createdAt).toLocaleString()
+              <b>Date:</b>{" "}
+              {selectedPost.createdAt
+                ? new Date(selectedPost.createdAt).toLocaleString()
                 : "Unknown"}
             </p>
+
             <div className="modalButtons">
-              {currentUser === adminEmail && (
-                <button
-                  className="deleteBtn"
-                  onClick={() => setConfirmDeleteId(selectedCard._id)}
-                >
-                  {t("delete")}
-                </button>
-              )}
+              <button
+                className="deleteBtn"
+                onClick={() => deletePost(selectedPost._id)}
+              >
+                Delete
+              </button>
+
               <button
                 className="closeBtn"
-                onClick={() => setSelectedCard(null)}
+                onClick={() => setSelectedPost(null)}
               >
                 Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {confirmDeleteId && (
-        <div
-          className="confirmOverlay"
-          onClick={() => setConfirmDeleteId(null)}
-        >
-          <div className="confirmBox" onClick={(e) => e.stopPropagation()}>
-            <h2>{t("deleteconfirm")}</h2>
-            <p>{t("deleteP")}</p>
-
-            <div className="confirmButtons">
-              <button
-                className="confirmYes"
-                onClick={() => {
-                  handleDelete(confirmDeleteId);
-                  setConfirmDeleteId(null);
-                }}
-              >
-                {t("ha")}
-              </button>
-
-              <button
-                className="confirmNo"
-                onClick={() => setConfirmDeleteId(null)}
-              >
-                {t("yoq")}
               </button>
             </div>
           </div>
@@ -200,4 +303,5 @@ function AdminPage() {
     </div>
   );
 }
+
 export default AdminPage;
