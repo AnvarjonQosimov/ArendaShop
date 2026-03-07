@@ -3,7 +3,7 @@
   background: linear-gradient(135deg,#f0f4ff,#f9f9f9);
   min-height: 100vh;
   font-family: "Helvetica Neue",Arial,sans-serif;
-  padding-top: 120px;
+  padding-top: 140px;
 }
 
 .AdminPage h1 {
@@ -156,6 +156,7 @@
 }
 
 .modalContent h2 {
+  font-size: 25px;
   margin-bottom: 20px;
   font-weight: 600;
   color: #8c8c8c;
@@ -516,8 +517,10 @@
 
   .cardsList{
     grid-template-columns:1fr;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-
 }
 
 @media (max-width:310px){
@@ -597,5 +600,4 @@
   .darkmode{
     padding: 5px 7px !important;
   }
-
 }

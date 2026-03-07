@@ -60,5 +60,19 @@
     "cheapest": "Cheapest",
     "popular": "Popular",
     "sort": "Filter",
-    "adminpage": "Admin Page"
+    "adminpage": "Admin Page",
+    "users": "Users",
+    "posts": "Posts",
+    "totalViews": "Total Views",
+    "totalvisitors": "Total Visitors",
+    "totalForTheSelectedPeriod": "Total for the Selected Period",
+    "last3months": "Last 3 months",
+    "last30days": "Last 30 days",
+    "last7days": "Last 7 days",
+    "last1day": "Last 1 day",
+    "mostViewed": "Most Viewed",
+    "owner": "Owner",
+    "views": "Views",
+    "date": "Date",
+    "accessDenied": "Access Denied"
 }

@@ -15,6 +15,7 @@ import {
   AreaChart,
   Area,
 } from "recharts";
+import { useTranslation } from "react-i18next";
 
 function AdminPage() {
   const adminEmail = "anvarqosimov153@gmail.com";
@@ -136,17 +137,21 @@ function AdminPage() {
       return 0;
     });
 
+    // console.log(posts[0]);
+
+    const { t } = useTranslation();
+
   if (!currentUser || currentUser.email !== adminEmail) {
     return (
       <div className="AdminPage">
-        <h2>Access Denied</h2>
+        <h2>{t("accessDenied")}</h2>
       </div>
     );
   }
 
   return (
     <div className={`AdminPage ${darkMode ? "dark" : ""}`}>
-      <h1>Admin Panel</h1>
+      <h1>{t("adminpage")}</h1>
 
       <button
         onClick={() => setDarkMode(!darkMode)}
@@ -168,17 +173,17 @@ function AdminPage() {
 
       <div className="stats">
         <div className="statBox">
-          <h3>Users</h3>
+          <h3>{t("users")}</h3>
           <p>{users.length}</p>
         </div>
 
         <div className="statBox">
-          <h3>Posts</h3>
+          <h3>{t("posts")}</h3>
           <p>{posts.length}</p>
         </div>
 
         <div className="statBox">
-          <h3>Total Views</h3>
+          <h3>{t("totalViews")}</h3>
           <p>{posts.reduce((acc, post) => acc + (post.views || 0), 0)}</p>
         </div>
       </div>
@@ -186,8 +191,8 @@ function AdminPage() {
       <div className="analytics">
         <div className="analyticsHeader">
           <div>
-            <h2>Total Visitors</h2>
-            <p>Total for the selected period</p>
+            <h2>{t("totalvisitors")}</h2>
+            <p>{t("totalForTheSelectedPeriod")}</p>
           </div>
 
           <div className="timeFilter">
@@ -195,28 +200,28 @@ function AdminPage() {
               className={timeRange === "3m" ? "active" : ""}
               onClick={() => setTimeRange("3m")}
             >
-              Last 3 months
+              {t("last3months")}
             </button>
 
             <button
               className={timeRange === "30d" ? "active" : ""}
               onClick={() => setTimeRange("30d")}
             >
-              Last 30 days
+              {t("last30days")}
             </button>
 
             <button
               className={timeRange === "7d" ? "active" : ""}
               onClick={() => setTimeRange("7d")}
             >
-              Last 7 days
+              {t("last7days")}
             </button>
 
             <button
               className={timeRange === "1d" ? "active" : ""}
               onClick={() => setTimeRange("1d")}
             >
-              Last 1 day
+              {t("last1day")}
             </button>
           </div>
         </div>
@@ -276,8 +281,8 @@ function AdminPage() {
         />
 
         <select value={sortType} onChange={(e) => setSortType(e.target.value)}>
-          <option value="newest">Newest</option>
-          <option value="views">Most viewed</option>
+          <option value="newest">{t("newest")}</option>
+          <option value="views">{t("mostViewed")}</option>
         </select>
       </div>
 
@@ -304,15 +309,15 @@ function AdminPage() {
             <p>{selectedPost.additInformation}</p>
 
             <p>
-              <b>Owner:</b> {getOwner(selectedPost.ownerId)}
+              <b>{t("owner")}:</b> {(selectedPost.ownerId)}
             </p>
 
             <p>
-              <b>Views:</b> {selectedPost.views || 0}
+              <b>{t("views")}:</b> {selectedPost.views || 0}
             </p>
 
             <p>
-              <b>Date:</b>{" "}
+              <b>{t("date")}:</b>{" "}
               {selectedPost.createdAt
                 ? new Date(selectedPost.createdAt).toLocaleString()
                 : "Unknown"}
@@ -323,7 +328,7 @@ function AdminPage() {
                 className="closeBtn"
                 onClick={() => setSelectedPost(null)}
               >
-                Close
+                {t("close")}
               </button>
             </div>
           </div>

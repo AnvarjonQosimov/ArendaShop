@@ -60,5 +60,19 @@
     "cheapest": "Eng arzon",
     "popular": "Popular",
     "sort": "Filtrlash",
-    "adminpage": "Admin sahifasi"
+    "adminpage": "Admin sahifasi",
+    "users": "Foydalanuvchilar",
+    "posts": "Postlar",
+    "totalViews": "Umumiy ko'rishlar",
+    "totalvisitors": "Umumiy tashrif buyuruvchilar",
+    "totalForTheSelectedPeriod": "Tanlangan davr uchun umumiy",
+    "last3months": "So'nggi 3 oy",
+    "last30days": "So'nggi 30 kun",
+    "last7days": "So'nggi 7 kun",
+    "last1day": "So'nggi 1 kun",
+    "mostViewed": "Eng kop ko'rilganlar",
+    "owner": "Foydalanuvchi",
+    "views": "Ko'rishlar",
+    "date": "Sana",
+    "accessDenied": "Kirish rad etildi"
 }

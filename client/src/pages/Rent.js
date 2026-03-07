@@ -72,6 +72,7 @@ function Rent(props) {
   }, []);
 
   const { t } = useTranslation();
+
   const filteredCards = userCards
     .filter((card) => {
       const matchesSearch =
