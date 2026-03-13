@@ -6,13 +6,15 @@ require('dotenv').config()
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: "https://arendashop.uz"
+}))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload())
 app.use(express.static('static'))
 
-const PORT_ENV = process.env.PORT
+const PORT_ENV = process.env.PORT || 8080
 const DB_URL = process.env.MONGODB_URL
 
 // const dns = require('dns')
