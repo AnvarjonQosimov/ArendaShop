@@ -609,7 +609,7 @@
 
 @media(max-width: 340px){
     .submit_btn button{
-        padding: 5px 10px;
+        padding: 5px 13px;
         font-size: 13px;
     }
 }
@@ -622,6 +622,6 @@
 
     .burger-wrapper{
         display: block;
-        margin-left: -25px;
+        margin-left: -35px;
     }
 }
