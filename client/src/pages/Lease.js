@@ -104,7 +104,7 @@ function Lease() {
         formData.append("media", file);
       }
 
-      await axios.post("http://localhost:8080/api/post/create", formData, {
+      await axios.post("https://arendashop.onrender.com/api/post/create", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

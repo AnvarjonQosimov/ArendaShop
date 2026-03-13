@@ -88,7 +88,7 @@ function AdminPage() {
 
   const loadPosts = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/post/get");
+      const res = await axios.get("https://arendashop.onrender.com/api/post/get");
       setPosts(res.data);
       console.log(res.data);
     } catch (err) {
@@ -107,7 +107,7 @@ function AdminPage() {
 
   // const deletePost = async (id) => {
   //   try {
-  //     await axios.delete(`http://localhost:8080/api/post/delete/${id}`);
+  //     await axios.delete(`https://arendashop.onrender.com/api/post/delete/${id}`);
 
   //     setPosts(posts.filter((post) => post._id !== id));
   //     setSelectedPost(null);

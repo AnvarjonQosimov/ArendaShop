@@ -92,7 +92,7 @@ function MySuggestions(props) {
       if (ownerId) params.ownerId = ownerId;
       if (email) params.userEmail = email;
 
-      const response = await axios.get("http://localhost:8080/api/post/get", {
+      const response = await axios.get("https://arendashop.onrender.com/api/post/get", {
         params,
       });
       setUserCards(response.data);
@@ -142,7 +142,7 @@ function MySuggestions(props) {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/post/delete/${id}`);
+      await axios.delete(`https://arendashop.onrender.com/api/post/delete/${id}`);
       setUserCards((prev) => prev.filter((card) => card._id !== id));
     } catch (error) {
       console.log(error);
@@ -174,7 +174,7 @@ function MySuggestions(props) {
 
     try {
       await axios.put(
-        `http://localhost:8080/api/post/edit/${editId}`,
+        `https://arendashop.onrender.com/api/post/edit/${editId}`,
         editData,
       );
 
@@ -320,7 +320,7 @@ function MySuggestions(props) {
                         }}
                       >
                         {card.media.map((file, index) => {
-                          const url = `http://localhost:8080/${file}`;
+                          const url = `https://arendashop.onrender.com/${file}`;
 
                           return file.endsWith(".mp4") ||
                             file.endsWith(".mov") ||
@@ -377,7 +377,7 @@ function MySuggestions(props) {
 
                       try {
                         await axios.put(
-                          `http://localhost:8080/api/post/view/${card._id}`,
+                          `https://arendashop.onrender.com/api/post/view/${card._id}`,
                         );
 
                         setUserCards((prev) =>
@@ -571,7 +571,7 @@ function MySuggestions(props) {
 
               <Zoom key={currentSlide.full || 0}>
                 <img
-                  src={`http://localhost:8080/${
+                  src={`https://arendashop.onrender.com/${
                     fullCard.media[currentSlide.full || 0]
                   }`}
                   className="topSliderImage fade-image"
@@ -602,7 +602,7 @@ function MySuggestions(props) {
                 {fullCard.media.map((img, index) => (
                   <img
                     key={index}
-                    src={`http://localhost:8080/${img}`}
+                    src={`https://arendashop.onrender.com/${img}`}
                     className={`thumb ${
                       index === (currentSlide.full || 0) ? "thumbActive" : ""
                     }`}
