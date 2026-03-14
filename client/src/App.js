@@ -48,14 +48,14 @@ function App() {
       <LikeProvider>
       <Routes>
         <Route path={"/"}  element={<Home />}/>
-        <Route path={"/#/about"} element={<About />}/>
-        <Route path={"/#/lease"} element={<Lease />}/>
-        <Route path={"/#/rent"} element={<Rent cards={cards} isLoading={isLoading} />}/>
-        <Route path={"/#/contact"} element={<Contact />}/>
-        <Route path={"/#/mysuggestions"} element={<MySuggestions cards={cards} isLoading={isLoading} />}/>
-        <Route path={"/#/aboutUser"} element={<AboutUser />}/>
-        <Route path={"/#/features"} element={<Features cards={cards} />}/>
-        <Route path={"/#/adminpage"} element={<AdminPage />}/>
+        <Route path={"/about"} element={<About />}/>
+        <Route path={"/lease"} element={<Lease />}/>
+        <Route path={"/rent"} element={<Rent cards={cards} isLoading={isLoading} />}/>
+        <Route path={"/contact"} element={<Contact />}/>
+        <Route path={"/mysuggestions"} element={<MySuggestions cards={cards} isLoading={isLoading} />}/>
+        <Route path={"/aboutUser"} element={<AboutUser />}/>
+        <Route path={"/features"} element={<Features cards={cards} />}/>
+        <Route path={"/adminpage"} element={<AdminPage />}/>
       </Routes>
       </LikeProvider>
     </div>
