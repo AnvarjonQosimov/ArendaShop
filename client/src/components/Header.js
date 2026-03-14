@@ -171,7 +171,7 @@ function Header() {
           </NavLink>
 
           <NavLink
-            to="/about"
+            to="/#/about"
             onClick={() => setBurgerOpen(false)}
             className="menu-link"
           >
@@ -179,7 +179,7 @@ function Header() {
           </NavLink>
 
           <NavLink
-            to="/rent"
+            to="/#/rent"
             onClick={() => setBurgerOpen(false)}
             className="menu-link"
           >
@@ -187,7 +187,7 @@ function Header() {
           </NavLink>
 
           <NavLink
-            to="/mysuggestions"
+            to="/#/mysuggestions"
             onClick={() => setBurgerOpen(false)}
             className="menu-link"
           >
@@ -195,7 +195,7 @@ function Header() {
           </NavLink>
 
           <NavLink
-            to="/contact"
+            to="/#/contact"
             onClick={() => setBurgerOpen(false)}
             className="menu-link"
           >
@@ -249,7 +249,7 @@ function Header() {
             >
               <MenuItem onClick={handleClose}>{user.displayName}</MenuItem>
               <MenuItem onClick={handleClose}>
-                <Link className="linkLi" to={"/aboutUser"}>
+                <Link className="linkLi" to={"/#/aboutUser"}>
                   AboutUser
                 </Link>
               </MenuItem>
@@ -262,20 +262,20 @@ function Header() {
 
               {user.email === adminEmailMain && (
                 <MenuItem onClick={handleClose}>
-                  <Link className="linkLi" to={"/adminpage"}>
+                  <Link className="linkLi" to={"#//adminpage"}>
                     {t("adminpage")}
                   </Link>
                 </MenuItem>
               )}
 
               <MenuItem onClick={handleClose}>
-                <Link className="linkLi" to={"/lease"}>
+                <Link className="linkLi" to={"/#/lease"}>
                   {t("admin")}
                 </Link>
               </MenuItem>
 
               <MenuItem onClick={handleClose}>
-                <Link className="linkLi" to={"/features"}>
+                <Link className="linkLi" to={"/#/features"}>
                   {t("saralanganlar")}
                 </Link>
               </MenuItem>
