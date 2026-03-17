@@ -96,6 +96,17 @@ connectWithRetry()
 
 app.set('trust proxy', 1)
 
+const path = require('path');
+
+// Отдача статических файлов React
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Для всех маршрутов, кроме API, отдаём index.html
+app.get('*', (req, res) => {
+  if (req.path.startsWith('/api')) return; // API обрабатываем отдельно
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 console.log("USING DB:", DB_URL)
 
 app.use('/api/post', require('./routes/post.rout.js'))
