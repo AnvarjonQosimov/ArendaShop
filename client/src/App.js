@@ -42,6 +42,18 @@ function App() {
       getData();
     }, []);
 
+    useEffect(() => {
+    const channel = new window.BroadcastChannel("likes");
+
+    channel.onmessage = (event) => {
+      console.log("Получено:", event.data);
+    };
+
+    return () => {
+      channel.close();
+    };
+  }, []);
+
   return (
     <div className="App">
       <Header />
