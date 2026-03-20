@@ -1,8 +1,14 @@
 {
   "rewrites": [
     {
-      "source": "/*",
-      "destination": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html",
+      "has": [
+        {
+          "type": "missing",
+          "value": "/$1"
+        }
+      ]
     }
   ]
 }
