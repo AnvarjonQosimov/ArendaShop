@@ -2,7 +2,7 @@
   "name": "arendashop",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://anvarjonqosimov.github.io/arendashop",
+  "homepage": "https://anvarjonqosimov.github.io/ArendaShop",
   "dependencies": {
     "@craco/craco": "^7.1.0",
     "@emotion/react": "^11.14.0",
