@@ -18,8 +18,10 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
-    "express": "^5.2.1",
+    "express": "^4.19.2",
     "express-fileupload": "^1.5.2",
+    "express-rate-limit": "^7.1.0",
+    "helmet": "^7.1.0",
     "mongoose": "^9.0.1",
     "node-modules": "^1.0.1",
     "uuid": "^13.0.0"

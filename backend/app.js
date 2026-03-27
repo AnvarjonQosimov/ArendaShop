@@ -7,6 +7,11 @@ const rateLimit = require('express-rate-limit')
 
 require('dotenv').config()
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+})
+
 const app = express()
 
 // app.use(helmet())
@@ -102,5 +107,3 @@ app.get('*', (req, res) => {
   if (req.path.startsWith('/api')) return res.status(404).json({ error: 'API route not found' });
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
-
-console.log("USING DB:", DB_URL)

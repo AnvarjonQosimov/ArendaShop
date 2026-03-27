@@ -36,7 +36,7 @@ class PostController {
   async edit(req, res) {
     try {
       const { body, params } = req;
-      const post = postService.edit(body, params.id);
+      const post = await postService.edit(body, params.id);
       res.status(200).json(post);
     } catch (error) {
       res.status(500).json(error);
