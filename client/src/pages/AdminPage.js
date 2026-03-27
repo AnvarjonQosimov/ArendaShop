@@ -18,7 +18,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 function AdminPage() {
-  const adminEmail = "anvarqosimov153@gmail.com";
+  const adminEmail = process.env.REACT_APP_ADMIN_EMAIL;
 
   const [currentUser, setCurrentUser] = useState(null);
   const [users, setUsers] = useState([]);

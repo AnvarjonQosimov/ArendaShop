@@ -21,7 +21,7 @@ function Rent(props) {
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("rentDarkMode") === "true";
   });
-  const adminEmailMain = "anvarqosimov153@gmail.com";
+  const adminEmailMain = process.env.REACT_APP_ADMIN_EMAIL;
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {

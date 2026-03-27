@@ -7,8 +7,6 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Success from "../components/Sucsess.js";
-import { Dropdown } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Loading from "../components/Loading.js";
 import { v4 as uuid } from "uuid";
 import InputMask from "react-input-mask";
@@ -162,7 +160,7 @@ function Lease() {
     setInitalInformation(value);
   };
 
-  const adminEmail = "anvarqosimov153@gmail.com";
+  const adminEmail = process.env.REACT_APP_ADMIN_EMAIL;
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
